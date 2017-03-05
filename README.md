@@ -18,6 +18,10 @@ I titled the book, Yet Another TypeScript Book because the market has given rise
 
 At the moment, there are several great resources for learning TypeScript, including the proto-iconic. _TypeScript Deep Dive_, which you can read here: [http://basarat.gitbooks.io/typescript/](http://basarat.gitbooks.io/typescript/). It's a fine book and I will refer to it often throughout.
 
+test
+
+
+
 [^1]: That's not to say that they are doing it well, but they are surely giving it a try.
 
 [^2]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamless with everyone else. See more of my thoughts on this subject here: [https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa\#.b9rxgbbrs](https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs) 
