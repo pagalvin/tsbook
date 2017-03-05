@@ -18,8 +18,6 @@ I titled the book, Yet Another TypeScript Book because the market has given rise
 
 At the moment, there are several great resources for learning TypeScript, including the proto-iconic. _TypeScript Deep Dive_, which you can read here: [http://basarat.gitbooks.io/typescript/](http://basarat.gitbooks.io/typescript/). It's a fine book and I will refer to it often throughout.
 
-test
-
 
 
 [^1]: That's not to say that they are doing it well, but they are surely giving it a try.
