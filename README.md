@@ -14,13 +14,13 @@ For starters, at least one major framework \(Angular\) pushes you hard into usin
 
 All of this is to say that TypeScript has and continues to gain traction in the JavaScript community. The jury is still out as to whether it will "win" and become the de facto scripting language of the web. It probably won't[^2]. But its appeal cannot be denied. A growing swath of current and future front end developers are choosing TypeScript over pure JavaScript.
 
-I titled the book, Yet Another TypeScript Book because the market has given rise to several books, free and not-free. This hasn't stopped me from writing this one because I believe the market can bear another one. At the same time, different people learn things differently - more teaching "voices" help more people. At the end of the day, service of this sort to others provides sufficient motivation. 
+I titled the book, Yet Another TypeScript Book because the market has given rise to several books, free and not-free. This hasn't stopped me from writing this one because I believe the market can bear another one[^3]. At the same time, different people learn things differently - more teaching "voices" help more people. At the end of the day, service of this sort to others provides sufficient motivation.
 
 At the moment, there are several great resources for learning TypeScript, including the proto-iconic. _TypeScript Deep Dive_, which you can read here: [http://basarat.gitbooks.io/typescript/](http://basarat.gitbooks.io/typescript/). It's a fine book and I will refer to it often throughout.
 
-
-
 [^1]: That's not to say that they are doing it well, but they are surely giving it a try.
 
-[^2]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamless with everyone else. See more of my thoughts on this subject here: https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa\#.b9rxgbbrs 
+[^2]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamless with everyone else. See more of my thoughts on this subject here: [https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa\#.b9rxgbbrs](https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs) 
+
+[^3]: At least I think the market can bear another free, online book :\).
 
