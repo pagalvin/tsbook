@@ -11,7 +11,7 @@ TypeScript isn't JavaScript, of course. It looks a lot like JavaScript and as yo
 
 Here's one way to look at it:
 
-![High Level TypeScript Transpilation Process](/assets/ch03_transpilation.png)
+![High Level TypeScript Transpilation Process](/assets/ch03_transpilation.PNG)
 
  As a practical matter, it's no different from the kind of compilation process we go through with Java, .NET, Rust and other languages. However, it's usually referred to as a transpilation process rather than a compilation process. I'll tend to use both words in the book, although I lean towards compilation if only because it's easier to type.
 
