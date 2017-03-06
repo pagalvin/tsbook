@@ -7,7 +7,17 @@ These days, many popular languages don't even compile down to machine language. 
 
 All modern web browsers knows how to run JavaScript. They don't necessarily all agree upon the finer points of the DOM. They may vary their behavior with things like the console object. Yadda, yadda, yadda. Despite their differences, they agree more than they disagree. In most cases, the JavaScript I write today runs virtually everywhere on the planet.
  
-TypeScript isn't JavaScript, of course. It looks a lot like JavaScript and as you'll see, you can write valid TypeScript that is literally identical to pure JavaScript. However, no web browser today can execute TypeScript. Transpilation bridges the gap between TypeScript and JavaScript. Transpilation is simply a process that transforms one language into another.  As a practical matter, it's no different from the kind of compilation process we go through with Java, .NET, Rust and other languages. However, it's usually referred to as a transpilation process rather than a compilation process. I'll tend to use both words in the book, although I lean towards compilation if only because it's easier to type.
+TypeScript isn't JavaScript, of course. It looks a lot like JavaScript and as you'll see, you can write valid TypeScript that is literally identical to pure JavaScript. However, no web browser today can execute TypeScript. Transpilation bridges the gap between TypeScript and JavaScript. Transpilation is simply a process that transforms one language into another. In this case, you write TypeScript and it's transpiled into pure javaScript.
+
+Here's one way to look at it:
+
+![High Level TypeScript Transpilation Process](/assets/ch03_transpilation.png)
+
+ As a practical matter, it's no different from the kind of compilation process we go through with Java, .NET, Rust and other languages. However, it's usually referred to as a transpilation process rather than a compilation process. I'll tend to use both words in the book, although I lean towards compilation if only because it's easier to type.
+
+As of now, there is only one TypeScript compiler. Microsoft maintains it and it's open source.
+
+The mechanical process 
 
 [^1]: The name of this book itself pays homage to YACC, a compilation tool whose full name is "Yet Another Compiler Compiler." If you've ever been interested in writing a compiler (and really, who hasn't heard that siren call?) then YACC could be the first string you pull from that ball of fun.
 
