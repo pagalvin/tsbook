@@ -1,4 +1,5 @@
 # Summary
 
-* [Roadmap](chapter1.md)
-* [The Gloss Overs](chapter2.md)
+* [Roadmap](chapter01_Roadmap.md)
+* [The Gloss Overs](chapter02_TheGlossOvers.md)
+* [Practical Considerations](chapter03_PracticalConsiderations.md)

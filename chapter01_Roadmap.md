@@ -5,6 +5,7 @@ This book follows familiar conventions. It starts off with simple topics (variab
 I'm using github and gitbook to author and deliver this content. Gitbook provides a handy navigation pane that should show up over on your left (unless you've hidden it). It updates automatically as I add, change or remove content. It's your best table of contents.
 
 ## Topics
+But enough with what's *not* covered! Let's talk about what *is* covered.
 
 ### The Gloss-Overs
 This book doesn't go into any great detail about some topics.  For instance, the book does not provide step-by-step instructions for downloading TypeScript, installing it or configuring it. This and similar topics are covered in much better detail elsewhere.
