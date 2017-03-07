@@ -1,4 +1,4 @@
-# Practical Considerations
+# Using TypeScript - A Practical Overview
 If you haven't started using TypeScript at all or you've barely scratched the surface, this chapter is for you. 
 
 TypeScript shares something in common with virtually every other computer language - a TypeScript program is just a text file. Computers can't run it without first transforming that text to machine language. That process is named *compilation*, of course, and it isn't exactly a new thing under the sun[^1].
@@ -17,10 +17,10 @@ Here's one way to look at it:
 
 You don't need to own Visual Studio or use VS Community Edition to write TypeScript code. Many popular IDEs provide a first-class TypeScript experience, including Sublime, WebStorm and Visual Studio's younger sibling, Visual Studio Code. The JS community has largely embraced VS Code so it's a safe and easy bet. I have used VS Code to write most of the examples in this book and many of the screen captures show VS Code in the background. That said, the book is not about VS Code or any other IDE. Pick whichever your prefer.
 
-Today's market provides us with one TypeScript compiler. Microsoft created it, they maintain it and it's open source. As you'd expect, it's well-integrated with Visual Studio. However, it is actually a stand-alone independent application in its own right. It's free. Download and install from here: <a href="https://www.typescriptlang.org/">https://www.typescriptlang.org/</a>.
+Today's market provides us with one TypeScript compiler. Microsoft created it, they maintain it and it's open source. As you'd expect, it's well-integrated with Visual Studio. However, it is actually a stand-alone independent application in its own right. It's free. Download and install from here: [https://www.typescriptlang.org/](https://www.typescriptlang.org/ "Visit the TypeScript Language site").
 
-<div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:25%; font-size: 10px;">
-<b>A Brief Note on Task Runners</b>
+<div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:30%; font-size: 11px;">
+<b>A Brief Note on Task Runners</b><br/>
 
 When you use a task runner, you define individual tasks and you usually "define" them by writing them in JavaScript. This means that you can write your tasks in TypeScript too.
 </div>
