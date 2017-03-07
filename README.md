@@ -22,7 +22,11 @@ TypeScript's growing popularity answers the "Why TypeScript" question in part. A
 
 I came to TypeScript after spending about three or four years building solutions that contained minor to major bits of client-side code. [You can see an example here](http://www.bigapplesharepoint.com). I used jQuery for DOM manipulation and async work and lots of straight JS logic. I struggled with all the usual things at first, like closures, how to test for `null` or `undefined`. i eventually came to an uneasy understanding of these things but some problems never went away. I found it difficult to reliably apply common design patterns and plain JavaScript is terribly difficult to refactor.
 
-As you'll discover in chapter 4, TypeScript is a `typed` language. Or at least, you can use types if you want.
+As you'll discover in chapter 4, TypeScript is a `typed` language. Or at least, you can use types if you want. It's much less ambiguous than plain JavaScript both from an "intent" perspective "what did the programming intend with this code" as well as a technical perspective. Since TypeScript tends to eliminate ambiguity, IDEs can provide better support.
+
+These two points combine to make working with TypeScript a truly joyful experience. Closure complexities recede. It's more difficult to accidentally assign strings to numbers. It's a breeze to manage complex objects. 
+
+For me, TypeScript is like starting to cook a big, complicated meal in a freshly cleaned kitchen. It is, simply, a joy.
 
 ## Why *Another* TypeScript Book?
 
@@ -30,10 +34,10 @@ I titled the book, Yet Another TypeScript Book because the market has given rise
 
 At the moment, there are several great resources for learning TypeScript, including the proto-iconic. _TypeScript Deep Dive_, which you can read here: [http://basarat.gitbooks.io/typescript/](http://basarat.gitbooks.io/typescript/). It's a fine book and I will refer to it often throughout.
 
-<hr/>
+---
 [^1]: That's not to say that they are doing it well, but they are surely giving it a try.
 
-[^2]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamlessly with everyone else. See more of my thoughts on this subject here: [https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa\#.b9rxgbbrs](https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs) 
+[^2]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamlessly with everyone else. See more of my thoughts on this subject here: ["The Wonderful Consequences of JavaScript as the Virtual Machine Language of the Web"](https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs "https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs") 
 
 [^3]: At least I think the market can bear another free, online book :\).
 
