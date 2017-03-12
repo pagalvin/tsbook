@@ -2,7 +2,7 @@
 
 Greetings and welcome to my humble book on TypeScript.
 
-As I write these words, the JavaScript development community finds its popularity growing. Its tooling options are more numerous than ever before. Great tooling affords the community the opportunity to build truly amazing solutions on the front and back end. The opportunity landscape expands every day. These are exciting times!
+As I write these words, the JavaScript development community continues to grow in  popularity. Its tooling options are more numerous than ever before. Great tooling affords the community the opportunity to build truly amazing solutions on the front and back end. The opportunity landscape expands every day. These are exciting times!
 
 The community's ranks are also growing. It's comparatively easy to build front-end applications versus your classic server-side experience \(think Java/.NET\). Some of those server-side devs from the .NET and Java world see this and want to jump up onto the bandwagon. At the same time, the entrance fee is quite low - newly minted developers can quickly build JavaScript solutions with minimal tooling and without the need for extravagant training[^1].
 
