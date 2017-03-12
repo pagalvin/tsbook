@@ -14,7 +14,7 @@ TheAnswer = TheAnswer + 1;
 hammerTime = hammerTime.addDays(5);
 ```
 Pure JavaScript *also* lets us do things like the following:
-```javascript
+```javascript 
 var xyzzy = "transport me!";
 xyzzy = xyzzy + 20;
 
