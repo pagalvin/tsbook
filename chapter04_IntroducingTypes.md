@@ -63,7 +63,7 @@ Many TypeScript developers start off this way because it's so simple to do. It's
 
 ## Lightbulb Time?
 
-In late December of 2015, Eric Clemmons posted a widely read article on Medium entitled _JavaScript Fatigue_. [You can read it here.](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.3jytn61rs) If you haven't read it, it's probably worth your time. It does a good job of encapsulating a certain ennui in which some folks in the community indulge themselves. It's difficult not to at times! There are so many frameworks, development tools, IDEs and other clever gidgety-gadgets, it can become ... fatiguing.
+In late December of 2015, Eric Clemmons posted a widely read article on Medium entitled _JavaScript Fatigue_. [You can read it here.](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.3jytn61rs) If you haven't read it, it's probably worth your time[^1]. It does a good job of encapsulating a certain ennui in which some folks in the community indulge themselves. It's difficult not to at times! There are so many frameworks, development tools, IDEs and other clever gidgety-gadgets, it can become ... fatiguing.
 
 <div style="float:right; width:25%; padding-left: 15px;";>
 <img src="assets/lightbulb.png"/>
