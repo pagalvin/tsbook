@@ -29,6 +29,8 @@ An IDE plus the TypeScript compiler gets you most of the way - but not necessari
 
 From here on out, I assume that you have selected an IDE and that your IDE is connected to a task runner that automatically compiles your TypeScript whenever you make a change and save.
 
+---
+
 [^1]: The name of this book itself pays homage to YACC, a compilation tool whose full name is "Yet Another Compiler Compiler." If you've ever been interested in writing a compiler (and really, who hasn't heard that siren call?) then YACC could be the first string you pull from that ball of fun.
 
 [^2]: You maybe interested in a bit of historical context. When Microsoft first came out and announced .NET and this concept of a common language runtime, quite a few people (including me, sad to say) scoffed at the idea. Back then, there was no C#, or it was in its infancy. Borland C++ and things like Delphi had a lot of mind share, if not market share. It's been quite a journey and fascinating thing to look back and realize how far we've come as an industry.

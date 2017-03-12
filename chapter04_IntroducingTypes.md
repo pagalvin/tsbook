@@ -84,12 +84,12 @@ This is very valuable stuff. It is also very easy to harvest some value from it.
 All of the rest of your JS will work as normal. The most simple change to your code immediately provides significant benefit. This was my light bulb moment. It didn't end there for me and probably won't end there for you. It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you.
 
 ---
-[^1] To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
+[^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
 
 > TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength.
 
 I don't know JW and I don't mean to imply that this one quote pulled from one article he wrote stands for everything he believes :). That quote does, however, do a good job articulating a certain school of thought vis-à-vis JavaScript's dynamic nature. Many people like it. Those people probably aren't using TypeScript much.
 
-[^2] It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
+[^2]: It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
 
 
