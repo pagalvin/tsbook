@@ -74,7 +74,7 @@ Many first-time TypeScripters shake off their skepticism and get a little rush o
 1. It's much more difficult to mistakenly make mismatching assignments.
 2. Intent becomes clear. Any decent IDE will tell you, at runtime, the data type of the variable. 
 
-This is very valuable stuff. It is also incredibly simple to do. All you need to do is:
+This is very valuable stuff. It is also very easy to harvest some value from it. All you need to do is:
 
 1. Take one of your JS files
 2. Copy it with a .ts extension
@@ -88,7 +88,7 @@ All of the rest of your JS will work as normal. The most simple change to your c
 
 > TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength.
 
-I don't know JW and I don't mean to imply that this one quote pulled from one article he wrote stands for everything he believes :). That quote does, however, do a good job articulating a certain school of thought vis-a-vis JavaScript and its dynamic character.
+I don't know JW and I don't mean to imply that this one quote pulled from one article he wrote stands for everything he believes :). That quote does, however, do a good job articulating a certain school of thought vis-à-vis JavaScript's dynamic nature. Many people like it. Those people probably aren't using TypeScript much.
 
 [^2] It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
 
