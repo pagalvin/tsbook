@@ -82,16 +82,6 @@ This interface shows two immediate advantages TypeScript provides over JavaScrip
 Let's assume you agree that dev's intent is more clear here than it is with the pure JS object above. Here's a short animated gif showing VS Code intellisense at work:
 
 
-<video width="640" height="480" controls>
-  <source src="/assets/video/ch05/Interfaces01.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
-glah
-
-T
-REST example here.
-
 ## Enumerations
 Enumeration walk-through here
 
