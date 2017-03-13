@@ -83,7 +83,7 @@ Let's assume you agree that dev's intent is more clear here than it is with the 
 
 
 <video width="640" height="480" controls>
-  <source src="/assets/video/ch05/interfaces01.mp4" type="video/mp4">
+  <source src="/assets/video/ch05/Interfaces01.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
