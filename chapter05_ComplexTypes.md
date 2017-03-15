@@ -81,7 +81,9 @@ This interface shows two immediate advantages TypeScript provides over JavaScrip
 
 Let's assume you agree that the dev's intent is more clear here than it is with the pure JS object above. Here's a short 40 second video showing VS Code intellisense at work:
 
-<div style='position:relative;padding-bottom:63%'><iframe src='https://gfycat.com/ifr/OrdinaryRareGull' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+<!--<div style='position:relative;padding-bottom:63%'><iframe src='https://gfycat.com/ifr/OrdinaryRareGull' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>-->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o_wxodLGT34" frameborder="0" allowfullscreen></iframe>
 
 Here are some key takeaways from the video:
 
