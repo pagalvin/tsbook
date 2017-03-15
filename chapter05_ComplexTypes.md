@@ -85,7 +85,7 @@ Let's assume you agree that the dev's intent is more clear here than it is with 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o_wxodLGT34" frameborder="0" allowfullscreen></iframe>
 
-Here are some key takeaways from the video:
+Here are some key takeaways from the video: 
 
 1. Once you define an interface, it becomes another candidate data type. Use them the same way as the built-in data types, such as string, boolean, etc.
 2. Once you define a variable with an interface data type, you *must* provide all of the interface fields. NOTE: As you'll soon see, it's possible to define optional interface components as well.
