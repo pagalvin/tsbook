@@ -79,11 +79,13 @@ This interface shows two immediate advantages TypeScript provides over JavaScrip
 1. The developer's intent is much clearer. 
 2. Spot-on intellisense.
 
-Let's assume you agree that the dev's intent is more clear here than it is with the pure JS object above. Here's a short animated gif showing VS Code intellisense at work:
+Let's assume you agree that the dev's intent is more clear here than it is with the pure JS object above. Here's a short 40 second video showing VS Code intellisense at work:
+
+<div style='position:relative;padding-bottom:63%'><iframe src='https://gfycat.com/ifr/OrdinaryRareGull' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
 
 Here are some key takeaways from the video:
 
-1. Once you define an interface, it becomes another candidate data type. It's really no different from the built-in data types, such as string, boolean, etc.
+1. Once you define an interface, it becomes another candidate data type. Use them the same way as the built-in data types, such as string, boolean, etc.
 2. Once you define a variable with an interface data type, you *must* provide all of the interface fields. NOTE: As you'll soon see, it's possible to define optional interface components as well.
 3. It's not enough to add all of the interface fields to the "aBook" variable. You must also add them with the correct type. In the video, I tried to assign a string value to "TotalPages" field but the IDE told me that was not allowed.
 
