@@ -195,19 +195,78 @@ If you're using VSCode or Visual Studio, try copying in the above code. Hover yo
 
 ### Interfaces - Mapping a REST Response
 
-We'll wrap up the discussion on interfaces by reverse engineering a REST response.
+We'll wrap up the discussion on interfaces by reverse engineering a REST response. In this scenario, I'm making a call out to a SharePoint REST endpoint asking for a "user"[^8]. When I make the call, I get back a lot of information, starting with the HTTP wrapper around what I really want:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jLU-Io4K258" frameborder="0" allowfullscreen></iframe>
+!["HTTP Wrapper"](assets/imagework/ch05/RestInterface1.JPG "HTTP Wrapper")
+
+The HTTP wrapper consists of:
+- config (complex object)
+- data (complex object)
+- headers (complex object)
+- status (number)
+- statusText (string)
+
+We can define an interface that matches that:
+
+```TypeScript
+
+interface httpResponse {
+    config: any,
+    headers: any,
+    status: number,
+    statusText: string;
+}
+```
+
+The above example is a bit lazy  - it's not trying to model the data underlying `config` or `headers`. I'm waving my hands in their general direction by using "any." I certainly could model those objects but I'm going to focus on `data` instead. You'll notice that "data" is missing from the interface. Lets link that in. But first we need to define an interface that models the data portion of the REST response. To start, I need to know what the REST response is giving me:
+
+!["Data Portion of REST Response"](assets/imagework/ch05/RestInterface2.JPG "Data Portion of REST Response")
+
+This interface maps things nicely:
+
+```TypeScript
+interface userProfileRestModel {
+    Attachments: boolean;
+    AuthorId: number;
+    BPBrands: string[];
+    BPDescription: string;
+    "odata.editLink": string;
+    // and other user profile fields
+}
+```
+
+Note the `odata.editLink` field in the response - if your object's name has otherwise invalid characters in it, you can still get and set its values when you reference it via its name this way.
+
+Now it's time to link them in. Here's the code:
+
+```TypeScript
+interface userProfileResponse extends httpResponse {
+
+    data: {
+        value: userProfileRestModel[]
+    }
+
+}
+```
+
+Notice the `extends` keyword. I'm defining a new interface, `userProfileResponse` by _extending_ the previously defined `httpResponse` interface. The new `userProfileResponse` interface contains all the fields and structure of both.
+
+Here's another 40 second video that shows this visually.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oK3MpqhrVOo" frameborder="0" allowfullscreen></iframe>
+
+The last dozen seconds of the video show you that the IDE understands the structure of the new `userProfileResponse` interface.
 
 
-### Interfaces - A Summary
+### Summarizing Interfaces
 
-good stuff about interfaces:
-- intent
-- good ide support
-- refactoring is easy
-- data type shorthand is better than object copy approaches
+TypeScript interfaces are a very useful feature of the language:
+- They are very good at demonstrating the developer's intent
+- IDEs understand their structure and provide great intellisense support.
+- They are better at modeling content than pure JavaScript.
+- If you need to refactor one of your models, it's much more difficult to miss something since everywhere you use the interface breaks.
 
+We're not finished with interfaces - they also play a role with classes. Look for that topic in the next chapter.
 
 
 ## Enumerations
@@ -240,3 +299,5 @@ test
 [^3]: Cloning footnote goes here. Specific example came from here: http://heyjavascript.com/4-creative-ways-to-clone-objects/
 
 [^5]: intent footnote. "If you don't agree, then I don't know what else to tell you."
+
+[^8]: If you happen to know anything about SharePoint - I'm not retrieving an SPUser here, I'm retrieving an item from a custom list.
