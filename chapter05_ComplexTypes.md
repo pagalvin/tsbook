@@ -130,12 +130,11 @@ Contrast this with TypeScript:
 
 <iframe width="728" height="408" src="https://www.youtube.com/embed/fNtcCTeMAhQ" frameborder="0" allowfullscreen></iframe>
  
+When I changed Author from `string` to `string[]`, I invalidated every instance of every book model in the code. I can't run a successful build until I fix it. I still have a potentially tricky refactoring task on my hands - after all, I still need to fix every place in the code that references Author. However, the compiler won't let me miss any of those changes. That is powerful stuff. 
 
+### Nested Objects and Interfaces
 
-
-## Nested Objects and Interfaces
-
-## Interfaces - A Summary
+### Interfaces - A Summary
 
 good stuff about interfaces:
 - intent
