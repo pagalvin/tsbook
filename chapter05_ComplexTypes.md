@@ -132,6 +132,74 @@ When I changed Author from `string` to `string[]`, I invalidated every instance 
 
 ### Nested Objects and Interfaces
 
+Although `BookModel` is technically a complex object, it's not _very_ complex. Let's spice things up and take another look at "Author." We've already refactored the model to account for multiple authors. Authors are normal people, just like the rest of us, and in the United States and elsewhere, they usually have at least two names - a first name and last name. In addition, authors _love_ feedback[^6][^7]. To this end, we want the author's preferred email for feedback. 
+
+This next bit of code shows the new `AuthorModel` and refactors `BookModel` to use it.
+
+```TypeScript
+interface AuthorModel {
+    FirstName: string;
+    LastName: string;
+    PreferredEmail: string;
+}
+
+interface BookModel {
+    Authors: AuthorModel[];
+    Title: string;
+    Genre: string;
+    ShortDescription: string;
+    TotalPages: number;
+    Condition: string;
+}
+
+// Example 1: Create an author object first, then add it to the book instance
+const FoodBookAuthor1: AuthorModel = {
+    FirstName: "Paul",
+    LastName: "Galvin",
+    PreferredEmail: "galvin.paul@gmail.com"
+}
+
+const FoodBookAuthor2: AuthorModel = {
+    FirstName: "Kelly",
+    LastName: "Smith",
+    PreferredEmail: "ksmith123@awesomefoods.com"
+}
+
+const foodBook: BookModel = {
+    Authors: [FoodBookAuthor1, FoodBookAuthor2],
+    Title: "Foods - The Right Food for the Right Meal",
+    Genre: "Life Hacks",
+    ShortDescription: "Eggs are not for dinner",
+    TotalPages: 158,
+    Condition: "Used - Good"
+}
+
+// Example 2: Create a book instance in one line.
+const GotM: BookModel = {
+    Authors: [{
+        FirstName: "Steven",
+        LastName: "Erikson",
+        PreferredEmail: "ganoes.paran@malazanempire.gov"
+    }],
+    Title: "Gardens of the Moon",
+    Genre: "High Fantasy",
+    ShortDescription: "Empress tries to conquer city, fails, but wins something better",
+    TotalPages: 772,
+    Condition: "New"
+}
+``` 
+
+As you can see, TypeScript supports nested objects quite nicely. 
+
+If you're using VSCode or Visual Studio, try copying in the above code. Hover your mouse over the Authors field in either Example 1 or Example 2 and then press F12. This will bring you to the definition of the object. This is very handy when trying to understand the underlying definition of a given type/interface.
+
+### Interfaces - Mapping a REST Response
+
+We'll wrap up the discussion on interfaces by reverse engineering a REST response.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jLU-Io4K258" frameborder="0" allowfullscreen></iframe>
+
+
 ### Interfaces - A Summary
 
 good stuff about interfaces:
