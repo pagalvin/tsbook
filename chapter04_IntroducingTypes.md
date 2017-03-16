@@ -6,12 +6,14 @@ TypeScript's name is no accident. It doesn't mean "some type of scripting langua
 var xyzzy = "transport me!";
 var TheAnswer = 42;
 var hammerTime = new Date(1990, 1, 13);
+var BookTitles = [];
 ```
 The above snippet shows three variables and JavaScript infers their data type. This allows us to write code like this:
 ```javascript
 xyzzy = "you've been transported";
 TheAnswer = TheAnswer + 1;
 hammerTime = hammerTime.addDays(5);
+BookTitles = ["Title 1", "Title 2", "Title 3"];
 ```
 Pure JavaScript *also* lets us do things like the following:
 ```javascript 
@@ -25,13 +27,17 @@ var hammerTime = new Date(1990, 1, 13);
 hammerTime = {};
 hammerTime = hammerTime + 5;
 
+var BookTitles = ["Title 1", "Title 2", "Title 3", "Title 4"];
+BookTitles[2] = [{Title: "SomeTitle", TotalPages: 200}]
+
 console.debug("xyzzy:",xyzzy);
 console.debug("TheAnswer:",TheAnswer);
 console.debug("hammerTime:", hammerTime);
+console.debug("BookTitles:", BookTitles)
 ```
 That's valid script and in chrome, the output looks like this:
 
-![Nonsensical But Allowed Variable Assignments](/assets/ch04_nonsenseVars.PNG "Nonsensical But Allowed Variable Assignments")
+![Nonsensical But Allowed Variable Assignments](/assets/ch04_nonsenseVars.JPG "Nonsensical But Allowed Variable Assignments")
 
 A lot of people really don't care for this behavior[^1]. As I say, this is a contrived example. If you're prone to writing code like this, you may not belong in the field. The real problem is that is very, very easy to introduce bugs in pure JS by accidentally mixing data types. TypeScript mitigates the problem by allowing you to specify the type of the variable when you define it. Let's look:
 
@@ -49,15 +55,15 @@ The above snippet explicitly shows TypeScript's type system at work:
 - "TheAnswer" is a "number"
 - hammerTime is a `Date`. Why is it a `Date` and not something else? Because TypeScript can infer its data type. The code initializes it to a Date object and hence, it can only be a date.
 
- The last variable, `whoKnows`, also has a type, "any". Variables of type `any` act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
+The last variable, `whoKnows`, also has a type, "any". Variables of type `any` act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
 
- If you go to the trouble of defining types on your variables, your IDE will give you some great edit-time and compile-time support. Consider this short animation:
+If you go to the trouble of defining types on your variables, your IDE will give you some great edit-time and compile-time support. Consider this short animation:
 
 ![short animation](/assets/video/ch04_strongTypingExampleVideo/ch04_strongTypingExampleVideo.gif "IDE Supporting Defined Types")
  
- If you're already a JS coder, this is a very simple way to get started with the language. Pick a few variables, associate some types with them and see what happens. A couple things will or may happen when  you do this:
- - Your IDE will get a lot smarter about your code. It will know their types and prevent you from assigning strings to numbers and that sort of thing.
- - You may discover problems with your code right away. You may well have intended that a particular variable, "myNumber", hold numbers. As JS coders know, it's quite easy to mistakenly assign strings, date, complex objects, to your "myNumber" variable. 
+If you're already a JS coder, this is a very simple way to get started with the language. Pick a few variables, associate some types with them and see what happens. A couple things will or may happen when you do this:
+- Your IDE will get a lot smarter about your code. It will know variable types and prevent you from assigning strings to numbers and that sort of thing.
+- You may discover problems with your code right away. You may well have intended that a particular variable, "myNumber", hold numbers. As JS coders know, it's quite easy to mistakenly assign strings, date, complex objects, to your "myNumber" variable. 
 
 Many TypeScript developers start off this way because it's so simple to do. It's so simple, in fact, that they quickly move on to more interesting typings, including the ability to strongly type nested objects via `interfaces`. The next chapter introduces interfaces as data descriptors
 
@@ -81,7 +87,9 @@ This is very valuable stuff. It is also very easy to harvest some value from it.
 3. Add some typings (numbers, strings, booleans, etc.)
 4. You're done!
 
-All of the rest of your JS will work as normal. The most simple change to your code immediately provides significant benefit. This was my light bulb moment. It didn't end there for me and probably won't end there for you. It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you.
+All of the rest of your JS will work as normal. The most simple change to your code immediately provides significant benefit. This was my light bulb moment. It didn't end there for me and won't end there for you. 
+
+It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you.
 
 ---
 [^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
