@@ -1,7 +1,7 @@
 # Complex Types
 
 ## What's Covered
-We're going to start off this chapter by introducing TypeScript _interfaces_. As many of you know, interfaces play an over-sized role in many common design patterns (think SOLID[^1]). We will talk about interfaces in that context in [[chapter 7?]]. This chapter examines interfaces in the context of JavaScript objects and their fields. 
+We're going to start off this chapter by introducing TypeScript _interfaces_. This chapter examines interfaces in the context of JavaScript "data" objects and their fields. As many of you know, interfaces play an over-sized role in many common design patterns (think SOLID[^1]). We will talk about interfaces in that context in [[chapter 7?]].  
 
 TypeScript provides other more advanced typing support that you've likely seen in C# and Java. This chapter covers some of them, including[^1]:
 
@@ -9,16 +9,14 @@ TypeScript provides other more advanced typing support that you've likely seen i
 <b><i>A Note About Generics</i></b><br/>
 Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the DRY principle. 
 <br/>
-The book covers generics in chapter [[[ ??? ]]]. 
+The book covers generics in chapter [[[ ??? ]]].
 </div>
-
+ 
 - Enumerations: Attach a human-friendly label to a number
 - Unions: A variable can be a "number" or "string" but not anything else.
 - Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn a it about them in the next chapter).
 
-Let's begin with interfaces.
-
-## Interfaces
+## Interfaces as Data Describers
 
 Declare a TypeScript interface like this:
 
@@ -27,7 +25,7 @@ interface myInterface {
 
 }
 ```
-That code defines a new interface called "myInterface". It's an empty interface, but valid[^2]. 
+That code defines a new interface called "myInterface". It's an empty interface, but valid[^2]. //
 
 Variables can now declare their type as being that interface:
 
