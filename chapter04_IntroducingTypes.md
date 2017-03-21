@@ -1,6 +1,6 @@
 # Putting the *Type* in TypeScript
 
-TypeScript's name is no accident. It doesn't mean "some type of scripting language." TypeScript overlays strong typing on top of pure JavaScript. This is best explained by example. Let's start with some valid and admittedly ridiculous pure JS code:
+TypeScript's name is no accident. It doesn't mean "some type of scripting language." TypeScript overlays static typing on top of pure JavaScript. This is best explained by example. Let's start with some valid and admittedly ridiculous pure JS code:
 
 ```javascript
 var xyzzy = "transport me!";
@@ -8,7 +8,7 @@ var TheAnswer = 42;
 var hammerTime = new Date(1990, 1, 13);
 var BookTitles = [];
 ```
-The above snippet shows three variables and JavaScript infers their data type. This allows us to write code like this:
+The above snippet shows four variables and JavaScript infers their data type. This allows us to write code like this:
 ```javascript
 xyzzy = "you've been transported";
 TheAnswer = TheAnswer + 1;
@@ -39,7 +39,7 @@ That's valid script and in chrome, the output looks like this:
 
 ![Nonsensical But Allowed Variable Assignments](/assets/ch04_nonsenseVars.JPG "Nonsensical But Allowed Variable Assignments")
 
-A lot of people really don't care for this behavior[^1]. As I say, this is a contrived example. If you're prone to writing code like this, you may not belong in the field. The real problem is that is very, very easy to introduce bugs in pure JS by accidentally mixing data types. TypeScript mitigates the problem by allowing you to specify the type of the variable when you define it. Let's look:
+A lot of people really don't care for this behavior[^1]. As I say, this is a contrived example. If you're prone to writing code like this, you may not belong in the field. The real problem is that is very, very easy to introduce bugs in pure JS by accidentally mixing data types. TypeScript mitigates the problem. In TypeScript, you can specify the type of the variable when you define it. Let's look:
 
 ```typescript
 var xyzzy: string = "transport me!";
@@ -51,11 +51,11 @@ var hammerTime = new Date(1990, 1, 13);
 var whoKnows;
 ```
 The above snippet explicitly shows TypeScript's type system at work:
-- The variable xyzzy is a string.
-- "TheAnswer" is a "number"
-- hammerTime is a `Date`. Why is it a `Date` and not something else? Because TypeScript can infer its data type. The code initializes it to a Date object and hence, it can only be a date.
+- The variable xyzzy is a `string`.
+- "TheAnswer" is a `number`.
+- hammerTime is a `Date`. Why is it a Date and not something else? Because TypeScript can infer its data type. The code initializes it to a Date object and hence, it can only be a date.
 
-The last variable, `whoKnows`, also has a type, "any". Variables of type `any` act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
+The last variable, *whoKnows*, also has a type, `any`. Variables of type any act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
 
 If you go to the trouble of defining types on your variables, your IDE will give you some great edit-time and compile-time support. Consider this short animation:
 

@@ -1,5 +1,4 @@
 # Using TypeScript - A Practical Overview
-If you haven't started using TypeScript at all or you've barely scratched the surface, this chapter is for you. 
 
 TypeScript shares something in common with virtually every other computer language - a TypeScript program is just a text file. Computers can't run it without first transforming that text to machine language. That process is named *compilation*, of course, and it isn't exactly a new thing under the sun[^1].
 
@@ -13,7 +12,7 @@ Here's one way to look at it:
 
 ![High Level TypeScript Transpilation Process](/assets/ch03_transpilation.PNG)
 
- As a practical matter, it's no different from the kind of compilation process we go through with Java, .NET, Rust and other languages. However, it's usually referred to as a transpilation process rather than a compilation process. I'll tend to use both words in the book, although I lean towards compilation if only because it's easier to type.
+As a practical matter, it's no different from the kind of compilation process we go through with Java, .NET, Rust and other languages. However, it's usually referred to as a transpilation process rather than a compilation process. I'll tend to use both words in the book, although I lean towards compilation if only because it's easier to type.
 
 You don't need to own Visual Studio or use VS Community Edition to write TypeScript code. Many popular IDEs provide a first-class TypeScript experience, including Sublime, WebStorm and Visual Studio's younger sibling, Visual Studio Code. The JS community has largely embraced VS Code so it's a safe and easy bet. I have used VS Code to write most of the examples in this book and many of the screen captures show VS Code in the background. That said, the book is not about VS Code or any other IDE. Pick whichever your prefer.
 
@@ -28,6 +27,9 @@ When you use a task runner, you define individual tasks and you usually "define"
 An IDE plus the TypeScript compiler gets you most of the way - but not necessarily all the way -  you want to go. Depending on your IDE, you may also need a task runner. Task runners execute ... tasks :). At a bare minimum, you want your task runner to invoke the TypeScript compiler as you edit and save changes to your TypeScript files. But that's silly. You'll want to use a task runner. Visual Studio and Visual Studio Code come with integrated task runners (MSBuild in the former and an integrated runner in VSCode). You will probably outgrow the integrated task runners, however. When this time arrives, have a look at gulp, grunt or similar tools. At the time of this writing, <a href="http://gulpjs.com/">gulp</a> seems to have the most mind share.
 
 From here on out, I assume that you have selected an IDE and that your IDE is connected to a task runner that automatically compiles your TypeScript whenever you make a change and save.
+
+
+** to cover: debugging
 
 ---
 
