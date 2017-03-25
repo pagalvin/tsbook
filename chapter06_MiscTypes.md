@@ -24,23 +24,16 @@ Use enumerations in your code like this:
 function parseResult(resultDetails: SomeInterface, resultCode: HttpStatusCodes) {
 
     if (resultCode === HttpStatusCodes.OK) {
-
         processSuccessfulResponse(resultDetails);
-
     }
 
     else if (resultCode === HttpStatusCodes.FORBIDDEN) {
-
         login();
-
     }
 
     else {
-
         processOtherError(resultCode, resultDetails);
-
     }
-
 }
 
 ```
@@ -99,6 +92,7 @@ function parseResult(resultCode: HttpStatus) {
 }
 ```
 
+Generated JavaScript:
 
 ```JavaScript
 var HttpStatus;

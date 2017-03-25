@@ -1,4 +1,4 @@
-# Complex Types
+# Complex Types Using Interfaces
 
 ## What's Covered
 We're going to start off this chapter by introducing TypeScript _interfaces_. This chapter examines interfaces in the context of JavaScript "data" objects and their fields. As many of you know, interfaces play an over-sized role in many common design patterns (think SOLID[^1]). We will talk about interfaces in that context in [[chapter 7?]].  
@@ -258,7 +258,7 @@ Here's another 40 second video that shows this visually.
 The last dozen seconds of the video show you that the IDE understands the structure of the new `userProfileResponse` interface.
 
 
-### Summarizing Interfaces
+# Summarizing Interfaces
 
 TypeScript interfaces are a very useful feature of the language:
 - They are very good at demonstrating the developer's intent
@@ -266,7 +266,8 @@ TypeScript interfaces are a very useful feature of the language:
 - They are better at modeling content than pure JavaScript.
 - If you need to refactor one of your models, it's much more difficult to miss something since everywhere you use the interface breaks.
 
-We're not finished with interfaces - they also play a role with classes. Look for that topic in the next chapter.
+We're not finished with interfaces - they also play a role with classes. That's where a significant amount of their pattern-implementation power comes from. Before we get to that, we'll cover off several other great typing features - enums, unions and custom types.
+
 
 
 ## Enumerations
@@ -282,11 +283,6 @@ Custom type description here
 
 
 
-
-=-=
-other stuff
-need to explain that TS gives you future javascript today. In the overview
-test
 
 ---
 
