@@ -1,14 +1,14 @@
-# Topics
+# The Road Map
 
-This book follows familiar conventions. It starts off with simple topics (variables and data types) and works its way up to more complicated topics towards the end. 
+This book follows familiar conventions. It addresses a few house keeping topics before properly introducing the language. The proper introduction starts off with simple topics (variables and data types) and works its way up to more complicated topics towards the end. 
 
 I'm using github and gitbook to author and deliver this content. Gitbook provides a handy navigation pane that should show up over on your left (unless you've hidden it). It updates automatically as I add, change or remove content. It's your best table of contents.
 
 ## The Gloss-Overs
 
-This book doesn't go into any great detail about some topics.  For instance, the book does not provide step-by-step instructions for downloading TypeScript, installing it or configuring it. This and similar topics are covered in much better detail elsewhere.
+This book wont  go into any great detail about some topics. It's mostly concerned with the TypeScript language. As a result, the book does not provide step-by-step instructions for things like downloading TypeScript, installing it or configuring it. This and similar topics are covered in much better detail elsewhere.
 
-This chapter will point you to a collection of web sites and blog posts that do a good job explaining such things. Keep in mind that TypeScript is newish. As a result, the community is still sorting out best practices. 
+This chapter will point you to a collection of web sites and blog posts that do a good job explaining such things. Keep in mind that TypeScript is newish. As a result, the community is still sorting out best practices. I'll try to keep this section on to date, but at the end of the day, Google, reddit/r/typescript and Stack Overflow are your best friends.
 
 ## Practical Considerations
 
