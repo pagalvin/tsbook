@@ -5,6 +5,5 @@
 * [Using TypeScript - A Practical Overview](chapter03_PracticalConsiderations.md)
 * [Putting the Type in TypeScript](chapter04_IntroducingTypes.md)
   * Primitive Types
-* [Complex Types](chapter05_ComplexTypes.md) 
-  * Interfaces
-  * Enumerations
+* [Introducing Interfaces](chapter05_ComplexTypes.md) 
+* [Enumerations, Unions and Custom Types](chapter06_MiscTypes.md) 
