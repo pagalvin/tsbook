@@ -59,7 +59,7 @@ In this case, Down, Left and Right are assigned the values 2, 3 and 4 respective
 
 Mapping labels, such as "FORBIDDEN" to a number value "403" constitutes the main use case for enums. Used this way, they allow you to:
 - Once again, express yourself more clearly in code. *You* may be fully aware that an http 403 is a "forbidden" message but other, newer developers may not.
-- i had another ideas here...
+- i had another idea here...
 
 ### Enums As Objects, Or Not
 
@@ -117,10 +117,10 @@ function parseResult(resultCode) {
 
 ```
 
-As you can see, TypeScript wraps the enum inside its own Immediately Invoked Function Expression (IIFE) and lives on as a code artifact. Most of the time, this isn't useful. You can skip the code generatation and instead declare the enum as `const`:
+As you can see, TypeScript wraps the enum inside its own Immediately Invoked Function Expression (IIFE) and lives on as a code artifact. Most of the time, this isn't useful. You can skip the code generation and instead declare the enum as `const`:
 
 <div style="float:right; width: 33%">
-<h4>Prefer Const Enums
+<h4>Prefer Const Enums</h4>
 <p>
     You should normally prefer to use const enums. There are probably some good use cases for non-const enums but you almost certainly won't encounter them in your first weeks and months with the language, if at all. Const enums generate less code and that generated code is as easy to understand as the non-const generated code.
 </p>
@@ -178,6 +178,18 @@ It even puts in some helpful comments describing the the meaning of "403" or "20
 
 TypeScript provides more sophisticated support for enums. You are not limited to assigning integers and in fact, you can assign values that are computed at runtime. This is best explained by the TypeSript language handbook web site here: [https://www.typescriptlang.org/docs/handbook/enums.html](https://www.typescriptlang.org/docs/handbook/enums.html)
 
+## Union Types
 
+Union Types allow you to create a define a new entity that is comprised of multiple types or even values. Here's a simple example:
+
+```TypeScript
+function move(inDirection: "left" | "up" | "down" | "up") {
+    console.log(`Moving ${inDirection}.`);
+}
+```
+
+This bit of code defines a function, "move" that takes a single parameter, "inDirection." Intellisense ensures that you don't try to pass in an invalid direction, like "sideways." Here's a short video demonstrating that.
+
+[[ add a video showing intellisense ]]
 
 
