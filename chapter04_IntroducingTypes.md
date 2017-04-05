@@ -91,6 +91,52 @@ All of the rest of your JS will work as normal. The most simple change to your c
 
 It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you.
 
+## Declaring Variables
+
+TypeScript provides three different ways to define a variable:
+
+- `var` keyword
+- `let` keyword
+- `const` keyword
+
+If you declare a variable with the var keyword, it works exactly the same way it does in pure JavaScript. It follows the same scoping rules and as such, you need to concern yourself with unexpected hoisting effects and/or inadvertently polluting the global namespace. "Const" and "let" simplify thing by reducing this risk and associated complexity. consider this bit of pure JS code:
+
+```JavaScript
+function getTempLabel(currentTempInCelsius) {
+
+    if (currentTempInCelsius > 35 && currentTempInCelsius <= 40) {
+        result = "Very warm";
+    }
+    
+    else if (currentTempInCelsius > 40) {
+        result = "Hot!";
+    }
+    
+    else {
+        var result = "Unexpected temperature value.";
+    }
+
+    console.log(result);
+
+    return result;
+
+}
+```
+
+This silly example tests for a temperature and returns a label describing it. Note three things:
+1) The variable "result" isn't actually decorated with `var` until it makes its 3rd appearance. 
+2) Through the magic of "hoisting," `result` is available throughout the function, not just in the else block where it's defined.
+3) This is perfectly valid TypeScript.
+
+Many programming languages dictate tighter scoping rules. Many people, the author included, consider the above example to be poorly done for several reasons:
+- The variable isn't properly declared until well past its first use.
+- The code doesn't do a good job showing the developer's intent here. Result could be used anywhere in the function and it would be confusing.
+- even experienced JS developers have a hard time with scope and hoisting and such.
+
+
+
+
+
 ---
 [^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
 

@@ -1,6 +1,6 @@
-# Enumerations, Union and Custom Types
+# Enumerations and Union Types
 
-So far, we've covered primitive data types (numbers, boolean, etc.) and how you can model complex objects using these primitive types. You can, in fact, create deeply nested data models using interfaces themselves. TypeScript provides additional ways to describe data. This chapter covers three of them: enumerations, unions and custom types. Note that TypeScript provides even more types such as intersection types and generics. Some of these (e.g. intersections) cater to tools writers more than the casual audience I have in mind for this book. Generics, on the other hand, deserve their own chapter and work best with classes and methods (the topic of the next chapter). This is all to say - we're not there yet, but we're getting close :).
+So far, we've covered primitive data types (numbers, boolean, etc.) and how you can model complex objects using these primitive types. You can, in fact, create deeply nested data models using interfaces themselves. TypeScript provides additional ways to describe data. This chapter covers two more of them: enumerations and unions. Note that TypeScript provides even more types such as intersection types, generics and type aliases. Some of these (e.g. intersections) cater to tools writers more than the casual audience I have in mind for this book. Generics, on the other hand, deserve their own chapter and work best with classes and methods (the topic of the next chapter). This is all to say - we're not there yet, but we're getting close :).
 
 ## Enumerations
 
@@ -176,7 +176,7 @@ It even puts in some helpful comments describing the the meaning of "403" or "20
 
 ### Even More Depth to Enumerations
 
-TypeScript provides more sophisticated support for enums. You are not limited to assigning integers and in fact, you can assign values that are computed at runtime. This is best explained by the TypeSript language handbook web site here: [https://www.typescriptlang.org/docs/handbook/enums.html](https://www.typescriptlang.org/docs/handbook/enums.html)
+TypeScript provides more sophisticated support for enums. You are not limited to assigning integers and in fact, you can assign values that are computed at runtime. This is best explained by the TypeScript language handbook web site here: [https://www.typescriptlang.org/docs/handbook/enums.html](https://www.typescriptlang.org/docs/handbook/enums.html)
 
 ## Union Types
 
@@ -192,4 +192,41 @@ This bit of code defines a function, "move" that takes a single parameter, "inDi
 
 [[ add a video showing intellisense ]]
 
+This isn't a particularly great example since in cases like this, you would probably use an enumeration instead. For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
 
+```JavaScript
+function calculateCollectionTotal(itemCollection) {
+
+    return itemCollection.reduce(function(prev, current) {
+      return prev + current.Total;
+    }, 0);
+
+}
+
+console.log("Invoice lines total:", calculateCollectionTotal(invoices));
+console.log("Order lines total:", calculateCollectionTotal(orders));
+console.log("Pick lines total:", calculateCollectionTotal(PickingSlips));
+
+```
+
+The "correct" approach here is to refactor the code, starting with a look at your invoices, orders and picking slips objects. Find their common elements, define an interface or possibly an abstract base class. Restructure all the objects and update the overall code base. However, that's a lot of work. Union types can help you right away without the need for so much refactoring. Here's what it could look like:
+
+```TypeScript
+function calculateCollectionTotal(itemCollection: Invoice[] | Order[] | PickingSlip[]): number {
+
+    return itemCollection.reduce(function(prev: number, current: Invoice | Order | PickingSlip) {
+      return prev + current.Total;
+    }, 0);
+
+}
+
+console.log("Invoice lines total:", calculateCollectionTotal(invoices));
+console.log("Order lines total:", calculateCollectionTotal(orders));
+console.log("Pick lines total:", calculateCollectionTotal(PickingSlips));
+```
+
+This bit of TypeScript does the same thing as its plain JS cousin. However, it adds in some type safety that your IDE's intellisense feature can use. It's also nicely self-documenting. With one look at the signature, it's plain to anyone that this function was designed to calculate totals on a specific set of objects and no other objects.
+
+You'll read about a better way to accomplish this using generics in chapter 8/9/10 (where ever that ends up).
+
+## Summary and Further Reading
