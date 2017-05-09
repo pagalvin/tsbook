@@ -119,23 +119,110 @@ function getTempLabel(currentTempInCelsius) {
     console.log(result);
 
     return result;
-
 }
 ```
 
 This silly example tests for a temperature and returns a label describing it. Note three things:
 1) The variable "result" isn't actually decorated with `var` until it makes its 3rd appearance. 
 2) Through the magic of "hoisting," `result` is available throughout the function, not just in the else block where it's defined.
-3) This is perfectly valid TypeScript.
+3) This is also perfectly valid TypeScript, although there's a better way to do it as you'll see in a moment.
 
 Many programming languages dictate tighter scoping rules. Many people, the author included, consider the above example to be poorly done for several reasons:
 - The variable isn't properly declared until well past its first use.
-- The code doesn't do a good job showing the developer's intent here. Result could be used anywhere in the function and it would be confusing.
+- The code doesn't do a good job showing the developer's intent here. Result could be used anywhere in the function on both the left hand side and right hand side of an expression, leading to unanticipated and difficult to track bugs.
 - even experienced JS developers have a hard time with scope and hoisting and such.
 
+Here is similar code written in TypeScript:
+
+```TypeScript
+function getTempLabelTS(currentTempInCelsius: number): string {
+
+    let result: string;
+    
+    if (currentTempInCelsius > 35 && currentTempInCelsius <= 40) {
+        result = "Very warm";
+    }
+    
+    else if (currentTempInCelsius > 40) {
+        result = "Hot!";
+    }
+    
+    else {
+        result = "Unexpected temperature value.";
+    }
+
+    console.log(result);
+
+    return result;
+
+}
+```
+
+As you can see, instead of using `var` to define the result variable, the code uses TypeScript's `let`. Let defines variable characteristics the same way as var - you specify a name and optionally a data type. The difference is about variable scope. A variable defined with let is scoped to the block where it's defined and is available to sub-blocks. It is never hoisted, as happens in pure JavaScript. Watch this short to see the effect of let and variable scope in a few different scenarios:
+
+[[
+    insert video here
+    show a few different if/then blocks with let and scope of vars around there.
+]]
+
+## TypeScript Best Practice - *Let*
+As a rule, prefer "let" over var. This will tend to reduce the risk of unanticipated side effects in your code through JavaScript's hoisting mechanism.
+
+## `Const` Definitions
+
+TypeScript provides another method for defining variables - `const`. A const variable:
+1. Must be initialized when declaried.
+2. May never be changed.
+
+Here's an example:
+
+```TypeScript
+const myName: string = "Paul"
+
+myName = "Mary"; // <-- compiler error
+```
+
+Const has some subtlety, especially when it comes to object property values. Consider this bit of code:
+
+```TypeScript
+interface PersonName {
+    firstName: string;
+    lastName: string;
+}
+
+const Paul: PersonName = { firstName: "Paul", lastName: "Galvin"}
+
+const Kelly: PersonName = { firstName: "TBD", lastName: "TBD"}
+
+const Aidan: PersonName; // <-- Not allowed, must always initialize const variables when defined
+
+Kelly.firstName = "Kelly"; // <-- perfectly OK
+Paul = null; // <-- Not allowed, cannot use const vars in LHS of an assignment
+```
+The code defines a simple interface, PersonName, that requires two strings, first and last name. It then attempts to define three PersonName variables.
+
+The Aidan PersonName is not assigned a value. This is a an error and the compiler will tell you. 
+
+The Kelly PersonName const variable *is* defined. However, it's seeded with "TBD" values. Later, the code changes Kelly's firstName property. This is valid^3. 
+
+Lastly, the Paul variable cannot be changed after it's initialized. The final "Paul = null" assignment is also invalid. Const variables may never be in the left hand side of an assignment once they are declared and initialized.
 
 
+## TypeScript Best Practice - *Let*
+As a rule, prefer "const" over let. This recommendation largely derives from functional programming principles. The more you minimize mutations in your code, the fewer side effects you'll experience.
 
+Taking this and let into consideration, we can summarize:
+- Prefer const in all cases.
+- When const won't meet your needs, prefer let over var.
+- If you absolutely need var, use that. However, the use of var in TypeScript strongly indicates a logic problem and an opportunity to simply the code.
+
+## TypeScript Let, Const and Transpilation
+
+At the end of the day, JavaScript doesn't know anything about const or let. They always compile down to plain old var statements. Here's the transpiled version of the getTemperature function from above:
+
+[[ insert get temp function]]
+
+TypeScript enforces variable scope and const initialization / assignment rules at compile-time. A good IDE will do it as you write the code.
 
 ---
 [^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
@@ -148,4 +235,4 @@ Eric Elliot takes a deeper dive into the subject: https://medium.com/javascript-
 
 [^2]: It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
 
-
+[^3]: Admittedly, this is a minor source of cognitive dissonance. Since the variable itself a const, why allow us to change the variable's properties as well? It is what it is and helpful in the end, so live with it we must.
