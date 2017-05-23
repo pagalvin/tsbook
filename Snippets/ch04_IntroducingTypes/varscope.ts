@@ -1,6 +1,8 @@
 
-function getTempLabel(currentTempInCelsius: number): string {
+function getTempLabelTS(currentTempInCelsius: number): string {
 
+    let result: string;
+    
     if (currentTempInCelsius > 35 && currentTempInCelsius <= 40) {
         result = "Very warm";
     }
@@ -10,7 +12,7 @@ function getTempLabel(currentTempInCelsius: number): string {
     }
     
     else {
-        var result = "Unexpected temperature value.";
+        result = "Unexpected temperature value.";
     }
 
     console.log(result);

@@ -7,3 +7,5 @@
   * Primitive Types
 * [Introducing Interfaces](chapter05_ComplexTypes.md) 
 * [Enumerations, Unions and Custom Types](chapter06_MiscTypes.md) 
+* [Introducing Classes](chapter07_IntroToClasses.md)
+* [Classes in Depth](chapter08_ClassesInDepth.md)
