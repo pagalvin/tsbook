@@ -305,6 +305,10 @@ The first time you do this, the TypeScript compiler will report  an error everyw
 
 ## Classes and Interfaces
 
+Many common software design patterns find their best implementation rooted in interfaces. In object oriented languages like TypeScript, C# and Java, developers use interfaces to abstract implementation details and to create generic functionality that works against a collection of seemingly disparate classes instead of individual named classes. 
+
+### Classes, Interfaces and Data
+
 So far, we've used interfaces to define the "shape" of data. We can also use interfaces to define the shape - the required properties - of a class. Let's step away from Buses for the moment and think instead about a product recommendation engine. Imagine that you have a database of clothing products such as pants, shirts, jackets, shoes, sneakers, etc. You've created a nice screen that allows users to state a preferred color and price range. You want to iterate over all of your products and show anything that meets the user's preferences.
 
 We can easily model these products as classes and if we're careful about it, we can make sure that each class includes a `color` and `price` property. This would then allow us to iterate over a collection of these objects and recommend them based on the user's preferences. Taking this approach, we might come up with a model like this:
@@ -343,7 +347,7 @@ const Recommend = function(minPrice, maxPrice, requestedColor) {
 
     return allProducts.reduce(function(prev, curr) {
         if ((curr["color"] === requestedColor) ||
-            (curr["price"] > minPrice && curr["price"] > minPrice)) {
+            (curr["price"] >= minPrice && curr["price"] <= maxPrice)) {
                 return prev.concat(curr);
             }
     }, []);
@@ -392,7 +396,177 @@ class Scarf implements IRecommendable{
 }
 ```
 
-The `implements` keyword tells TypeScript that `Scarf` objects always minimally define `color` and `price` properties. They can define more properties, but they must at least define those two.
+The `implements` keyword tells TypeScript that `Scarf` objects always minimally define `color` and `price` properties. They can define more properties and as you can see, they do.  However, they must at least define those two.
+
+We can make other "Recommendable" objects and by doing this, we can now enjoy some intellisense support. Consider this refactored code:
+
+```TypeScript
+interface IRecommendable {
+    color: string;
+    price: number;
+}
+
+class Scarf implements IRecommendable{
+    public color: string;
+    public fabricType: string;
+    public price: number;
+    public length: string;
+    constructor() { }
+}
+
+// Product Displays can't be recommended so doesn't implement the interface.
+class ProductDisplay {
+    public name: string;
+    public location: string;
+    constructor() {}
+}
+
+class Sneaker implements IRecommendable {
+    public color: string;
+    public inseam: number;
+    public waist: number;
+    public price: number;
+}
+
+const allRecommendableProducts: IRecommendable[] = 
+    [].concat(new Sneaker(), new Sneaker(), new Scarf(), new Sneaker(), new Sneaker(), new Scarf());
+
+const GetRecommended = function(minPrice, maxPrice, requestedColor) {
+
+    return <IRecommendable> allProducts.reduce(
+        function(prev: IRecommendable[], curr: IRecommendable) {
+            if ((curr.color === requestedColor) ||
+                (curr.price <= maxPrice && curr.price <= maxPrice)) {
+                    return prev.concat(curr);
+                }
+        }, []);
+}
+
+const RecommendedItems = GetRecommended(10, 20, "blue");
+
+console.log("Recommended for min/max price of 10/20 and color = blue:", Recommend(10, 20, "blue"));
+```
+
+[[ add a video here showing how this builds up ]]
+
+This code has many advantages over the earlier, non-interface style approach:
+- `allRecommendableProducts` contains a collection of objects (`IRecommendable[]`) each of which is guaranteed to hold a `price` and `color` property.
+- If we try to add another object, such as `ProductDisplay` to that collection, the IDE will warn us that it does not meet the interface requirements of the collection's objects. This means that our code can safely assume the object properties are present.
+- We can reference the color and price properties using dot notation inside the reduce function. In fact, the IDE even gives helpful intellisense hints.
+
+### Classes, Interfaces and Methods
+
+In addition to defining data requirements, you can define required methods. Let's explore this in the context of a data expxort.  You've modeled a collection of products as objects and you want to allow an end user to export those products out to an Excel spreadsheet. Excel works great with comma separated lists, so if your objects can create a comma-separated version of themselves, then it's a piece of cake to export that out and let Excel do its magic.
+
+This wouldn't be very hard to do in a generic way using plain JavaScript, so let's complicate matters a little bit by introducing a bit of security. Some objects contain sensitive information, such as `cost` and you want to restrict access to that property based on the user's role (e.g. "operator", "supervisor", "administrator"). Lastly, we're not only worried about the `cost` property. Some products, but not all, are subject to inventory control measures. In these cases, rather than providing  the product's actual inventory-on-hand, we need to show a "contact sales" type of message.
+
+We *could* write a big messy CSV generator that generically iterates over object properties and then litter it with a bunch of if/then/else statements. Let's instead delegate the field level logic to the product objects themselves.
+
+Here's a moderately complex example:
+
+
+```TypeScript
+interface StandardProduct {
+    name: string;
+    description: string;
+}
+
+interface SecuredFieldsItem {
+    GetAllowedFieldNames: (requestedByRole: string) => string[]; 
+    // NOTE: requestedBy would normally be a more complex object.
+}
+
+class Fidget implements StandardProduct, SecuredFieldsItem {
+
+    public name: string;
+    public description: string;
+    public inventory: number;
+    public weight: number;
+    public recommendedAge: number;
+    public cost: number;
+
+    constructor() {};
+
+    public GetAllowedFieldNames(requestedByRole: string) : string[] {
+
+        const minFields = ["name", "weight", "recommendedAge", "description", "inventory"];
+
+        if (requestedByRole === "Price Admin") {
+            return minFields.concat("cost");
+        }
+
+        return minFields;
+    }
+}
+
+class HotItem implements StandardProduct, SecuredFieldsItem {
+    public name: string;
+    public description: string;
+    public features: string[];
+    public inventory: number;
+    public cost: number;
+
+    constructor() {};
+
+    public GetAllowedFieldNames(requestedByRole: string) : string[] {
+
+        const minFields = ["name", "description", "features"];
+
+        let allFields = minFields;
+
+        if (requestedByRole === "Price Admin") {
+             allFields = allFields.concat("cost");
+        }
+
+        if (requestedByRole === "Inventory Admin") {
+             allFields = allFields.concat("inventory");
+        }
+
+        return allFields;
+    }
+}
+
+
+function getGeneratedCsv(forProducts: SecuredFieldsItem[], forRoleLabel: string) {
+    return forProducts.reduce( (prev: string[], curr: SecuredFieldsItem) => {
+        const result = getFormattedCsvRow (curr, curr.GetAllowedFieldNames(forRoleLabel));
+        return prev.concat(result);
+    }, []);
+
+}
+
+function getFormattedCsvRow(sourceItem: SecuredFieldsItem, fieldsToRetrieve: string[]): string {
+    return fieldsToRetrieve.reduce( (csvFieldAsBuilt: string, currentField: string) => {
+        if (csvFieldAsBuilt.length < 1) {
+            return sourceItem[currentField];
+        }
+        return csvFieldAsBuilt + "," + sourceItem[currentField];
+    }, "");
+}
+
+// Pretend that these products are initialized with real data.
+const allSecurableProducts = [].concat(new HotItem(), new Fidget(), new Fidget(), new HotItem());
+
+const csvOutput = getGeneratedCsv(allProducts, "Inventory Admin");
+```
+
+One of the first things you'll notice is that the code defines two interfaces: `StandardProduct` and `SecuredFieldsItem`. Then, both classes implement both interfaces:
+
+```class Fidget implements StandardProduct, SecuredFieldsItem```
+
+Classes can implement more than one interface.
+
+Classes that implement the `SecuredFieldsItem` interface must implement a method, `GetAllowedFieldNames`. That method must take a string input parameter and it must return an array of strings.
+
+As you can see, GetAllowedFieldsNames has its own independent implementation in each class, using the supplied role to determine which fields are allowed to be exported.
+
+`getGeneratedCsv` invokes GetAllowedFieldNames on each product. Note the function signature:
+
+```function getGeneratedCsv(forProducts: SecuredFieldsItem[], forRoleLabel: string) 
+
+It can iterate over disparate products because, disparate as they are, they each implement the SecuredFieldsItem interface and therefore, will always have the GetAllowedFieldNames method to invoke.
+
+The helper function `getFormattedCsvRow` generates a properly formatted row of comma separated data based on the current item and the allowed fields.
 
 
 
