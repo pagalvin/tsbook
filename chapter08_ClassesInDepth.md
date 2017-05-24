@@ -550,24 +550,31 @@ const allSecurableProducts = [].concat(new HotItem(), new Fidget(), new Fidget()
 const csvOutput = getGeneratedCsv(allProducts, "Inventory Admin");
 ```
 
-One of the first things you'll notice is that the code defines two interfaces: `StandardProduct` and `SecuredFieldsItem`. Then, both classes implement both interfaces:
+One of the first things you'll notice is that the code defines two interfaces: `StandardProduct` and `SecuredFieldsItem`. Then, both classes (Fiedge and HotItem) implement both interfaces:
 
 ```class Fidget implements StandardProduct, SecuredFieldsItem```
 
-Classes can implement more than one interface.
+Classes can implement more than one interface. All you do is define your interfaces as usual and then `implement` each one, separating multiple interfaces with a comma.
 
-Classes that implement the `SecuredFieldsItem` interface must implement a method, `GetAllowedFieldNames`. That method must take a string input parameter and it must return an array of strings.
+Look at the `SecuredFieldItem` class:
+```
+interface SecuredFieldsItem {
+    GetAllowedFieldNames: (requestedByRole: string) => string[]; 
+    // NOTE: requestedBy would normally be a more complex object.
+}
+```
 
-As you can see, GetAllowedFieldsNames has its own independent implementation in each class, using the supplied role to determine which fields are allowed to be exported.
+Classes that implement the `SecuredFieldsItem` interface must implement a method, `GetAllowedFieldNames`. That method must take a string input parameter and it must return an array of strings. In a more realistic scenario, you would probably pass in some kind of object representing the user as a whole, including he/her roles. This example uses hard coded strings to simplify things.
+
+As you can see, GetAllowedFieldsNames has its own independent implementation in each class. Fidget is only concerned about users whose role is "Price Admin". HotItem products perform an additional check for users with the "Inventory Admin" role.
 
 `getGeneratedCsv` invokes GetAllowedFieldNames on each product. Note the function signature:
 
-```function getGeneratedCsv(forProducts: SecuredFieldsItem[], forRoleLabel: string) 
+```function getGeneratedCsv(forProducts: SecuredFieldsItem[], forRoleLabel: string)``` 
 
-It can iterate over disparate products because, disparate as they are, they each implement the SecuredFieldsItem interface and therefore, will always have the GetAllowedFieldNames method to invoke.
+It can iterate over disparate products with significantly different properties because they each implement the SecuredFieldsItem interface. Therefore, they will always have the GetAllowedFieldNames method to invoke.
 
-The helper function `getFormattedCsvRow` generates a properly formatted row of comma separated data based on the current item and the allowed fields.
-
+Finally, the helper function `getFormattedCsvRow` generates a properly formatted row of comma separated data based on the current item and the allowed fields.
 
 
 ## Inheritance
