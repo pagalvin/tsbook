@@ -172,7 +172,7 @@ function parseResult(resultCode) {
 }
 ```
 
-It even puts in some helpful comments describing the the meaning of "403" or "200".
+It even puts in some helpful comments describing the the meaning of "403" or "200" if you find yourself digging into the generated JS.
 
 ### Even More Depth to Enumerations
 
@@ -192,7 +192,7 @@ This bit of code defines a function, "move" that takes a single parameter, "inDi
 
 [[ add a video showing intellisense ]]
 
-This isn't a particularly great example since in cases like this, you would probably use an enumeration instead. For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
+This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lowerlevel move). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
 
 ```JavaScript
 function calculateCollectionTotal(itemCollection) {
@@ -209,7 +209,7 @@ console.log("Pick lines total:", calculateCollectionTotal(PickingSlips));
 
 ```
 
-The "correct" approach here is to refactor the code, starting with a look at your invoices, orders and picking slips objects. Find their common elements, define an interface or possibly an abstract base class. Restructure all the objects and update the overall code base. However, that's a lot of work. Union types can help you right away without the need for so much refactoring. Here's what it could look like:
+If you're converting this legacy code to TypeScript, The "correct" approach here is to refactor the code, starting with a look at your invoices, orders and picking slips objects. Find their common elements, define an interface or possibly an abstract base class. Restructure all the objects and update the overall code base. However, that's a lot of work. Union types can help you right away without the need for so much refactoring. Here's what it could look like:
 
 ```TypeScript
 function calculateCollectionTotal(itemCollection: Invoice[] | Order[] | PickingSlip[]): number {
