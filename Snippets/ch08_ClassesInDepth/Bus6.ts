@@ -1,12 +1,12 @@
 
-interface Bus4Args {
+interface Bus6Args {
     routeNumber: number;
     routeDistance: number;
     costPerMile: number;
     totalPassengers: number;
 }
 
-class Bus4 {
+class Bus6 {
 
     private _myTotalPassengers: number;
     private _myCostPerMile: number;
@@ -24,7 +24,7 @@ class Bus4 {
         return costPerRider;
     }
 
-    constructor(args: Bus4Args) {
+    constructor(args: Bus6Args) {
         this._myRouteNumber = args.routeNumber;
         this._myCostPerMile = args.costPerMile;
         this._myTotalPassengers =  args.totalPassengers;
@@ -33,9 +33,9 @@ class Bus4 {
 
 }
 
-const myBus4: Bus4 = new Bus4({routeDistance: 44, costPerMile: 12.50, routeNumber: 148, totalPassengers: 72});
+const myBus4: Bus6 = new Bus6({routeDistance: 44, costPerMile: 12.50, routeNumber: 148, totalPassengers: 72});
 myBus4.SeatingCapacity = 80;
 
 console.log("My total cost per rider:", myBus4.CostPerRider)
 
-console.log("Cost per rider with 80 riders: ", new Bus4({routeDistance: 44, routeNumber: 148, costPerMile: 12.50, totalPassengers: 80}).CostPerRider)
+console.log("Cost per rider with 80 riders: ", new Bus6({routeDistance: 44, routeNumber: 148, costPerMile: 12.50, totalPassengers: 80}).CostPerRider)
