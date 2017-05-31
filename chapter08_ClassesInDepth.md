@@ -576,10 +576,114 @@ It can iterate over disparate products with significantly different properties b
 
 Finally, the helper function `getFormattedCsvRow` generates a properly formatted row of comma separated data based on the current item and the allowed fields.
 
-
 ## Inheritance
 
-blah
+Like Java and C#, TypeScript supports hierarchical class structures. This allows you to incrementally build complex classes by starting with a minimal "base" class and then extending it to a new class. This new extended class is said to *inherit* the functionality of its base class. "Extend" means to add new class members (properties and/or methods). 
+
+[sidebar: be careful about extending, favor composition over inheritance, etc.]
+
+Let's demonstrate inheritance by means of US residency models. In this case, "resident" means a person living permanently or temporarily in the US.  
+
+All residents have a name. They have a name irrespective of their residency type. 
+
+A temporary resident is a resident with two additional properties: A country of origin and the date that they need to exit the country (i.e. when their visa expires). 
+
+A US citizen, like a temporary resident is just a resident with some additional properties - the name of the city in which they were born.
+
+Based on this, we can infer a class hierarchy as follows:
+
+                 Resident 
+                    |
+        -----------------------------
+        |                           |
+        v                           v
+Temporary Resident             US Citizen
+
+
+Let's show some code. Here's a `Resident`:
+
+```TypeScript
+class Resident {
+
+    private _name: string;
+    public get MyName() { return this._name; }
+
+    constructor(name: string) {
+
+    }
+}
+```
+
+This simplistic class defines a single private property, `_name`. It can only be set when it's first created:
+
+```TypeScript
+const Kelly = new Resident("Kelly");
+```
+It has one accessor (a getter) to retrieve the resident's name:
+
+```TypeScript
+console.log(`Resident's name: ${Kelly.MyName}.`);
+```
+
+Here's the model for a temporary resident:
+
+```TypeScript
+class TemporaryResident extends Resident {
+    private _countryOfOrigin: string;
+    public get MyCountryOfOrigin() { return this._countryOfOrigin; }
+
+    private _requiredExitDate: Date;
+
+    constructor(name: string, countryOfOrigin: string, requiredExitDate: Date) {
+        super(name);
+        this._countryOfOrigin = countryOfOrigin;
+        this._requiredExitDate = requiredExitDate;
+    }
+
+}
+```
+
+This model introduces new syntax, the `extends` keyword:
+
+```TypeScript
+class TemporaryResident extends Resident {
+```
+[sidebar: note that the actual Resident class has to be defined. The editor may well work jus fine and give you happy intellisense. However, if you don't bundle everything up correctly, you'll end up with a hard to find runtime error.]
+
+This means that `TemporaryResident` shares the same members as `Resident`. In this case, it's both the `_name` property, as well as the Resident's constructor.
+
+Any class that extends another must always invoke the extended class' constructor via a call to `super`:
+
+```TypeScript
+    constructor(name: string, countryOfOrigin: string, requiredExitDate: Date) {
+        super(name);
+        this._countryOfOrigin = countryOfOrigin;
+        this._requiredExitDate = requiredExitDate;
+    }
+```
+
+As you can see, it doesn't need to have the same signature as the extended class. `TemporaryResident` takes three parameters. It passes one of those, `name`, to its extended class' constructor via the `super(name)` call.
+
+[[sidebar: super comes from the super/sub-class lingo. java is super() I think and c# is base(). Something like that.]]
+
+Lets round out the example with one more model, a U.S. Citizen:
+
+```TypeScript
+class USCitizen extends Resident {
+
+    private _cityOfBirth: string;
+    public get MyBirthCity() { return this._cityOfBirth; }
+
+    constructor(name: string, birthCity: string) {
+        super(birthCity);
+    }
+}
+```
+
+Just like a `TemporaryResident`, the `USCitizen` class shares the same class members as `Resident`. It uses the `extend` keyword to define its parent class and its constructor invokes that parent class' constructor, passing in the name.
+
+
+
 
 ## Hiding Information
 
