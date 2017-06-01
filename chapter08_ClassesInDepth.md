@@ -733,9 +733,165 @@ myExtendedClass.MyPublicProperty = "Set directly on the class via client code.";
 
 ```
 
-
+The code sample shows:
+- A class, `BaseClass`. 
+- BaseClass defines three members: `_myPrivateProperty`, `_myProtectedProperty` and `MyPublicProperty`.
+- It defines another class, `ExtendedBaseClass`. This extends BaseClass.
+- ExtendedBaseClass is allowed to access _myProtectedProperty and MyPublicProperty.
+- ExtendedBaseClass *may not* access _myPrivateProperty.
+- Some client code defines a new const variable, `myExtendedBaseClass`. It holds a reference to an instance of ExtendedBaseClass.
+- The client code is able to access the instance's `MyPublicProperty` but is prevented from accessing either the private or the protected properties.
 
 ## Abstract Classes
 
-blah
+Abstract classes round out TypeScript's support for hierarchies of this nature. An abstract class looks and feels like a standard class with a key exception: abstract classes may never be instantiated. If JavaScript is your first and primary programming language, this may seem very strange. However, abstract classes, along with interfaces, enable developers to express many common software design patterns naturally and gracefully.  Let's consider an example.
+
+Imagine that you are a writing a game. Players place different types of military bases (e.g. "Army", "Navy") on a two dimensional map. Bases share some common features, like "name" but diverge from each other in important details. Army bases consist of soldiers while navy bases consist of ships. Lastly, at run-time, players can "activate" a base. This triggers the base to do something meaningful in the game.  Here's a naive way to model it:
+
+```
+interface Activatable {
+    ActivateSelf: () => void;
+}
+
+class NaiveBase {
+
+    private _myName: string;
+    public get Name() { return this._myName; }
+
+    constructor (name: string) {
+        this._myName = name;
+    }
+}
+
+class NaiveArmyBase extends NaiveBase implements Activatable{
+
+    private _totalSolders: number;
+    public get TotalSolders() { return this._totalSolders; }
+
+    constructor(name: string, totalSolders: number) {
+        super(name);
+        this._totalSolders = totalSolders;
+    }
+
+    public ActivateSelf() {
+        throw "Not yet implemented";
+    }
+}
+
+class NaiveNavyBase extends NaiveBase implements Activatable {
+
+    private _totalShips: number;
+    public get TotalShips() { return this._totalShips; }
+
+    constructor(name: string, totalShips: number) {
+        super(name);
+        this._totalShips = totalShips;
+    }
+
+    public ActivateSelf() {
+        throw "Not yet implemented";
+    }
+}
+
+const naiveArmyBase = new NaiveArmyBase("First army base", 100);
+const naiveNavyBase = new NaiveNavyBase("First navy base", 3);
+
+// This is allowed but makes no sense:
+const someOtherBase = new NaiveBase("what kind of base is this?");
+```
+
+By now, this is pretty straight-forward. A `NaiveBase` class holds a private property, `_myName` and provides an get accessor to retrieve the value. Two other classes extend it and add their own properties: `NaiveArmyBase` and `NaiveNavyBase`. 
+
+Both the army an navy base classes implement the `Activatable` interface, albeit in this example, each class' `ActiveSelf()` method simply throws an exception.
+
+There is a problem with this modelling approach: there's no such thing as plain vanilla NaiveBase. Players never create vanilla base, they always create a specific kind of base.
+
+There's another problem here as well. This approach forces us to implement the `Activatable` interface on every class. We could implement it on the base class, but that just compounds the first problem - now we've implemented an interface on a class we should never instantiate.
+
+Abstract classes solve this problem for us. Here's the code re-written using an abstract class:
+
+```TypeScript
+interface Activatable {
+    ActivateSelf: () => void;
+}
+
+abstract class AbstractBase implements Activatable{
+
+    private _myName: string;
+    public get Name() { return this._myName; }
+
+    constructor (name: string) {
+        this._myName = name;
+    }
+
+    abstract ActivateSelf(): void;
+
+}
+
+class ArmyBase extends AbstractBase {
+
+    private _totalSolders: number;
+    public get TotalSolders() { return this._totalSolders; }
+
+    constructor(name: string, totalSolders: number) {
+        super(name);
+        this._totalSolders = totalSolders;
+    }
+
+    public ActivateSelf() {
+        throw "Not yet implemented";
+    }
+}
+
+class NavyBase extends AbstractBase {
+
+    private _totalShips: number;
+    public get TotalShips() { return this._totalShips; }
+
+    constructor(name: string, totalShips: number) {
+        super(name);
+        this._totalShips = totalShips;
+    }
+
+    public ActivateSelf() {
+        throw "Not yet implemented";
+    }
+}
+
+const armyBase = new ArmyBase("First army base", 100);
+const navyBase = new NavyBase("First navy base", 3);
+
+const anotherArmyBase: Activatable = new ArmyBase("Second army base", 250);
+
+// Compiler throws an error - abstract classes can not be instantiated:
+const someOtherKindOfBase = new AbstractBase("what kind of base is this?");
+```
+ 
+This example introduces the `abstract` keyword. We now have an abstract class, `Base`.  This abstract class implements the `Activatable` interface. In doing so, you can see another characteristic of TypeScript's abstract functionality: you may mark classes and *class members* as abstract. (In fact, you must mark the class abstract if it contains any abstract members). The Activatable interface requires a method, `ActiveSelf`. However, this method only makes sense for "real" bases - army and navy bases. Hence, we mark the ActivateSelf method itself as abstract:
+
+```TypeScript
+    abstract ActivateSelf(): void;
+```
+
+This abstract ActivateSelf method meets the requirements of the Activatable interface. This is perfect since a vanilla "base" can't meaningfully activate itself - only army and navy bases can do that. At the same time, it forces subclasses to implement the method.  This is good for two reasons:
+1. You can't forget to do it since the IDE and compiler won't let you.
+2. Since the subclasses implement the interface, we can write code that leverages their type as `Activatable` where and when we need to.
+
+The abstract Base class shows another feature: Abstract classes can define non-abstract class members. Since every base has a name, regardless of base type, it makes sense to define a concrete `_myName` property and associated getter.  Sub-classes inherit these concrete class members (properties and methods) just like they do with concrete classes.
+
+The army and navy bases extend the abstract class just as if it were a concrete class using the same `extends` keyword.
+
+Wrapping up the example, you can see that newing up army and navy bases works the same way as it does in the naive example:
+
+```TypeScript
+const armyBase = new ArmyBase("First army base", 100);
+const navyBase = new NavyBase("First navy base", 3);
+```
+
+Since both types of bases implement Activatable, you can do this:
+
+```TypeScript
+const anotherArmyBase: Activatable = new ArmyBase("Second army base", 250);
+const activatableNavyBase = <Activatable> navyBase;
+```
 
