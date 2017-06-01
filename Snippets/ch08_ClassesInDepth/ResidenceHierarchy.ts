@@ -4,7 +4,6 @@ class Resident {
     public get MyName() { return this._name; }
 
     constructor(name: string) {
-
     }
 }
 

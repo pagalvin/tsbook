@@ -680,14 +680,59 @@ class USCitizen extends Resident {
 }
 ```
 
-Just like a `TemporaryResident`, the `USCitizen` class shares the same class members as `Resident`. It uses the `extend` keyword to define its parent class and its constructor invokes that parent class' constructor, passing in the name.
+Just like a `TemporaryResident`, the `USCitizen` class shares the same class members as `Resident`. It uses the `extend` keyword to define its parent class. `USCitizen`'s constructor invokes its parent class' constructor, passing in the name: `super(birthCity)`.
 
+## Hiding and Exposing Class Members
 
+We've already see how the `public` keyword and `private` keyword protect or grant access to your class members, both properties and methods. Inheritance adds a small bit of complexity and enables you to control access to class members via public/private as well as a new data control keyword, `protected`:
 
+- `public` members may always be accessed up and down the hierarchy and from outside the client (i.e. client code). 
+- `private` members may only be access from within the class itself. This means that extended classes may not access their parents' private members.
+- TypeScript provides a new keyword, `protected`. Protected members act like both public and private members. They are private to any external client code. They are public from their point of definition and all extended sub-classes.
 
-## Hiding Information
+This bit of code should help clarify matters:
 
-blah
+```TypeScript
+class BaseClass {
+
+    private _myPrivateProperty: string = "No one can see me except BaseClass.";
+
+    protected _myProtectedProperty: string = "Extended classes can see me.";
+
+    public MyPublicProperty: string = "Anyone can see and manipulate me.";
+
+}
+
+class ExtendedBaseClass extends BaseClass {
+    
+    constructor() {
+        super();
+
+        // Next line would be an error since myPrivateProperty is private in BaseClass
+        //this._myPrivateProperty = "xyzzy";
+
+        // ExtendedBaseClass can access _myProtectedProperty.
+        this._myProtectedProperty = "I can change this value.";
+
+        // Public property values can always be accessed within and outside of the class.
+        this.MyPublicProperty = "I can also change this value.";
+
+    }
+
+}
+
+const myExtendedClass = new ExtendedBaseClass();
+
+myExtendedClass.MyPublicProperty = "Set directly on the class via client code.";
+
+// Error:
+// myExtendedClass._myPrivateProperty = "This is not allowed since private properties cannot be read or written.";
+
+// Error:
+// myExtendedClass._myProtectedProperty = "This is also not allowed since it's protected.";
+
+```
+
 
 
 ## Abstract Classes
