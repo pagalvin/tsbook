@@ -1,9 +1,12 @@
-Classes:
-- introduction
 
-Ohter class topics:
-- interfaces
-- getters and setters
-- abstract Classes
-- protected vars
-- abstract Classes
+
+Still to cover:
+- lambda functions --> go after chapter 6.
+- const -> integrate with chapter 4
+- string interpolation -> After chapter 6. Doing it before lambdas
+- async programming
+
+
+
+Videos:
+-------

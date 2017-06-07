@@ -1,5 +1,7 @@
 # Introducing Classes
 
+******TODO: Add some discussion about THIS here. Also, lambda functions.
+
 TypeScript provides support for classes. Classes serve as a foundational component in many object oriented languages. Loosely defined, a class is a collection of data and functions. The data may or may not be accessible outside of the class where its defined. Similarly, class functions may or many not be available outside of their containing class. 
 
 You can think of a classes as defining a template of functionality. That's the "data and functions" part. At runtime, we create *instances* of classes and we normally call them "objects." We often think in terms of "passing messages" or "invoking functions" on objects[footnote]. 

@@ -16,6 +16,8 @@ The book covers generics in chapter [[[ ??? ]]].
 - Unions: A variable can be a "number" or "string" but not anything else.
 - Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn a it about them in the next chapter).
 
+*** Add summary about lamda functions here.
+
 ## Interfaces as Data Describers
 
 Declare a TypeScript interface like this:
@@ -269,9 +271,8 @@ TypeScript interfaces are a very useful feature of the language:
 We're not finished with interfaces - they also play a role with classes. That's where a significant amount of their pattern-implementation power comes from. Before we get to that, we'll cover off several other great typing features - enums, unions and custom types.
 
 
+## Lambda Functions
 
-## Enumerations
-Enumeration walk-through here
 
 ## Union Types
 

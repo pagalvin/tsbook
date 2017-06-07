@@ -173,3 +173,7 @@ const gamePlayerHelper = new DBHelper<GamePlayer>();
 
 When working with generics, we supply type parameters via angle brackets: `DBHelper<GameState>` and `DBHelper<GamePlayer>`. TypeScript replaces the `T` parameter in the `DBHelper` class with `GameState` and `GamePlayer` respectively. 
 
+
+
+
+

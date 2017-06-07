@@ -1,4 +1,4 @@
-class GameState {
+class Game {
     private _gameState: any;
 
     public CurrentPlayerIndex: number;
@@ -19,26 +19,36 @@ class Player {
 
 class GameStateDBHelper {
 
-    public CreateNewGameState(): GameState {
-        // Initialize a new GameState object and save it to the back end database.
-        return new GameState(null);
+    public CreateNewGame(): Game {
+        // Initialize a new Game object and save it to the back end database.
+        // Return the empty game.
+        return new Game(null);
     }
 
-    public LoadGameState(query: string) {
+    public LoadGame(query: string): Game {
         // Use supplied query to load some game state from the database.
         // Convert that to a GameState object
         // return it
-        return new GameState(null);
+        return new Game(null);
     }
 
-    public SaveGameState(gametoSave: GameState): boolean {
+    public SaveGame(gametoSave: Game): boolean {
         // Marshall game state and save it to the back end database.
         return true; // indicates successful save
     }
 
-    public DeleteGameState(): boolean {
+    public DeleteGame(gameToDelete: Game): boolean {
         // Issue database command to delete game state.
         return true; // indicates successful deletion
     }
 
 }
+
+const gameHelper = new GameStateDBHelper();
+const newGame = gameHelper.CreateNewGame();
+const oldGame = gameHelper.LoadGame("a database query");
+
+const didSaveGame = gameHelper.SaveGame(oldGame);
+const didDeleteGame = gameHelper.DeleteGame(newGame);
+
+
