@@ -1,0 +1,2 @@
+function noOperation(): void { return; }
+

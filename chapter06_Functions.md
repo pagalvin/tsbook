@@ -1,15 +1,15 @@
 # Functions
 
-TypeScript supports JavaScript functions as you already know them. As with everything else, TypeScript adds new functionality, including:
+TypeScript supports JavaScript functions as you already know them. As with many other areas, TypeScript adds new functionality, including:
 - Function Types
-- Typed Parameters
+- Typed Parameters: 
 - Optional Parameters
-- REST Operators
-- Arrow Functions
+- Rest Parameters
+- Arrow Functions (sometimes called Lambda or Anonymous functions)
 
 ## Function Types
 
-`Function` is another valid type when defining variables or interfaces. Here's a simple example:
+Everything has a type in TypeScript. If you don't specify a type, TypeScript infers a type and for functions, it's `Function`.  You  can declare a variable's type to be `Function` as shown:
 
 ```TypeScript
 let sillyAdderFunction: Function;
@@ -23,7 +23,7 @@ This isn't a terribly useful thing to do but it shows that there is a `Function`
 
 ## Function Parameters
 
-Most functions take parameters and return a value. When you define function parameters, you can specify their type, just like you can for `var`, `let` and `const`. In addition, you can specify the type of result the function returns. Here's an example with syntax:
+Most functions take at least one parameter and most of the time, they return a value. You can specify type for each function parameter as well as the return type  of the function itself.  Here's what it looks like:
 
 ```TypeScript
 function integerAdder(firstNumber: number, secondNumber: number): number {
@@ -41,11 +41,19 @@ const errorAdder1 = integerAdder("ham", "cheese");
 const errorAdder2: string = integerAdder(2, 2);
 ```
 
-The code defines a function, `integerAdder`. It takes two parameters and as you can see, they are both integer values. Furthermore, integerAdder returns a number itself.
+The code defines a function, `integerAdder`. It takes two parameters and as you can see, they are both integer values. Furthermore, the integerAdder function itself returns a number.
 
 Note that integerAdder specifies both the types of its arguments and the type of its return value: `integerAdder(firstNumber: number, secondNumber: number): number`. This tells the TypeScript compiler enough information that it prevents you from making two mistakes common in the plain JavaScript world:
 - You can't pass in non-numeric values to the integerAdder function.
 - The result is numeric. You can't invoke the function and accept its result into a non-numeric variable.
+
+Functions don't need to return a value. If you want to be explicit, specify a return type of void:
+
+```TypeScript
+function noOperation(): void { 
+    return; 
+}
+```
 
 ### Optional Parameters
 
@@ -58,13 +66,269 @@ function InitializeDataSet(seedData?: any) {
         // use the seed data to initialize the data set
     }
     else {
-        // initialize using some hard coded values
+        // initialize using some default hard coded values
     }
 
 }
 ```
 
-### Initial Parameter Values
+Use the question mark (?) to denote an optional parameter.
 
+At run-time, client code invokes the function as normal. If that code does not supply a value for the optional parameter, its value is `undefined`.
 
+[[ sidebar: Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
+...
+InitializeSeedData();
+...
 
+And then later on:
+
+...
+InitializeSeedData({someSeedDataObject});
+...
+
+Most developers will find this confusing to follow.
+
+Optional parameters are best used when writing interfaces to describe data structures and/or 3rd party libraries over which you have no control.]]
+
+### Default Parameter Values
+
+You can specific a default value for your function's parameters. Here's the previous example re-written to show this syntax and implication of using it:
+
+```TypeScript
+function InitializeDataSetWithDefaultValues(seedData = { seedValue1: "a", seedValue2: "b"}) {
+
+    // seedData will have valid data so no need to check it.
+
+    /*
+    if (seedData) {
+        // use the seed data to initialize the data set
+    }
+    else {
+        // initialize using some hard coded values
+    }
+    */
+
+}
+
+InitializeDataSetWithDefaultValues();
+
+InitializeDataSetWithDefaultValues(undefined);
+
+InitializeDataSetWithDefaultValues({seedValue1: "x", seedValue2: "y"});
+```
+
+Note that:
+- The function takes an input parameter, `seedData`. TypeScript infers the parameter's type as an object with two string properties. 
+- If client code does not pass a value for seedData, it will use the specific initial value.
+- If you pass the value `undefined` to the function, it will also the specified initial value.
+
+## Rest Parameters
+
+Sometimes you want to pass an unknown number of parameters to a function. This case frequently arises during React development, serializing and deserializing data and mapping. 
+
+Let's consider a logging example. We can always use `console.log()` to log out messages to the console. However, it's a real challenge debugging applications at run-time, particularly errors reported by end users. By the time anyone tells you about the error, it's too late for you to do much about it. Let's add some persistent error logging to our toolkit:
+
+```
+function myLogger(msgType: "INFO" | "ERROR", ...messages: any[]) {
+
+    if (msgType === "INFO") {
+        console.log(messages);
+    }
+    else  {
+        // Save the details to local storage for future analysis/debugging
+        localStorage.setItem("lastErrorMessage", JSON.stringify(messages));
+        console.error(messages);
+    }
+}
+
+myLogger("INFO","Greetings!");
+myLogger("INFO", "Successfully saved the data, results:", {someResult: "", databaseResultCode: 1});
+myLogger("ERROR", "ERROR: Failed to save the data, error details follow.", {errorDetails: "[some error details object goes here]"}, "Error occurred at `${new Date()}`");
+```
+
+The code does the following:
+- Defines a function, `myLogger`.
+- myLogger takes two parameters: `msgType` and `messages`.
+    - msgType is a union data type - client code must pass "INFO" or "ERROR".
+    - messages is an array of `any`. Note that `...` preceding the variable name. This indicates that all of the remaining arguments will be stuff into the array. 
+- You can see how the code invokes the myLogger function, passing in a variable number of arguments across its three invocations.
+
+## Arrow Functions
+
+Arrow functions take their name from their syntax. You'll see that shortly.
+
+Many TypeScript developers prefer to call these *lambda* functions and sometimes *anonymous* functions. 
+
+Arrow functions are tremendously useful. They provide a nice syntax shortener and more importantly, help reduce confusion over JavaScript scopes by redefining the `this` keyword into something more intuitive.
+
+Here's a very simple example to get us started on the syntax:
+
+```TypeScript
+const myHelloFunction = () => { return "Hello!"};
+
+myHelloFunction();
+```
+
+This example defines and then invokes a function named `myHelloFunction`. Since myHellowFunction  is a `const` we had to initialize it. That's this bit: `{return "Hello!"};`  myHelloFunction is now a normal function and we can invoke it like any other JavaScript function using the `()` operator: `myHelloFunction()`;
+
+We don't need to define the function body. For instance, this is perfectly good syntax:
+
+```TypeScript
+let myGoodbyeFunction: () => string;
+
+myGoodbyeFunction = () => {return "Good Bye!"}
+
+console.log(myGoodbyeFunction());
+
+```
+
+The first line defines a variable, `myGoodbyeFunction`. myGoodbyeFunction's type is a function that takes no parameters and returns a string.
+
+The second line assigns a value to myGoodbyeFunction. In this case, it's the function body itself.
+
+Lastly, the code logs out the result of executing myGoodbyeFunction.
+
+Before we go any further, lets look at the transpiled JavaScript. Here's the myHelloFunction's transpiled JavaScript:
+
+```JavaScript
+var myGoodbyeFunction;
+myGoodbyeFunction = function () { return "Good Bye!"; };
+console.log(myGoodbyeFunction());
+```
+
+Here's the line-by-line transformation:
+<table>
+<tr>
+<td>
+TypeScript
+</td>
+<td>
+Transpiled JavaScript
+</tr>
+
+<tr>
+<td>1. let myGoodbyeFunction: () => string;</td>
+<td>var myGoodbyeFunction;</td>
+</tr>
+<tr>
+<td>2. myGoodbyeFunction = () => {return "Good Bye!"}</td>
+<td>myGoodbyeFunction = function () { return "Good Bye!"; };</td>
+</tr>
+<tr>
+<td>3. console.log(myGoodbyeFunction());</td>
+<td>console.log(myGoodbyeFunction());</td>
+</tr>
+</table>
+
+That's easy enough. 
+
+### Specifying Parameters
+
+We specify parameters by inserting them info the `()` portion of the function. Here's an adder function that takes two integer inputs and returns a numeric result:
+
+```TypeScript
+let myAdderArrowFunction: (arg1: number, arg2: number) => number;
+
+myAdderArrowFunction = (firstNumber: number, secondNumber: number) => {return firstNumber + secondNumber;}
+
+console.log(myAdderArrowFunction(2, 2));
+```
+
+The code defines a new function, `myAdderArrowFunction`, using the arrow syntax. myAdderFunction takes two numeric arguments and returns number.
+
+It's important to keep in mind that the `let` statement is merely defining a typed variable named myAdderFunction. Its type happens to be a `Function` with typed signature and a type result.
+
+The second line initializes myAdderArrowFunction. Note that I didn't use the same names when specifying the input parameters. Again, the  `let` statement is defining a type - a Function who takes in two arguments and returns a number. As long as meet the requirements of the type, the parameter names don't matter. 
+
+### Arrow function as interface components
+
+Given that arrow functions can define types independent of their implementation, you can use them anywhere else you would use a type, including interfaces. This is a very useful capability for many reasons. One reason comes into play when you're working with an external library that was not written TypeScript. This obviously happens a lot in the real world. Let's assume that we are working with one such library that is responsible to create detailed, highly interactive visualizations. We don't know how it works and we don't care.  We consult the online documentation and see that it provides a robust JavaScript API that includes the following functions:
+- `Render`: We provide the ID of a `<div>` tag on our page and it renders the visualization there.
+- `SetDimensions`: We can set the height an width with this call.
+- `SaveSettings`: We ask the engine to save the current screen settings for use next time.
+
+Here's some TypeScript that lets inject some strong typing into our code despite the fact that the vendor's API does not:
+
+```TypeScript
+interface IVisualizationEngine {
+    Render: (htmlDivName: string) => boolean;
+    SetDimensions: (width: number, height: number) => void;
+    SaveSettings: () => boolean;
+}
+
+// Assume that the visualization engine was already loaded
+// and that we can get a handle to its API set via the global window object.
+const myVisualizationEngine: IVisualizationEngine = <IVisualizationEngine>window["VisualizationEngine"];
+
+if (myVisualizationEngine.Render("myDiv")) {
+    
+    myVisualizationEngine.SetDimensions(1024, 800);
+    if (myVisualizationEngine.SaveSettings()) {
+        console.log("Successfully saved the visualization.");
+    }
+    else {
+        console.error("ERROR: Failed to save the visualization.");
+    }
+}
+else {
+    console.error("Failed to render the visualization!");
+}
+```
+
+This is obviously a more complex example. Let's unpack it a bit:
+- The code defines an interface, `IVisualizationEngine`.
+- The interface defines three different functions, one for each of the API calls we care about.
+- We get a handle to the engine via the global window object. In order for this to work, we had to reference the engine via a script tag in our HTML and the engine would have to save itself in the global window. 
+
+At this point, we've done something really nice for ourselves.  We now have strongly typed access to this third party's API! This allows the IDE to give us the great time-saving and error-reducing intellisense we've all grown to love so much.
+
+### Arrow Functions as IIFEs
+
+As we saw above, arrow functions transpile down to standard JavaScript functions. We can invoke functions as they are defined. These are called Immediately Invoked Function Expressions (IIFEs). Arrow functions can also be invoked at any time. Here's a contrived example:
+
+```TypeScript
+console.log(`Hello, ${(() => {return "Paul";})()}`);
+```
+
+This code defines a function here: `() => { return "Paul"}`. It encloses that line in its own set of parenthesis and then uses the invoke-function operator, `()` to immediately invoke the function. This is itself wrapped inside a template string and finally, the result is logged out to the console.
+
+Here's the transpiled JavaScript:
+
+```JavaScript
+console.log("Hello, " + (function () { return "Paul"; })());
+```
+
+### Arrow Functions for Cleaner Code
+
+The previous example doesn't show it well, but arrow functions can help you do more than teach your IDE about function types. It can also help you write cleaner code, although this may admittedly be in the eye of the beholder. Here's example:
+
+```TypeScript
+const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const evenNumbers = numbers.filter( (item) => item % 2);
+
+const sumOfNumbers = numbers.reduce((prev: number, curr: number) => {
+    return prev + curr;
+}, 0);
+```
+
+In this example, we define an array of numbers, one through ten.
+
+We then define a variable, `evenNumbers`. evenNumbers is the result of filtering on the numbers array, passing back only those items where mod two equals zero. This is a new form for us:
+
+`(item) => item % 2`
+
+We could have written this fully out to:
+
+`(item) => { return item % 2; }`
+
+It's a bit of shorthand that we're allowed do when you can return a value with a single statement.
+
+The second example adds up all the numbers using the standard `reduce` function. Reduce runs against an array and takes a function and initial value as an argument. That function is passed the previous value and the current value, defined in the example as `(prev: number, curr: number)`. Note that `reduce` *also* passes a 3rd argument, the index of the item in the array. We don't care about that so we don't bother catching it, so to speak.
+
+Most TypeScript developers come to find Arrow functions to be very helpful and generally cleaner looking than spelling out the word "function" all the time.
+
+### A Penultimate Word on Arrow Functions
+
+We haven't heard the last of arrow functions. We'll revist them in the chapter, "Classes in Depth" and explore how they help simplify JavaScript closures. In short, they work in a more intuitive way with the `this` keyword.
