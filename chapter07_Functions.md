@@ -16,7 +16,7 @@ let sillyAdderFunction: Function;
 
 sillyAdderFunction = function(a, b) { return a + b};
 
-sillyAdderFunction(10, 10);
+console.log(sillyAdderFunction(10, 10);
 ```TypeScript
 
 This isn't a terribly useful thing to do but it shows that there is a `Function` data type. You'll see down below that Arrow Functions are far more useful.
@@ -46,6 +46,8 @@ The code defines a function, `integerAdder`. It takes two parameters and as you 
 Note that integerAdder specifies both the types of its arguments and the type of its return value: `integerAdder(firstNumber: number, secondNumber: number): number`. This tells the TypeScript compiler enough information that it prevents you from making two mistakes common in the plain JavaScript world:
 - You can't pass in non-numeric values to the integerAdder function.
 - The result is numeric. You can't invoke the function and accept its result into a non-numeric variable.
+
+**video: chapter 7, functions: Want to show a function with strongly type arguments and trying to do it right/wrong. 
 
 Functions don't need to return a value. If you want to be explicit, specify a return type of void:
 
@@ -276,12 +278,14 @@ else {
 }
 ```
 
-This is obviously a more complex example. Let's unpack it a bit:
+This is obviously a bit more complex example. Let's unpack it a bit:
 - The code defines an interface, `IVisualizationEngine`.
 - The interface defines three different functions, one for each of the API calls we care about.
 - We get a handle to the engine via the global window object. In order for this to work, we had to reference the engine via a script tag in our HTML and the engine would have to save itself in the global window. 
 
 At this point, we've done something really nice for ourselves.  We now have strongly typed access to this third party's API! This allows the IDE to give us the great time-saving and error-reducing intellisense we've all grown to love so much.
+
+**video: chapter 7, consider a video (maybe bonus video) showing how you can create an interface for some plain JS code that you already wrote.
 
 ### Arrow Functions as IIFEs
 
@@ -298,6 +302,8 @@ Here's the transpiled JavaScript:
 ```JavaScript
 console.log("Hello, " + (function () { return "Paul"; })());
 ```
+
+**video: chapter 7,  functions, arrow function as an IIFE in a console.log.
 
 ### Arrow Functions for Cleaner Code
 

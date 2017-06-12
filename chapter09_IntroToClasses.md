@@ -51,6 +51,8 @@ The above code declares two instances of the `Bus` object, "myBeloved148" (a sup
 
 When we create a new object using the `new` keyword, we're _instantiating_ the object. Some people like to say "newing it up" instead.
 
+**video: chapter 9, intro to classes: Create a class. Show that the members are a accessible. 
+
 ## Protecting Your Class Data and Methods
 
 You no doubt noticed a complimentary pair of descriptors, `private` and `public`. The Bus class declares a _private_ member, myRouteNumber. Private members (i.e. properties and methods) may only be referenced or invoked within the object itself.  Public members and methods may be referenced both within the class itself, but also by client code. This means that the following code will not compile:
@@ -78,6 +80,7 @@ As with every other part of the language, good TypeScript IDEs provide intellise
 
 
 -- video here that shows defining the bus object, creating a new instance and running it. Then, try to cirectly update the private property and show the error. show intellisense step by step.
+**video: chapter 9, intro to classes: Create a class and show private members
 
   
   [footnote]1 These phrases, "passing messages" or "invoking functions" pretty much mean the same thing. It can be helpful at times to view objects as living, breathing entities. This paradigm lends itself to the "passing messages" concept.

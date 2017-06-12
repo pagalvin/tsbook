@@ -93,7 +93,9 @@ This interface shows three immediate advantages TypeScript provides over JavaScr
 Let's assume you agree that TypeScript conveys the the dev's intent more clearly than the pure JS example[^5]. Here's a short 40 second video showing VS Code intellisense at work:
 
 <iframe width="840" height="473" src="https://www.youtube.com/embed/o_wxodLGT34" frameborder="0" allowfullscreen align="middle"></iframe>
- 
+
+**video: chapter 5, #1: Interfaces using the book approach. This video may already exist. It does: https://www.youtube.com/embed/o_wxodLGT34
+
 Here are some key takeaways from the video: 
 
 1. Once you define an interface, it becomes another candidate data type. Use it the same way as the built-in data types, such as string, boolean, etc.
@@ -129,6 +131,8 @@ It's a very simple change to make, but it's quite difficult to find all the plac
 Contrast this with TypeScript:
 
 <iframe width="728" height="408" src="https://www.youtube.com/embed/fNtcCTeMAhQ" frameborder="0" allowfullscreen></iframe>
+
+**video: chapter 5, complex types: already exists, https://www.youtube.com/embed/fNtcCTeMAhQ
  
 When I changed Author from `string` to `string[]`, I invalidated every instance of every book model in the code. I can't run a successful build until I fix it. I still have a potentially tricky refactoring task on my hands - after all, I still need to fix every place in the code that references Author. However, the compiler won't let me miss any of those changes. That is powerful stuff. 
 
@@ -256,6 +260,8 @@ Notice the `extends` keyword. I'm defining a new interface, `userProfileResponse
 Here's another 40 second video that shows this visually.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oK3MpqhrVOo" frameborder="0" allowfullscreen></iframe>
+
+**video: chapter 6,  complex types: https://www.youtube.com/embed/oK3MpqhrVOo. 
 
 The last dozen seconds of the video show you that the IDE understands the structure of the new `userProfileResponse` interface.
 

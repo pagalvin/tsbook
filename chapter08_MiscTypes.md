@@ -42,6 +42,8 @@ Many languages provide a similar enum syntax and if you've worked with one (like
 
 As with everywhere else in TypeScript, a good IDE supports enumerations with intellisense.
 
+** video: chapter 8, misc types: quick video showing enumerations.
+
 The above example shows that you can match a text label with an arbitrary integer value. Sometimes, you don't care about the value. You just want the convenience of a readable label. In that case, you can define an initial value and the compiler will increment it for you behind the scenes:
 
 ```TypeScript
@@ -191,6 +193,8 @@ function move(inDirection: "left" | "up" | "down" | "up") {
 This bit of code defines a function, "move" that takes a single parameter, "inDirection." Intellisense ensures that you don't try to pass in an invalid direction, like "sideways." Here's a short video demonstrating that.
 
 [[ add a video showing intellisense ]]
+**video: chapter 8 misc types, show intellinsense for union types
+
 
 This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lowerlevel move). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
 

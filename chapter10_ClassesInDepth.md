@@ -1,6 +1,5 @@
 # Classes In Depth
 
-
 This chapter covers TypeScript classes in more depth, including:
 - More on public and private methods and properties
 - Accessors (Getters and Setters)
@@ -281,6 +280,8 @@ This code is better for at least three important reasons:
 2. Long-term maintenance
 3. Better information hiding
 
+**video: chapter 10 class in depth, showing the clarity/long-term maintenance/info hiding feature.
+
 ### Clarity
 
 The code defines an interface, `Bus6Args`. The class constructor then takes an argument of type Bus6Args. This allows us to write a line of code like this:
@@ -448,6 +449,7 @@ console.log("Recommended for min/max price of 10/20 and color = blue:", Recommen
 ```
 
 [[ add a video here showing how this builds up ]]
+**video: classes in depth: show the build-up of a class that implements an interface.
 
 This code has many advantages over the earlier, non-interface style approach:
 - `allRecommendableProducts` contains a collection of objects (`IRecommendable[]`) each of which is guaranteed to hold a `price` and `color` property.
@@ -463,7 +465,6 @@ This wouldn't be very hard to do in a generic way using plain JavaScript, so let
 We *could* write a big messy CSV generator that generically iterates over object properties and then litter it with a bunch of if/then/else statements. Let's instead delegate the field level logic to the product objects themselves.
 
 Here's a moderately complex example:
-
 
 ```TypeScript
 interface StandardProduct {
@@ -682,6 +683,8 @@ class USCitizen extends Resident {
 
 Just like a `TemporaryResident`, the `USCitizen` class shares the same class members as `Resident`. It uses the `extend` keyword to define its parent class. `USCitizen`'s constructor invokes its parent class' constructor, passing in the name: `super(birthCity)`.
 
+**video, chapter 10 class in depth, showing the cool inheritance stuff
+
 ## Hiding and Exposing Class Members
 
 We've already see how the `public` keyword and `private` keyword protect or grant access to your class members, both properties and methods. Inheritance adds a small bit of complexity and enables you to control access to class members via public/private as well as a new data control keyword, `protected`:
@@ -894,4 +897,6 @@ Since both types of bases implement Activatable, you can do this:
 const anotherArmyBase: Activatable = new ArmyBase("Second army base", 250);
 const activatableNavyBase = <Activatable> navyBase;
 ```
+
+** video, chapter 10 class in depth,  showing abstract classes
 

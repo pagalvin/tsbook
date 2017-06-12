@@ -10,3 +10,44 @@ Still to cover:
 
 Videos:
 -------
+
+---
+Additional information links:
+in interface section(s), especially the external viz library discussion: declare / using external plain JS libraries: https://www.techiediaries.com/use-external-javascript-libraries-typescript-projects/
+
+intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
+intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
+intro: what is TS? why use it? stack overflow: https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-would-i-use-it-in-place-of-javascript
+
+at end, further reading: testing typescript: https://www.sitepen.com/blog/2015/03/24/testing-typescript-with-intern/?utm_content=55755016&utm_medium=social&utm_source=twitter
+at end, example git project:multi-player game: https://github.com/code0wl/Multiplayer-Phaser-game/tree/develop/src/client
+
+at end: Typescript cookbook: https://schneids.net/introducing-the-typescript-cookbook/ => can't speak to how often it's updated.
+
+
+at end, light use of TS in node: https://www.twilio.com/blog/2017/06/writing-a-node-module-in-typescript.html
+
+at end, inversify: https://github.com/inversify/InversifyJS
+
+at end, converting plain js react component to typescript: https://devsandbox.io/articles/converting-react-to-typescript/
+
+at end, object relational manager, TypeORM: https://github.com/typeorm/typeorm
+
+In generics chapter, generic defaults: https://blog.mariusschulz.com/2017/06/02/typescript-2-3-generic-parameter-defaults
+
+just a general twitter search: https://twitter.com/search?q=%23typescript&src=typd&lang=en
+
+possibly intro or "practical considerations": some info on typescript compiler: http://david-barreto.com/introduction-to-the-typescript-transpiler/
+
+another big book: https://basarat.gitbooks.io/typescript/
+
+interfaces: simple blog post and video: http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
+
+data modeling, union types an interfaces chapter: https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
+
+final chapter, general good links: https://www.bennadel.com/blog/recent-blog-entries.htm
+
+final chapter: mixins: https://blog.mariusschulz.com/2017/05/26/typescript-2-2-mixin-classes. Make a reference to mixins in the class-in-depth chapter
+
+
+

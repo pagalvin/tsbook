@@ -60,7 +60,9 @@ The last variable, *whoKnows*, also has a type, `any`. Variables of type any act
 If you go to the trouble of defining types on your variables, your IDE will give you some great edit-time and compile-time support. Consider this short animation:
 
 ![short animation](/assets/video/ch04_strongTypingExampleVideo/ch04_strongTypingExampleVideo.gif "IDE Supporting Defined Types")
- 
+
+**video: chapter 4, #1: something showing basic static typing. define a few vars, show IDE complaining. --> complete!
+
 If you're already a JS coder, this is a very simple way to get started with the language. Pick a few variables, associate some types with them and see what happens. A couple things will or may happen when you do this:
 - Your IDE will get a lot smarter about your code. It will know variable types and prevent you from assigning strings to numbers and that sort of thing.
 - You may discover problems with your code right away. You may well have intended that a particular variable, "myNumber", hold numbers. As JS coders know, it's quite easy to mistakenly assign strings, date, complex objects, to your "myNumber" variable. 
@@ -130,7 +132,7 @@ This silly example tests for a temperature and returns a label describing it. No
 Many programming languages dictate tighter scoping rules. Many people, the author included, consider the above example to be poorly done for several reasons:
 - The variable isn't properly declared until well past its first use.
 - The code doesn't do a good job showing the developer's intent here. Result could be used anywhere in the function on both the left hand side and right hand side of an expression, leading to unanticipated and difficult to track bugs.
-- even experienced JS developers have a hard time with scope and hoisting and such.
+- Even experienced JS developers have a hard time with scope and hoisting and such.
 
 Here is similar code written in TypeScript:
 
@@ -160,18 +162,13 @@ function getTempLabelTS(currentTempInCelsius: number): string {
 
 As you can see, instead of using `var` to define the result variable, the code uses TypeScript's `let`. Let defines variable characteristics the same way as var - you specify a name and optionally a data type. The difference is about variable scope. A variable defined with let is scoped to the block where it's defined and is available to sub-blocks. It is never hoisted, as happens in pure JavaScript. Watch this short to see the effect of let and variable scope in a few different scenarios:
 
-[[
-    insert video here
-    show a few different if/then blocks with let and scope of vars around there.
-]]
-
 ## TypeScript Best Practice - *Let*
 As a rule, prefer "let" over var. This will tend to reduce the risk of unanticipated side effects in your code through JavaScript's hoisting mechanism.
 
 ## `Const` Definitions
 
 TypeScript provides another method for defining variables - `const`. A const variable:
-1. Must be initialized when declaried.
+1. Must be initialized when declared.
 2. May never be changed.
 
 Here's an example:
@@ -194,7 +191,7 @@ const Paul: PersonName = { firstName: "Paul", lastName: "Galvin"}
 
 const Kelly: PersonName = { firstName: "TBD", lastName: "TBD"}
 
-const Aidan: PersonName; // <-- Not allowed, must always initialize const variables when defined
+const John: PersonName; // <-- Not allowed, must always initialize const variables when defined
 
 Kelly.firstName = "Kelly"; // <-- perfectly OK
 Paul = null; // <-- Not allowed, cannot use const vars in LHS of an assignment
@@ -207,9 +204,8 @@ The Kelly PersonName const variable *is* defined. However, it's seeded with "TBD
 
 Lastly, the Paul variable cannot be changed after it's initialized. The final "Paul = null" assignment is also invalid. Const variables may never be in the left hand side of an assignment once they are declared and initialized.
 
-
 ## TypeScript Best Practice - *Let*
-As a rule, prefer "const" over let. This recommendation largely derives from functional programming principles. The more you minimize mutations in your code, the fewer side effects you'll experience.
+As a rule, prefer `const` over `let`. This recommendation largely derives from functional programming principles. The more you minimize mutations in your code, the fewer side effects you'll experience.
 
 Taking this and let into consideration, we can summarize:
 - Prefer const in all cases.
@@ -223,6 +219,8 @@ At the end of the day, JavaScript doesn't know anything about const or let. They
 [[ insert get temp function]]
 
 TypeScript enforces variable scope and const initialization / assignment rules at compile-time. A good IDE will do it as you write the code.
+
+** video goes here, varscopes from the video folder.
 
 ---
 [^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
