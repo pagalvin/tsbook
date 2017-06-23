@@ -551,7 +551,7 @@ const allSecurableProducts = [].concat(new HotItem(), new Fidget(), new Fidget()
 const csvOutput = getGeneratedCsv(allProducts, "Inventory Admin");
 ```
 
-One of the first things you'll notice is that the code defines two interfaces: `StandardProduct` and `SecuredFieldsItem`. Then, both classes (Fiedge and HotItem) implement both interfaces:
+One of the first things you'll notice is that the code defines two interfaces: `StandardProduct` and `SecuredFieldsItem`. Then, both classes (Fidget and HotItem) implement both interfaces:
 
 ```class Fidget implements StandardProduct, SecuredFieldsItem```
 
@@ -610,7 +610,7 @@ class Resident {
     public get MyName() { return this._name; }
 
     constructor(name: string) {
-
+        this._name = name;
     }
 }
 ```
@@ -676,7 +676,9 @@ class USCitizen extends Resident {
     public get MyBirthCity() { return this._cityOfBirth; }
 
     constructor(name: string, birthCity: string) {
-        super(birthCity);
+        super(name);
+
+        this._cityOfBirth = birthCity;
     }
 }
 ```
@@ -898,5 +900,5 @@ const anotherArmyBase: Activatable = new ArmyBase("Second army base", 250);
 const activatableNavyBase = <Activatable> navyBase;
 ```
 
-** video, chapter 10 class in depth,  showing abstract classes
+**video, chapter 10 class in depth,  showing abstract classes
 

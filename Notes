@@ -49,5 +49,24 @@ final chapter, general good links: https://www.bennadel.com/blog/recent-blog-ent
 
 final chapter: mixins: https://blog.mariusschulz.com/2017/05/26/typescript-2-2-mixin-classes. Make a reference to mixins in the class-in-depth chapter
 
+intro chapter: "TS for C# dev" http://www.codeguru.com/csharp/csharp/cs_webservices/tutorials/typescript-for-the-c-developer.html
 
+intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81307fa288d
 
+intro, maybe continuing: Eve programming language: https://github.com/witheve
+
+Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
+
+example code, generic forward thinking stuff : https://github.com/phosphorjs/
+
+free online class from edx: https://www.edx.org/course/introduction-typescript-2-microsoft-dev273x?wt.mc_id=DX_883248&utm_source=t.co&utm_medium=referral
+
+intro chapter, more buzz about TS: https://www.siliconrepublic.com/enterprise/typescript-programming-javascript
+
+intro, counterfactual - TS is not hte answer: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
+
+intro - why use typescript - https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
+
+intro, end? - little install guide to get started quickly. http://www.c-sharpcorner.com/article/getting-started-with-typescript-part-one/
+
+end: decorators: https://cabbageapps.com/fell-love-js-decorators/
