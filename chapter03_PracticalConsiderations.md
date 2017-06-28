@@ -4,7 +4,7 @@ TypeScript shares something in common with virtually every other computer langua
 
 These days, many popular languages don't even compile down to machine language. Java compiles down to bytecode. A virtual machine interprets that bytecode and executes your application. C# and other .NET languages compile down to bytecode as well, albeit a different format. They run in a  different virtual environment, the compile language runtime or CLR)[^2]. If you squint your eyes, even web browsers act as virtual machines[^3].
 
-All modern web browsers know how to run JavaScript. They don't necessarily all agree upon the finer points of the DOM. They may vary their behavior with things like the console object. This and that bit of CSS acts different across different vendors' browsers. Despite their differences, however, they agree more than they disagree. In most cases, the JavaScript I write today runs on every browser on the planet, or at least the browsers I care about :).
+All modern web browsers know how to run JavaScript. They don't necessarily all agree upon the finer points of the DOM. They may vary their behavior with things like the console object. This and that bit of CSS acts different across different vendors' browsers (and by versions within the same vendor's browsers[^ie]). Despite their differences, however, they agree more than they disagree. In most cases, the JavaScript I write today runs on every browser on the planet, or at least the browsers I care about :).
  
 TypeScript isn't JavaScript, of course. It looks a lot like JavaScript and as you'll see, you can write valid TypeScript that is literally identical to pure JavaScript. However, no major web browser today can execute TypeScript. There's a gap here. Transpilation bridges the gap between TypeScript and JavaScript by converting TypeScript to JavaScript. 
 
@@ -29,6 +29,39 @@ An IDE plus the TypeScript compiler gets you most of the way - but not necessari
 From here on out, I assume that you have selected an IDE and that your IDE is connected to a task runner that automatically compiles your TypeScript whenever you make a change and save.
 
 ## Debugging
+
+When I first started working with TypeScript, one of my very first thoughts was - how do I debug TypeScript? It turns out to be very simple and natural. 
+
+Web browsers such as Chrome Internet Explorer and Firefox provide great debugging tools. This book's examples all use Chrome. These tools work with plain JavaScript. Here's a video showing some code that iterates over a collection of objects: 
+
+/**video: show plain javascript editing
+
+That's all well and find but how does it work with TypeScript?
+
+First, the TypeScript compiler aims to generate human-readable JavaScript. As a result, it's relatively easy to reason about. Here's that same JavaScript example re-written in TypeScript:
+
+...
+
+It looks pretty similar to its plain JavaScript counterpart. Here's one of the debugging experiences when you transpile and deploy to a web server:
+
+//** video: show transpiled JS debugging
+
+That's useful but it's also clearly awkward. And in some cases, the generated JS wanders pretty far from its TypeScript roots. Thankfully, the TypeScript compiler will generate map files for us. These provide a connection between the actual JavaScript the brower is running and its parent TypeScript source code. 
+
+Here's the same experience, but this time using a map file:
+
+/** video show using a map file
+
+Map files are pretty interesting things in and of themselves. They don't just work for TypeScript, they work more generally with any JavaScript related source. For instance, in development situations, you'll often minimize your JavaScript but provide a map file that maps the minimized source back to its unminified state. Other languages, like ClosureScript, use map files. The point here is that map files weren't invented for TypeScript, TypeScript simply leverages this existing feature.
+
+# Summary
+
+We write our TypeScript source using our favorite text editor which itself is usually part of our favorite Integrated Development Environment. The TypeScript compiler generates plain JavaScript based off our TypeScript source. This is a good thing, since web browsers know how to run JavaScript.
+
+That generated source is, for the most part, human readable. That gives us a tolerable debugging experience. However, we get a first class debugging experience by using map files. 
+
+That's enough big picture background. It's now finally time introduce static types, starting with the next chapter. 
+
 map files
 walking through the debugger
 
@@ -45,3 +78,4 @@ walking through the debugger
 
 [^3]: Web browsers are not, strictly speaking, virtual machines. However, since we're merely trying to be practical in this chapter, it's close enough.
 
+[^ie]: Internet explorer, in particular, has plagued me over the years. It plagues me today.
