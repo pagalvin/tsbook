@@ -1,6 +1,6 @@
 # Putting the *Type* in TypeScript
 
-TypeScript's name is no accident. It doesn't mean "some type of scripting language." TypeScript overlays static typing on top of pure JavaScript. This is best explained by example. Let's start with some valid and admittedly ridiculous pure JS code:
+TypeScript's name is no accident. It doesn't mean "some type of scripting language."[^joke] TypeScript overlays static typing on top of plain JavaScript. This is best explained by example. Let's start with some valid and admittedly ridiculous pure JS code:
 
 ```javascript
 var xyzzy = "transport me!";
@@ -8,7 +8,7 @@ var TheAnswer = 42;
 var hammerTime = new Date(1990, 1, 13);
 var BookTitles = [];
 ```
-The above snippet shows four variables and JavaScript infers their data type. This allows us to write code like this:
+The above snippet[^refs] shows four variables and JavaScript infers their data type. This allows us to write code like this:
 ```javascript
 xyzzy = "you've been transported";
 TheAnswer = TheAnswer + 1;
@@ -55,23 +55,21 @@ The above snippet explicitly shows TypeScript's type system at work:
 - "TheAnswer" is a `number`.
 - hammerTime is a `Date`. Why is it a Date and not something else? Because TypeScript can infer its data type. The code initializes it to a Date object and hence, it can only be a date.
 
-The last variable, *whoKnows*, also has a type, `any`. Variables of type any act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
+The last variable, `whoKnows`, also has a type, `any`. Variables of type any act just like pure JS variables. You can assign string values one moment, booleans the next and numbers after that. 
 
 If you go to the trouble of defining types on your variables, your IDE will give you some great edit-time and compile-time support. Consider this short animation:
 
 ![short animation](/assets/video/ch04_strongTypingExampleVideo/ch04_strongTypingExampleVideo.gif "IDE Supporting Defined Types")
 
-**video: chapter 4, #1: something showing basic static typing. define a few vars, show IDE complaining. --> complete!
-
 If you're already a JS coder, this is a very simple way to get started with the language. Pick a few variables, associate some types with them and see what happens. A couple things will or may happen when you do this:
 - Your IDE will get a lot smarter about your code. It will know variable types and prevent you from assigning strings to numbers and that sort of thing.
-- You may discover problems with your code right away. You may well have intended that a particular variable, "myNumber", hold numbers. As JS coders know, it's quite easy to mistakenly assign strings, date, complex objects, to your "myNumber" variable. 
+- You may discover problems with your code right away. You may well have intended that a particular variable, `myNumber`, hold numbers. As JS coders know, it's quite easy to mistakenly assign strings, date, complex objects, to your "myNumber" variable. 
 
 Many TypeScript developers start off this way because it's so simple to do. It's so simple, in fact, that they quickly move on to more interesting typings, including the ability to strongly type nested objects via `interfaces`. The next chapter introduces interfaces as data descriptors
 
 ## Light Bulb Time?
 
-In late December of 2015, Eric Clemmons posted a widely read article on Medium entitled _JavaScript Fatigue_. [You can read it here.](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.3jytn61rs) If you haven't read it, it's probably worth your time[^1]. It does a good job of encapsulating a certain ennui in which some folks in the community indulge themselves. It's difficult not to at times! There are so many frameworks, development tools, IDEs and other clever gidgety-gadgets, it can become ... fatiguing.
+In late December of 2015, Eric Clemmons posted a widely read article on Medium entitled _JavaScript Fatigue_. [You can read it here.](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.3jytn61rs) If you haven't read it, it's probably worth your time[^1]. It does a good job of describing the ennui in which some JavaScript devs find themselves trapped at times. It's a difficult trap to avoid at times! There are so many frameworks, development tools, IDEs and other clever gidgety-gadgets, it can become ... fatiguing.
 
 <div style="float:right; width:25%; padding-left: 15px;";>
 <img src="assets/lightbulb.png"/>
@@ -91,7 +89,7 @@ This is very valuable stuff. It is also very easy to harvest some value from it.
 
 All of the rest of your JS will work as normal. The most simple change to your code immediately provides significant benefit. This was my light bulb moment. It didn't end there for me and won't end there for you. 
 
-It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you.
+It's probably safe to say that if there's no light bulb going off for you right now, TypeScript may not be for you, at least not today. I invite you to continue reading anyway :).
 
 ## Declaring Variables
 
@@ -101,7 +99,9 @@ TypeScript provides three different ways to define a variable:
 - `let` keyword
 - `const` keyword
 
-If you declare a variable with the var keyword, it works exactly the same way it does in pure JavaScript. It follows the same scoping rules and as such, you need to concern yourself with unexpected hoisting effects and/or inadvertently polluting the global namespace. "Const" and "let" simplify thing by reducing this risk and associated complexity. consider this bit of pure JS code:
+If you declare a variable with the var keyword, it works exactly the same way it does in pure JavaScript. It follows the same scoping rules and as such, you need to concern yourself with unexpected hoisting effects and/or inadvertently polluting the global namespace. `const` and `let` simplify things by reducing this risk and associated complexity. Here's a bit of plain JavaScript code that implements a function, `getTempLabel()`. It's mean to take in numeric temperature in Celsius and return a text label.
+
+Here's the plain JS code:
 
 ```JavaScript
 function getTempLabel(currentTempInCelsius) {
@@ -124,15 +124,15 @@ function getTempLabel(currentTempInCelsius) {
 }
 ```
 
-This silly example tests for a temperature and returns a label describing it. Note three things:
+Take note of three things from this silly example:
 1) The variable "result" isn't actually decorated with `var` until it makes its 3rd appearance. 
 2) Through the magic of "hoisting," `result` is available throughout the function, not just in the else block where it's defined.
-3) This is also perfectly valid TypeScript, although there's a better way to do it as you'll see in a moment.
+3) This is also perfectly valid TypeScript, although there's a much better way to implement the function. You'll see that in a moment.
 
 Many programming languages dictate tighter scoping rules. Many people, the author included, consider the above example to be poorly done for several reasons:
 - The variable isn't properly declared until well past its first use.
-- The code doesn't do a good job showing the developer's intent here. Result could be used anywhere in the function on both the left hand side and right hand side of an expression, leading to unanticipated and difficult to track bugs.
-- Even experienced JS developers have a hard time with scope and hoisting and such.
+- The code doesn't do a good job showing the developer's intent here. `result` could be used anywhere in the function on both the left hand side and right hand side of an expression, leading to unanticipated and difficult to track bugs.
+- Even experienced JS developers have a hard time with variable scope and hoisting. Why accept that headache lying down?
 
 Here is similar code written in TypeScript:
 
@@ -162,10 +162,12 @@ function getTempLabelTS(currentTempInCelsius: number): string {
 
 As you can see, instead of using `var` to define the result variable, the code uses TypeScript's `let`. Let defines variable characteristics the same way as var - you specify a name and optionally a data type. The difference is about variable scope. A variable defined with let is scoped to the block where it's defined and is available to sub-blocks. It is never hoisted, as happens in pure JavaScript. Watch this short to see the effect of let and variable scope in a few different scenarios:
 
+/**video: let vs. var. this may already be up on the google?
+
 ## TypeScript Best Practice - *Let*
 As a rule, prefer "let" over var. This will tend to reduce the risk of unanticipated side effects in your code through JavaScript's hoisting mechanism.
 
-## `Const` Definitions
+## `const` Definitions
 
 TypeScript provides another method for defining variables - `const`. A const variable:
 1. Must be initialized when declared.
@@ -179,33 +181,28 @@ const myName: string = "Paul"
 myName = "Mary"; // <-- compiler error
 ```
 
-Const has some subtlety, especially when it comes to object property values. Consider this bit of code:
+`const` brings a little subtlety to the table, especially when it comes to object property values. Consider this bit of code:
 
 ```TypeScript
-interface PersonName {
-    firstName: string;
-    lastName: string;
-}
+const Paul = { firstName: "Paul", lastName: "Galvin"}
 
-const Paul: PersonName = { firstName: "Paul", lastName: "Galvin"}
+const Kelly = { firstName: "TBD", lastName: "TBD"}
 
-const Kelly: PersonName = { firstName: "TBD", lastName: "TBD"}
-
-const John: PersonName; // <-- Not allowed, must always initialize const variables when defined
+const Aidan; // <-- Not allowed, must always initialize const variables when defined
 
 Kelly.firstName = "Kelly"; // <-- perfectly OK
 Paul = null; // <-- Not allowed, cannot use const vars in LHS of an assignment
 ```
-The code defines a simple interface, PersonName, that requires two strings, first and last name. It then attempts to define three PersonName variables.
+The code defines three `any` variables[^defaultsToAny] and you can tell that it's mean to hold a kind of "person" record, holding a first and last name. It initializes `Paul` and `Kelly` to similarly structured objects.
 
-The Aidan PersonName is not assigned a value. This is a an error and the compiler will tell you. 
+It then tries to create a constant `Aidan` variable without assigning an initial value. This is not allowed. It won't compile and your IDE should highlight this as an error.
 
-The Kelly PersonName const variable *is* defined. However, it's seeded with "TBD" values. Later, the code changes Kelly's firstName property. This is valid^3. 
+The Kelly PersonName const variable *is* defined. However, it's seeded with "TBD" values. Later, the code changes Kelly's firstName property. This is valid[3]. 
 
 Lastly, the Paul variable cannot be changed after it's initialized. The final "Paul = null" assignment is also invalid. Const variables may never be in the left hand side of an assignment once they are declared and initialized.
 
 ## TypeScript Best Practice - *Let*
-As a rule, prefer `const` over `let`. This recommendation largely derives from functional programming principles. The more you minimize mutations in your code, the fewer side effects you'll experience.
+As a rule, prefer `const` over `let`. This recommendation largely derives from functional programming principles. The more you minimize mutations in your code, the fewer side effects you'll experience[^linktomymedumarticleonfunoffunctionalprogramming].
 
 Taking this and let into consideration, we can summarize:
 - Prefer const in all cases.
@@ -220,7 +217,11 @@ At the end of the day, JavaScript doesn't know anything about const or let. They
 
 TypeScript enforces variable scope and const initialization / assignment rules at compile-time. A good IDE will do it as you write the code.
 
-** video goes here, varscopes from the video folder.
+# Summary
+
+In this chapter, you learned that TypeScript is a statically typed langauge that introduces a couple of new ways to manage variable scope and immutability. You saw some of the practical effects that derive from these features and have been armed with a bit of advice on how to use them.
+
+The next chapter digs into this topic with more gusto and introduces interfaces, a most useful and powerful language element as well as enumerations, union types and more! 
 
 ---
 [^1]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
@@ -234,3 +235,11 @@ Eric Elliot takes a deeper dive into the subject: https://medium.com/javascript-
 [^2]: It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
 
 [^3]: Admittedly, this is a minor source of cognitive dissonance. Since the variable itself a const, why allow us to change the variable's properties as well? It is what it is and helpful in the end, so live with it we must.
+
+[^joke]: Although that would be truly glorious.
+
+[^refs]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
+
+[^defaultsToAny]: recall that the default data type is "any" for objects. you should avoid this. it's bad news and you can set compiler flags to disallow it.
+
+[^linktomymedumarticleonfunoffunctionalprogramming]: put link here
