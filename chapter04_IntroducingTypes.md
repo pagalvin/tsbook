@@ -252,7 +252,8 @@ The next chapter digs into this topic with more gusto and introduces interfaces,
 
 [^3]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
 
-> "TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength."
+"TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength."
+
 I don't know JW and I don't mean to imply that this one quote pulled from one article he wrote stands for everything he believes :). That quote does, however, do a good job articulating a certain school of thought vis-à-vis JavaScript's dynamic nature. Many people like it. Those people probably aren't using TypeScript much.
 
 Eric Elliot takes a deeper dive into the subject: https://medium.com/javascript-scene/you-might-not-need-typescript-or-static-types-aa7cb670a77b#.5aideomvb. This is also worth reading.
