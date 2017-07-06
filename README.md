@@ -100,7 +100,7 @@ I will make every effort possible to respond to your emails, review and manage g
 
 # Further Reading
 
-This chapter's "further reading list" is much more extensive than any other. These articles reflect TypeScript's growing popularity, as well as at least one counter-factual (someone arguing that Flow is better than TypeScript). 
+This chapter's "further reading list" is much more extensive than any other. These articles reflect TypeScript's growing popularity, as well as at least one "anti-TypeScript" article.  
 
 Here they are:
 - Moving off Flow to TypeScript: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
