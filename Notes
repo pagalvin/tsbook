@@ -88,3 +88,4 @@ x "what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescrip
 
 arrow functions and functions: http://executeautomation.com/blog/working-with-functions-anonymous-and-arrow-functions-in-typescript/
 
+nice overview of let, const, var: http://www.brainbell.com/typescript/data-types-let-var-cons.html
