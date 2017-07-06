@@ -246,7 +246,7 @@ In this chapter, you learned that TypeScript is a statically typed langauge that
 The next chapter digs into this topic with more gusto and introduces interfaces, a most useful and powerful language element. It also covers enumerations, union types and more! Take a deep breath and then turn the virtual page. 
 
 ---
-[^1]: Although that would be truly glorious.
+[^1]: Although that would be truly glorious. 
 
 [^2]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https://en.wikipedia.org%2Fwiki%2F42_%28number%29%23The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
 
