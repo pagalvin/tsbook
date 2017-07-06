@@ -3,7 +3,7 @@
 This book focuses on what consider to be the "main" bits of the TypeScript language. This narrows its scope and as a result, several topics that you might think a table of contents informed by common sense would include are not, in fact, included[^1]. To wit:
 
 <div style="float:right">
-    <img width="200px" src="/assets/BarackObama.jpg">
+    <a href="https://www.flickr.com/photos/35237092540@N01/8167731771/"><img width="200px" src="/assets/BarackObama.jpg"></a>
 </div>- History of TypeScript: It's an interesting topic[^2], but doesn't help achieve this book's practical aims. If you want to learn mor
 History of TypeScript, [consult the great people at Wikipedia to start](https://en.wikipedia.org/wiki/TypeScript#History).
 
@@ -21,4 +21,4 @@ That's enough on what's not covered. Let's move on to first big topic, how the h
 
 [^1]: Of course, we don't necessarily share the same sense of what's common. If you don't like mine, write your own book :). Or, suggest I add more content via a github issue or email me directly. The intro chapter provides links to both of these options.
 
-[^2]: Did you know that TypeScript is over five years old? In the U.S., President Barack Obama was only just about to get re-elected to office when Microsoft released this language. Coincidence? Who knows?
+[^2]: Did you know that TypeScript is over five years old? In the U.S., President Barack Obama was only just about to get re-elected to office when Microsoft released this language. Coincidence? Who knows? (Photo of Barack Obama from Peter Prodoehl @ https://www.flickr.com/photos/raster/).
