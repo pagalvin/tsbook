@@ -248,7 +248,7 @@ The next chapter digs into this topic with more gusto and introduces interfaces,
 ---
 [^1]: Although that would be truly glorious.
 
-[^2]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
+[^2]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https%3A%2F%2Fen.wikipedia.org%2Fwiki%2F42_%28number%29%23The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
 
 [^3]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
 
