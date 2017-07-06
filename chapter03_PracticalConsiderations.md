@@ -4,7 +4,7 @@ TypeScript shares something in common with virtually every other computer langua
 
 <div style="float: right; width: 15%">
 <div>
-<img src="http://i1.kym-cdn.com/entries/icons/facebook/000/014/620/f5f.jpg">
+<img src="/assets/scoffing.jpg">
 </div>
 <div>
 <p>Me, foolishly scoffing at Microsoft when they first announced .NET.</p>
