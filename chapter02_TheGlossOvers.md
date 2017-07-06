@@ -17,5 +17,7 @@ Beyond those non-language features, the book also ignores what I consider to be 
 
 That's enough on what's not covered. Let's move on to first big topic, how the heck does TypeScript work in the first place?
 
+Modules
+
 
 [^1]: Did you know that TypeScript is over five years old? In the U.S., President Barack Obama was only just about to get re-elected to office when Microsoft released this language. Coincidence? Who knows?

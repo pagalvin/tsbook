@@ -114,7 +114,7 @@ Here they are:
 
 # Moving On
 
-That's it's for the fluffies. The next chapter discussed some out of scope topics just so that you don't get your hopes up on things not covered elsewhere.
+That's it's for the fluffies. The next chapter discusses some out of scope topics so that you don't get your hopes up for things not covered here in the book.
 
 ---
 [^1]: That's not to say that they are doing it well, but they are surely giving it a try.
