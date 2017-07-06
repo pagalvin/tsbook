@@ -1,8 +1,6 @@
 # Introducing Classes
 
-******TODO: Add some discussion about THIS here. Also, lambda functions.
-
-TypeScript provides support for classes. Classes serve as a foundational component in many object oriented languages. Loosely defined, a class is a collection of data and functions. The data may or may not be accessible outside of the class where its defined. Similarly, class functions may or many not be available outside of their containing class. 
+TypeScript provides support for classes. Classes serve as a foundational component in many object oriented languages. Loosely defined, a class is a collection of data and functions that (usually) operate on that data. The data may or may not be accessible outside of the class where its defined. Similarly, class functions may or many not be available outside of their containing class. 
 
 You can think of a classes as defining a template of functionality. That's the "data and functions" part. At runtime, we create *instances* of classes and we normally call them "objects." We often think in terms of "passing messages" or "invoking functions" on objects[footnote]. 
 
@@ -29,12 +27,12 @@ Public transportation authorities typically assign route numbers to busses. The 
 
 The `constructor` is a function that runs when client code instantiates an instance of the  Bus object. As you can see, constructors can take parameters and in this instance, the constructor initializes the Bus' route number.
 
-Busses know how to "say" their name. A function, `SayRoute`, lists the bus's route number out to the console.
+Our business rules dictate that busses must know how to "say" their name. A function, `SayRoute`, meets the requirement by listing the bus's route number out to the console.
 
-TypeScript introduce a bit of new lingo:
+TypeScript introduces a bit of new lingo:
 - We generically call myRouteNumber, the constructor and SayRoute _class members_. 
 - myRouteNumber is a _property_.
-- constructor is a function that runs every time code creates a new instance of Bus.  It runs only once per object instantiation but every time you create a new Bus object.
+- _constructor_ is a special function that runs every time code creates a new instance of Bus.  It runs only once per object instantiation but every time you create a new Bus object.
 - SayRoute is a _method_.
 
 Classes do nothing by themselves. They are much like cookie cutter templates - you can tell what the cookie is going to look like but you have no cookie until you have cookie dough. We create new objects as shown:
@@ -49,7 +47,7 @@ theDreaded164.SayRoute();
 
 The above code declares two instances of the `Bus` object, "myBeloved148" (a super express) and "theDreaded164" (a super local). It then invokes the `SayRoute` method on each instance.
 
-When we create a new object using the `new` keyword, we're _instantiating_ the object. Some people like to say "newing it up" instead.
+When we create a new object using the `new` keyword, we're _instantiating_ the object. Some people like to say "newing it up" instead. Here's a video showing the basics:
 
 **video: chapter 9, intro to classes: Create a class. Show that the members are a accessible. 
 
@@ -82,5 +80,6 @@ As with every other part of the language, good TypeScript IDEs provide intellise
 -- video here that shows defining the bus object, creating a new instance and running it. Then, try to cirectly update the private property and show the error. show intellisense step by step.
 **video: chapter 9, intro to classes: Create a class and show private members
 
+TypeScript classes go much deeper than this. The next chapter takes that dive.
   
-  [footnote]1 These phrases, "passing messages" or "invoking functions" pretty much mean the same thing. It can be helpful at times to view objects as living, breathing entities. This paradigm lends itself to the "passing messages" concept.
+[^footnote]: These phrases, "passing messages" or "invoking functions" pretty much mean the same thing. It can be helpful at times to view objects as living, breathing entities. This paradigm lends itself to the "passing messages" concept.

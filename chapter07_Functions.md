@@ -2,7 +2,7 @@
 
 TypeScript supports JavaScript functions as you already know them. As with many other areas, TypeScript adds new functionality, including:
 - Function Types
-- Typed Parameters: 
+- Typed Parameters:
 - Optional Parameters
 - Rest Parameters
 - Arrow Functions (sometimes called Lambda or Anonymous functions)
@@ -23,7 +23,7 @@ This isn't a terribly useful thing to do but it shows that there is a `Function`
 
 ## Function Parameters
 
-Most functions take at least one parameter and most of the time, they return a value. You can specify type for each function parameter as well as the return type  of the function itself.  Here's what it looks like:
+Most functions take at least one parameter and most useful functions return a value[mostusefulfunctions]. You can specify type for each function parameter as well as the return type of the function itself.  Here's what it looks like:
 
 ```TypeScript
 function integerAdder(firstNumber: number, secondNumber: number): number {
@@ -95,7 +95,7 @@ Optional parameters are best used when writing interfaces to describe data struc
 
 ### Default Parameter Values
 
-You can specific a default value for your function's parameters. Here's the previous example re-written to show this syntax and implication of using it:
+You can specify a default value for your function's parameters. Here's the previous example re-written to show this syntax and implication of using it:
 
 ```TypeScript
 function InitializeDataSetWithDefaultValues(seedData = { seedValue1: "a", seedValue2: "b"}) {
@@ -131,7 +131,7 @@ Sometimes you want to pass an unknown number of parameters to a function. This c
 
 Let's consider a logging example. We can always use `console.log()` to log out messages to the console. However, it's a real challenge debugging applications at run-time, particularly errors reported by end users. By the time anyone tells you about the error, it's too late for you to do much about it. Let's add some persistent error logging to our toolkit:
 
-```
+```TypeScript
 function myLogger(msgType: "INFO" | "ERROR", ...messages: any[]) {
 
     if (msgType === "INFO") {
@@ -153,7 +153,7 @@ The code does the following:
 - Defines a function, `myLogger`.
 - myLogger takes two parameters: `msgType` and `messages`.
     - msgType is a union data type - client code must pass "INFO" or "ERROR".
-    - messages is an array of `any`. Note that `...` preceding the variable name. This indicates that all of the remaining arguments will be stuff into the array. 
+    - messages is an array of `any`. Note that `...` preceding the variable name. This indicates that all of the remaining arguments will be stuffed into the array. 
 - You can see how the code invokes the myLogger function, passing in a variable number of arguments across its three invocations.
 
 ## Arrow Functions
@@ -172,7 +172,7 @@ const myHelloFunction = () => { return "Hello!"};
 myHelloFunction();
 ```
 
-This example defines and then invokes a function named `myHelloFunction`. Since myHellowFunction  is a `const` we had to initialize it. That's this bit: `{return "Hello!"};`  myHelloFunction is now a normal function and we can invoke it like any other JavaScript function using the `()` operator: `myHelloFunction()`;
+This example defines and then invokes a function named `myHelloFunction`. Since myHelloFunction is `const` we need initialize it at definition-time. That's this bit: `{return "Hello!"};`  myHelloFunction is now a normal function and we can invoke it like any other JavaScript function using the function invocation operator, `()`: `myHelloFunction()`;
 
 We don't need to define the function body. For instance, this is perfectly good syntax:
 
@@ -223,11 +223,13 @@ Transpiled JavaScript
 </tr>
 </table>
 
-That's easy enough. 
+`let` transpiles into `var`.
+The arrow function transpiles into a straight-forward `function` definition.
+
 
 ### Specifying Parameters
 
-We specify parameters by inserting them info the `()` portion of the function. Here's an adder function that takes two integer inputs and returns a numeric result:
+We specify parameters by inserting them info the `()` portion of the function definition. Here's an adder function that takes two integer inputs and returns a numeric result:
 
 ```TypeScript
 let myAdderArrowFunction: (arg1: number, arg2: number) => number;
@@ -239,13 +241,13 @@ console.log(myAdderArrowFunction(2, 2));
 
 The code defines a new function, `myAdderArrowFunction`, using the arrow syntax. myAdderFunction takes two numeric arguments and returns number.
 
-It's important to keep in mind that the `let` statement is merely defining a typed variable named myAdderFunction. Its type happens to be a `Function` with typed signature and a type result.
+It's important to keep in mind that the `let` statement is merely defining a typed variable named myAdderFunction. It type happens to be a `Function` with typed signature and a typed result.
 
 The second line initializes myAdderArrowFunction. Note that I didn't use the same names when specifying the input parameters. Again, the  `let` statement is defining a type - a Function who takes in two arguments and returns a number. As long as meet the requirements of the type, the parameter names don't matter. 
 
 ### Arrow function as interface components
 
-Given that arrow functions can define types independent of their implementation, you can use them anywhere else you would use a type, including interfaces. This is a very useful capability for many reasons. One reason comes into play when you're working with an external library that was not written TypeScript. This obviously happens a lot in the real world. Let's assume that we are working with one such library that is responsible to create detailed, highly interactive visualizations. We don't know how it works and we don't care.  We consult the online documentation and see that it provides a robust JavaScript API that includes the following functions:
+Given that arrow functions can define types independent of their implementation, you can use them anywhere else you would use a type, including interfaces. This is a very useful capability for many reasons. One reason comes into play when you're working with an external library that was not written in TypeScript. This obviously happens a lot in the real world[realworld]. Let's assume that we are working with one such library that is responsible to create detailed, highly interactive visualizations. We don't know how it works and we don't care.  We consult the library's documentation and see that it provides a robust JavaScript API that includes the following functions:
 - `Render`: We provide the ID of a `<div>` tag on our page and it renders the visualization there.
 - `SetDimensions`: We can set the height an width with this call.
 - `SaveSettings`: We ask the engine to save the current screen settings for use next time.
@@ -280,7 +282,7 @@ else {
 
 This is obviously a bit more complex example. Let's unpack it a bit:
 - The code defines an interface, `IVisualizationEngine`.
-- The interface defines three different functions, one for each of the API calls we care about.
+- The interface defines three different functions, one for each of the API calls we care about[careabout].
 - We get a handle to the engine via the global window object. In order for this to work, we had to reference the engine via a script tag in our HTML and the engine would have to save itself in the global window. 
 
 At this point, we've done something really nice for ourselves.  We now have strongly typed access to this third party's API! This allows the IDE to give us the great time-saving and error-reducing intellisense we've all grown to love so much.
@@ -307,7 +309,7 @@ console.log("Hello, " + (function () { return "Paul"; })());
 
 ### Arrow Functions for Cleaner Code
 
-The previous example doesn't show it well, but arrow functions can help you do more than teach your IDE about function types. It can also help you write cleaner code, although this may admittedly be in the eye of the beholder. Here's example:
+The previous example doesn't show it well, but arrow functions can help you do more than teach your IDE about function types. It can also help you write cleaner code, although this may admittedly be in the eye of the beholder. Here's an example:
 
 ```TypeScript
 const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -331,10 +333,18 @@ We could have written this fully out to:
 
 It's a bit of shorthand that we're allowed do when you can return a value with a single statement.
 
-The second example adds up all the numbers using the standard `reduce` function. Reduce runs against an array and takes a function and initial value as an argument. That function is passed the previous value and the current value, defined in the example as `(prev: number, curr: number)`. Note that `reduce` *also* passes a 3rd argument, the index of the item in the array. We don't care about that so we don't bother catching it, so to speak.
+The second example adds up all the numbers using the standard `reduce` function. Reduce runs against an array and takes a function and initial value as an argument. That function is passed the previous value and the current value, defined in the example as `(prev: number, curr: number)`[^fpblogposts]. Note that `reduce` *also* passes a 3rd argument, the index of the item in the array. We don't care about that so we don't bother catching it, so to speak.
 
 Most TypeScript developers come to find Arrow functions to be very helpful and generally cleaner looking than spelling out the word "function" all the time.
 
 ### A Penultimate Word on Arrow Functions
 
 We haven't heard the last of arrow functions. We'll revist them in the chapter, "Classes in Depth" and explore how they help simplify JavaScript closures. In short, they work in a more intuitive way with the `this` keyword.
+
+[^mostusefulfunctions]: If your function doesn't return any value, there's a good chance it's affecting some data outside of its scope. This is usually a Bad Thing because it introduces the risk of side effects. If you want more convincing, you could [start here](https://softwareengineering.stackexchange.com/questions/15269/why-are-side-effects-considered-evil-in-functional-programming).
+
+[^realworld]: This happens so much in the real world that TypeScript provides a significant feature set to handle the challenge through the use of "typings files". The first cut of this book doesn't address typings in detail but the "Continue Learning" chapter will point you in the right direction.
+
+[^careabout]: In this context, "care about" means that the library might provide other useful functions but we don't plan to use them for one reason or another. We don't need to map each of them to our interface definition, just the ones we plan to use.
+
+[^fpblogposts]: `Reduce`, along with `filter` and `map` tend to find themselves in code that adheres to a functional programming style. I've written a small series of blog posts on this subject up on my blog, http://www.medium.com/@pagalvin.
