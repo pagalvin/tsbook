@@ -2,6 +2,14 @@
 
 TypeScript shares something in common with virtually every other computer language - a TypeScript program is just a text file. Computers can't run it without first transforming that text to machine language. That process is named *compilation*, of course, and it isn't exactly a new thing under the sun[^1].
 
+<div style="float: right; width: 15%">
+<div>
+<img src="http://i1.kym-cdn.com/entries/icons/facebook/000/014/620/f5f.jpg">
+</div>
+<div>
+<p>Me, foolishly scoffing at Microsoft when they first announced .NET.</p>
+</div>
+</div>
 These days, many popular languages don't even compile down to machine language. Java compiles down to bytecode. A virtual machine interprets that bytecode and executes your application. C# and other .NET languages compile down to bytecode as well, albeit a different format. They run in a  different virtual environment, the compile language runtime or CLR)[^2]. If you squint your eyes, even web browsers act as virtual machines[^3].
 
 All modern web browsers know how to run JavaScript. They don't necessarily all agree upon the finer points of the DOM. They may vary their behavior with things like the console object. This and that bit of CSS acts different across different vendors' browsers (and by versions within the same vendor's browsers[^4]). Despite their differences, however, they agree more than they disagree[^5]. In most cases the JavaScript I write today runs on every browser on the planet, or at least the browsers I care about :).
@@ -75,7 +83,7 @@ That's enough big picture background information. It's now finally time introduc
 
 [^1]: The name of this book itself pays homage to YACC, a compilation tool whose full name is "Yet Another Compiler Compiler." If you've ever been interested in writing a compiler (and really, who hasn't heard that siren call?) then YACC could be the first string you pull from that ball of fun. [You can start here](https://en.wikipedia.org/wiki/Yacc).
 
-[^2]: You maybe interested in a bit of historical context. When Microsoft first came out and announced .NET and this concept of a common language runtime, quite a few people (including me, sad to say) scoffed at the idea. Back then, there was no C#, or it was in its infancy. Borland C++ and things like Delphi had a lot of mind share, if not market share. It's been quite a journey and fascinating thing to look back and realize how far we've come as an industry.
+[^2]: You maybe interested in a bit of historical context. When Microsoft first came out and announced .NET and this concept of a common language runtime, quite a few people (including me, sad to say) scoffed at the idea. Back then, there was no C#, or it was in its infancy. Borland C++ and things like Delphi had a lot of mind share, if not market share. It's been quite a journey and fascinating thing to look back and realize how far we've come as an industry. 
 
 [^3]: Web browsers are not, strictly speaking, virtual machines. However, since we're merely trying to be practical in this chapter, it's close enough.
 
