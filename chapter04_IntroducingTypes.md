@@ -248,16 +248,16 @@ The next chapter digs into this topic with more gusto and introduces interfaces,
 ---
 [^1]: Although that would be truly glorious.
 
-[^2]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https%3A%2F%2Fen.wikipedia.org%2Fwiki%2F42_%28number%29%23The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
+[^2]: Three of these variables remind me of my youth and for history's sake, here are some links for you to follow if you don't know them already: [42](https://en.wikipedia.org%2Fwiki%2F42_%28number%29%23The_Hitchhiker.27s_Guide_to_the_Galaxy), [xyzzy](https://en.wikipedia.org/wiki/Colossal_Cave_Adventure) (which you can play on the Amazon Echo, believe it or not(!)) and [Hammertime](http://ew.com/article/2010/01/08/20-years-ago-mc-hammers-u-cant-touch-this/).
 
-[^3]: To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
+[^3]: <div>To be fair, plenty of people are perfectly OK with it. For example, Jeff Walker asserts that:
 
-"TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength."
+<blockquote>"TypeScript enhances JavaScript with types, classes and interfaces. Some people think that is the problem with JavaScript. It’s not. The problem with JavaScript is not that it is a dynamically typed prototype based object-oriented language without classes. That is actually JavaScript’s strength."</blockquote>
 
 I don't know JW and I don't mean to imply that this one quote pulled from one article he wrote stands for everything he believes :). That quote does, however, do a good job articulating a certain school of thought vis-à-vis JavaScript's dynamic nature. Many people like it. Those people probably aren't using TypeScript much.
-
+<br/>
 Eric Elliot takes a deeper dive into the subject: https://medium.com/javascript-scene/you-might-not-need-typescript-or-static-types-aa7cb670a77b#.5aideomvb. This is also worth reading.
-
+</div>
 [^4]: It's also, a little ironically, a decent listing of interesting tools and frameworks out there and hence, another good reason to read the article. That is, of course, it doesn't tire you out. To be safe, read this book first.
 
 [^5]: Recall that the default data type is "any" for TypeScript variables. You should avoid this, especially if you're starting off with a fresh new project. You can disallow "implicit" any variables through a compiler configuration setting. Read about that here: https://basarat.gitbooks.io/typescript/docs/options/noImplicitAny.html.
