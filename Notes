@@ -15,9 +15,9 @@ Videos:
 Additional information links:
 in interface section(s), especially the external viz library discussion: declare / using external plain JS libraries: https://www.techiediaries.com/use-external-javascript-libraries-typescript-projects/
 
-intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
-intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
-intro: what is TS? why use it? stack overflow: https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-would-i-use-it-in-place-of-javascript
+x intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
+x intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
+x intro: what is TS? why use it? stack overflow: https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-would-i-use-it-in-place-of-javascript
 
 at end, further reading: testing typescript: https://www.sitepen.com/blog/2015/03/24/testing-typescript-with-intern/?utm_content=55755016&utm_medium=social&utm_source=twitter
 at end, example git project:multi-player game: https://github.com/code0wl/Multiplayer-Phaser-game/tree/develop/src/client
@@ -37,9 +37,9 @@ In generics chapter, generic defaults: https://blog.mariusschulz.com/2017/06/02/
 
 just a general twitter search: https://twitter.com/search?q=%23typescript&src=typd&lang=en
 
-possibly intro or "practical considerations": some info on typescript compiler: http://david-barreto.com/introduction-to-the-typescript-transpiler/
+practical considerations: some info on typescript compiler: http://david-barreto.com/introduction-to-the-typescript-transpiler/
 
-another big book: https://basarat.gitbooks.io/typescript/
+x another big book: https://basarat.gitbooks.io/typescript/
 
 interfaces: simple blog post and video: http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
 
@@ -49,11 +49,11 @@ final chapter, general good links: https://www.bennadel.com/blog/recent-blog-ent
 
 final chapter: mixins: https://blog.mariusschulz.com/2017/05/26/typescript-2-2-mixin-classes. Make a reference to mixins in the class-in-depth chapter
 
-intro chapter: "TS for C# dev" http://www.codeguru.com/csharp/csharp/cs_webservices/tutorials/typescript-for-the-c-developer.html
+x intro chapter: "TS for C# dev" http://www.codeguru.com/csharp/csharp/cs_webservices/tutorials/typescript-for-the-c-developer.html
 
-intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81307fa288d
+x intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81307fa288d
 
-intro, maybe continuing: Eve programming language: https://github.com/witheve
+continue learning: Eve programming language: https://github.com/witheve
 
 Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
 
@@ -61,11 +61,11 @@ example code, generic forward thinking stuff : https://github.com/phosphorjs/
 
 free online class from edx: https://www.edx.org/course/introduction-typescript-2-microsoft-dev273x?wt.mc_id=DX_883248&utm_source=t.co&utm_medium=referral
 
-intro chapter, more buzz about TS: https://www.siliconrepublic.com/enterprise/typescript-programming-javascript
+xintro chapter, more buzz about TS: https://www.siliconrepublic.com/enterprise/typescript-programming-javascript
 
-intro, counterfactual - TS is not hte answer: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
+xintro, counterfactual - TS is not hte answer: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
 
-intro - why use typescript - https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
+xintro - why use typescript - https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
 
 intro, end? - little install guide to get started quickly. http://www.c-sharpcorner.com/article/getting-started-with-typescript-part-one/
 
@@ -75,7 +75,7 @@ SOLID: https://dev.to/samueleresca/solid-principles-using-typescript?utm_content
 
 gulp and typescript: https://wipdeveloper.com/2015/12/12/typescript-compile-with-gulp/?utm_content=buffer15f75&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Pretty simplistic
 
-"what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescript-2/
+x "what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescript-2/
 
 arrow functions and functions: http://executeautomation.com/blog/working-with-functions-anonymous-and-arrow-functions-in-typescript/
 
