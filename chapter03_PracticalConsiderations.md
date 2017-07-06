@@ -2,14 +2,15 @@
 
 TypeScript shares something in common with virtually every other computer language - a TypeScript program is just a text file. Computers can't run it without first transforming that text to machine language. That process is named *compilation*, of course, and it isn't exactly a new thing under the sun[^1].
 
-<div style="float: right; width: 15%">
-<div>
-<img src="/assets/scoffing.jpg">
+<div style="float: right; width: 20%">
+    <div>
+        <img src="/assets/scoffing.jpg">
+    </div>
+    <div>
+        <p style="font-size: 10px;">Me, foolishly scoffing at Microsoft when they first announced .NET.</p>
+    </div>
 </div>
-<div>
-<p>Me, foolishly scoffing at Microsoft when they first announced .NET.</p>
-</div>
-</div>
+
 These days, many popular languages don't even compile down to machine language. Java compiles down to bytecode. A virtual machine interprets that bytecode and executes your application. C# and other .NET languages compile down to bytecode as well, albeit a different format. They run in a  different virtual environment, the compile language runtime or CLR)[^2]. If you squint your eyes, even web browsers act as virtual machines[^3].
 
 All modern web browsers know how to run JavaScript. They don't necessarily all agree upon the finer points of the DOM. They may vary their behavior with things like the console object. This and that bit of CSS acts different across different vendors' browsers (and by versions within the same vendor's browsers[^4]). Despite their differences, however, they agree more than they disagree[^5]. In most cases the JavaScript I write today runs on every browser on the planet, or at least the browsers I care about :).
