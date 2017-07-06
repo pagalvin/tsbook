@@ -90,5 +90,3 @@ That's enough big picture background information. It's now finally time introduc
 [^4]: Internet explorer, in particular, has plagued me over the years. It plagues me today.
 
 [^5]: This handy web site helps identify how different browsers implement html markup, CSS and JavaScript: https://caniuse.com/.
-
-[^debugging]:
