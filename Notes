@@ -36,10 +36,6 @@ Videos:
 ---
 Additional information links:
 
-x intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
-x intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
-x intro: what is TS? why use it? stack overflow: https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-would-i-use-it-in-place-of-javascript
-
 at end, further reading: testing typescript: https://www.sitepen.com/blog/2015/03/24/testing-typescript-with-intern/?utm_content=55755016&utm_medium=social&utm_source=twitter
 at end, example git project:multi-player game: https://github.com/code0wl/Multiplayer-Phaser-game/tree/develop/src/client
 
@@ -58,6 +54,44 @@ In generics chapter, generic defaults: https://blog.mariusschulz.com/2017/06/02/
 
 just a general twitter search: https://twitter.com/search?q=%23typescript&src=typd&lang=en
 
+final chapter, general good links: https://www.bennadel.com/blog/recent-blog-entries.htm
+
+final chapter: mixins: https://blog.mariusschulz.com/2017/05/26/typescript-2-2-mixin-classes. Make a reference to mixins in the class-in-depth chapter
+
+
+continue learning: Eve programming language: https://github.com/witheve
+
+
+example code, generic forward thinking stuff : https://github.com/phosphorjs/
+
+free online class from edx: https://www.edx.org/course/introduction-typescript-2-microsoft-dev273x?wt.mc_id=DX_883248&utm_source=t.co&utm_medium=referral
+
+end: decorators: https://cabbageapps.com/fell-love-js-decorators/
+
+SOLID: https://dev.to/samueleresca/solid-principles-using-typescript?utm_content=buffer2e11d&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+
+
+
+x arrow functions and functions: http://executeautomation.com/blog/working-with-functions-anonymous-and-arrow-functions-in-typescript/
+
+x nice overview of let, const, var: http://www.brainbell.com/typescript/data-types-let-var-cons.html
+
+x intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
+x intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
+x intro: what is TS? why use it? stack overflow: https://stackoverflow.com/questions/12694530/what-is-typescript-and-why-would-i-use-it-in-place-of-javascript
+
+xintro chapter, more buzz about TS: https://www.siliconrepublic.com/enterprise/typescript-programming-javascript
+
+xintro, counterfactual - TS is not hte answer: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
+
+xintro - why use typescript - https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
+
+x Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
+x "what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescript-2/
+xgulp and typescript: https://wipdeveloper.com/2015/12/12/typescript-compile-with-gulp/?utm_content=buffer15f75&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Pretty simplistic
+x intro chapter: "TS for C# dev" http://www.codeguru.com/csharp/csharp/cs_webservices/tutorials/typescript-for-the-c-developer.html
+
+x intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81307fa288d
 x practical considerations: some info on typescript compiler: http://david-barreto.com/introduction-to-the-typescript-transpiler/
 
 x another big book: https://basarat.gitbooks.io/typescript/
@@ -66,36 +100,3 @@ x interfaces: simple blog post and video: http://tech.queryhome.com/153271/what-
 
 x data modeling, union types an interfaces chapter: https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
 
-final chapter, general good links: https://www.bennadel.com/blog/recent-blog-entries.htm
-
-final chapter: mixins: https://blog.mariusschulz.com/2017/05/26/typescript-2-2-mixin-classes. Make a reference to mixins in the class-in-depth chapter
-
-x intro chapter: "TS for C# dev" http://www.codeguru.com/csharp/csharp/cs_webservices/tutorials/typescript-for-the-c-developer.html
-
-x intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81307fa288d
-
-continue learning: Eve programming language: https://github.com/witheve
-
-x Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
-
-example code, generic forward thinking stuff : https://github.com/phosphorjs/
-
-free online class from edx: https://www.edx.org/course/introduction-typescript-2-microsoft-dev273x?wt.mc_id=DX_883248&utm_source=t.co&utm_medium=referral
-
-xintro chapter, more buzz about TS: https://www.siliconrepublic.com/enterprise/typescript-programming-javascript
-
-xintro, counterfactual - TS is not hte answer: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
-
-xintro - why use typescript - https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
-
-end: decorators: https://cabbageapps.com/fell-love-js-decorators/
-
-SOLID: https://dev.to/samueleresca/solid-principles-using-typescript?utm_content=buffer2e11d&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
-
-xgulp and typescript: https://wipdeveloper.com/2015/12/12/typescript-compile-with-gulp/?utm_content=buffer15f75&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Pretty simplistic
-
-x "what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescript-2/
-
-arrow functions and functions: http://executeautomation.com/blog/working-with-functions-anonymous-and-arrow-functions-in-typescript/
-
-x nice overview of let, const, var: http://www.brainbell.com/typescript/data-types-let-var-cons.html
