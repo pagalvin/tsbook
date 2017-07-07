@@ -1,20 +1,20 @@
 # Complex Types Using Interfaces
 
 ## What's Covered
-We're going to start off this chapter by introducing TypeScript _interfaces_. This chapter examines interfaces in the context of JavaScript "data" objects and their fields/properties. As many of you know, interfaces play an over-sized role in many common design patterns (think SOLID[^1]). We will talk about interfaces in that context in Chapter 10.  
+We're going to start off this chapter by introducing TypeScript _interfaces_. This chapter examines interfaces in the context of JavaScript "data" objects and their fields/properties. As many of you know, interfaces play an over-sized role in many common design patterns (think SOLID[^1]). We will talk about interfaces in that context in Chapter 9.  
 
-TypeScript provides other more advanced typing support that you've likely seen in C# and Java. This chapter covers some of them, including[^1]:
+TypeScript provides other more advanced typing support that you may have come across in C# and Java. This chapter covers some of them, including:
 
 <div style="float:right; margin-left: 15px; border: 1px solid; width:25%; font-size: 10px">
 <b><i>A Note About Generics</i></b><br/>
-Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the DRY principle. 
+Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the Don't Repeat Yourself (DRY) principle. If you aren't familiar with DRY, here's one place you could start: http://deviq.com/don-t-repeat-yourself/
 <br/>
-The book covers generics in chapter 11.
+Although generics are part of the type system, the tend to go hand in hand with classes, so we'll hold off on describing them until chapter 10 after you've had a chance to read about and digest TypeScript classes.
 </div>
  
-- Enumerations: Attach a human-friendly label to a number
+- Enumerations: Attach a human-friendly label to a number.
 - Unions: A variable can be a "number" or "string" or "MyBrandShinyNewObject" but not anything else.
-- Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn a it about them in chapter 10).
+- Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn a it about them in chapter 9).
 
 ## Interfaces as Data Describers
 
@@ -22,10 +22,9 @@ Declare a TypeScript interface like this:
 
 ```TypeScript
 interface myInterface {
-
 }
 ```
-That code defines a new interface called "myInterface". It's an empty interface, but valid[^2]. 
+That code defines a new interface called "myInterface". It's an empty interface, but nonetheless valid[^2]. 
 
 Variables can now declare their type as being that interface:
 
@@ -59,11 +58,11 @@ var bookModel = {
 
 That's simple enough. We have an object called "bookModel." The developer's intent is pretty clear, although there's actually plenty of room for improvement. If you want to re-use `bookModel` in pure JavaScript, you could clone it[^3]:
 
-```JavaSCript
+```JavaScript
 var aBookInstance = (JSON.parse(JSON.stringify(bookModel)));
 ```
 
-In TypeScript, we can user interfaces to define a better shape and even self-document the model. Here is one way to do it:
+In TypeScript, we can use interfaces to define a better shape and even self-document the model. Here is one way to do it:
 
 ```TypeScript
 interface BookModel {
@@ -84,7 +83,7 @@ let aBookInstance: BookModel;
 
 This interface shows three immediate advantages TypeScript provides over JavaScript:
 
-1. The developer's intent is much clearer. You can tell that TotalPages is meant to hold numeric values while the rest are meant to hold strings[^obvious].
+1. The developer's intent is much clearer. You can tell that TotalPages is meant to hold numeric values while the rest are meant to hold strings[^4].
 2. Spot-on intellisense.
 3. _It's really a model_. It's not a JavaScript variable masquerading as model. In fact, when you compile a TypeScript interface, it produces no JavaScript at all. Only the compiler knows about the interface. There is no run-time artifact.
 
@@ -92,11 +91,11 @@ Let's assume you agree that TypeScript conveys the the dev's intent more clearly
 
 <iframe width="840" height="473" src="https://www.youtube.com/embed/o_wxodLGT34" frameborder="0" allowfullscreen align="middle"></iframe>
 
-**video: chapter 5, #1: Interfaces using the book approach. This video may already exist. It does: https://www.youtube.com/embed/o_wxodLGT34
+(Depending on you're reading the book, that video may not appear. In that case, [click this link](https://www.youtube.com/watch?v=o_wxodLGT34&feature=youtu.be) or go directly to the YouTube video with this link: https://youtu.be/o_wxodLGT34).
 
 Here are some key takeaways from the video: 
 
-1. Once you define an interface, it becomes another candidate data type. Use it the same way as the built-in data types, such as string, boolean, etc.
+1. Once you define an interface, it becomes another candidate data type. Use it the same way as the built-in data types, such as string, boolean, number, etc.
 2. Once you define a variable with an interface data type, you must usually include all of the interface fields. NOTE: As you'll soon see, it's possible to define optional interface components as well.
 3. It's not enough to add all of the interface fields to the "aBook" variable. You must also add them with the correct type. In the video, I tried to assign a string value to "TotalPages" field but the IDE told me that was not allowed.
 
@@ -121,7 +120,6 @@ var bookModel = {
 var aBookInstance = JSON.parse(JSON.stringify(bookModel));
 //aBookInstance.Author = "Paul Galvin";
 aBookInstance.Author = ["Paul Galvin"];
-
 ```
 
 It's a very simple change to make, but it's quite difficult to find all the places where you need to make the change. You mostly have to do a global search in your IDE to find instances of "Author" and refactor where you find them.
@@ -130,13 +128,13 @@ Contrast this with TypeScript:
 
 <iframe width="728" height="408" src="https://www.youtube.com/embed/fNtcCTeMAhQ" frameborder="0" allowfullscreen></iframe>
 
-**video: chapter 5, complex types: already exists, https://www.youtube.com/embed/fNtcCTeMAhQ
- 
+(Depending on how you're reading the book, you may not be able to see the video. In that case, [try clicking here](https://youtu.be/fNtcCTeMAhQ) or use the following URL in your favorite web browser: https://youtu.be/fNtcCTeMAhQ)
+
 When I changed Author from `string` to `string[]`, I invalidated every instance of every book model in the code. I can't run a successful build until I fix it. I still have a potentially tricky refactoring task on my hands - after all, I still need to fix every place in the code that references Author. However, the compiler won't let me miss any of those changes. That is powerful stuff. 
 
 ### Nested Objects and Interfaces
 
-Although `BookModel` is technically a complex object, it's not _very_ complex. Let's spice things up and take another look at "Author." We've already refactored the model to account for multiple authors. Authors are normal people, just like the rest of us, and in the United States and elsewhere, they usually have both a first and last name. In addition, authors _love_ feedback[^6][^7]. To this end, we want the author's preferred email for feedback. 
+Although `BookModel` is technically a complex object, it's not _very_ complex. Let's spice things up and take another look at "Author." We've already refactored the model to account for multiple authors. Authors are normal people, just like the rest of us, and in the United States and elsewhere, they usually have both a first and last name. In addition, authors _love_ feedback. To this end, we want the author's preferred email for feedback. 
 
 This next bit of code shows the new `AuthorModel` and refactors `BookModel` to use it.
 
@@ -199,7 +197,7 @@ If you're using VSCode or Visual Studio, try copying in the above code. Hover yo
 
 ### Interfaces - Mapping a REST Response
 
-We'll wrap up the discussion on interfaces by reverse engineering a REST response. In this scenario, I'm making a call out to a SharePoint REST endpoint asking for a "user"[^8]. When I make the call, I get back a lot of information, starting with the HTTP wrapper around what I really want:
+We'll wrap up the discussion on interfaces by reverse engineering a REST response. In this scenario, I'm making a call out to a SharePoint REST endpoint asking for a "user"[^6]. When I make the call, I get back a lot of information, starting with the HTTP wrapper around what I really want:
 
 !["HTTP Wrapper"](assets/imagework/ch05/RestInterface1.JPG "HTTP Wrapper")
 
@@ -245,11 +243,9 @@ Now it's time to link them in. Here's the code:
 
 ```TypeScript
 interface userProfileResponse extends httpResponse {
-
     data: {
         value: userProfileRestModel[]
     }
-
 }
 ```
 
@@ -259,10 +255,9 @@ Here's another 40 second video that shows this visually.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oK3MpqhrVOo" frameborder="0" allowfullscreen></iframe>
 
-**video: chapter 6,  complex types: https://www.youtube.com/embed/oK3MpqhrVOo. 
+(Depending on how you're reading the book, you may not see the video. In that case, try [clicking here](https://www.youtube.com/watch?v=oK3MpqhrVOo&feature=youtu.be) or go to YouTube directly in your web browser: https://youtu.be/oK3MpqhrVOo.)
 
 The last dozen seconds of the video show you that the IDE understands the structure of the new `userProfileResponse` interface.
-
 
 # Summarizing Interfaces
 
@@ -295,11 +290,9 @@ Use enumerations in your code like this:
 
 ```TypeScript
 function parseResult(resultDetails: SomeInterface, resultCode: HttpStatusCodes) {
-
     if (resultCode === HttpStatusCodes.OK) {
         processSuccessfulResponse(resultDetails);
     }
-
     else if (resultCode === HttpStatusCodes.FORBIDDEN) {
         login();
     }
@@ -348,15 +341,12 @@ enum HttpStatus {
 }
 
 function parseResult(resultCode: HttpStatus) {
-
     if (resultCode === HttpStatus.OK) {
         console.log("Success response");
     }
-
     else if (resultCode === HttpStatus.FORBIDDEN) {
         console.log("Forbidden response.");
     }
-
     else {
         console.log("Some other response");
     }
@@ -364,7 +354,7 @@ function parseResult(resultCode: HttpStatus) {
 }
 ```
 
-Generated JavaScript:
+Here's the generated JavaScript:
 
 ```JavaScript
 var HttpStatus;
@@ -386,7 +376,6 @@ function parseResult(resultCode) {
         console.log("Some other response");
     }
 }
-
 ```
 
 As you can see, TypeScript wraps the enum inside its own Immediately Invoked Function Expression (IIFE) and lives on as a code artifact. Most of the time, this isn't useful. You can skip the code generation and instead declare the enum as `const`:
@@ -411,19 +400,15 @@ const enum constHttpStatus {
 }
 
 function parseResult(resultCode: constHttpStatus) {
-
     if (resultCode === constHttpStatus.OK) {
         console.log("Success response");
     }
-
     else if (resultCode === constHttpStatus.FORBIDDEN) {
         console.log("Forbidden response.");
     }
-
     else {
         console.log("Some other response");
     }
-
 }
 ```
 
@@ -461,35 +446,31 @@ function move(inDirection: "left" | "up" | "down" | "up") {
 
 This bit of code defines a function, "move" that takes a single parameter, "inDirection." Intellisense ensures that you don't try to pass in an invalid direction, like "sideways." Here's a short video demonstrating that.
 
-[[ add a video showing intellisense ]]
-**video: chapter 8 misc types, show intellinsense for union types
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lfAa1-b-sng" frameborder="0" allowfullscreen></iframe>
 
-This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lowerlevel move). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
+(If you can't see the video, try [clicking here](https://youtu.be/lfAa1-b-sng). Or, open your preferred web browser and go to it directly: https://youtu.be/lfAa1-b-sng)).
+
+This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lower level "move" function). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
 
 ```JavaScript
 function calculateCollectionTotal(itemCollection) {
-
     return itemCollection.reduce(function(prev, current) {
       return prev + current.Total;
     }, 0);
-
 }
 
 console.log("Invoice lines total:", calculateCollectionTotal(invoices));
 console.log("Order lines total:", calculateCollectionTotal(orders));
 console.log("Pick lines total:", calculateCollectionTotal(PickingSlips));
-
 ```
 
-If you're converting this legacy code to TypeScript, The "correct" approach here is to refactor the code, starting with a look at your invoices, orders and picking slips objects. Find their common elements, define an interface or possibly an abstract base class[abstractClassesCoveredInChapter09]. Restructure all the objects and update the overall code base. However, that's a lot of work. Union types can help you right away without the need for so much refactoring. Here's what it could look like:
+If you're converting this legacy code to TypeScript, The "correct" approach here is to refactor the code, starting with a look at your invoices, orders and picking slips objects. Find their common elements, define an interface or possibly an abstract base class[^7]. Restructure all the objects and update the overall code base. However, that's a lot of work. Union types can help you right away without the need for so much refactoring. Here's what it could look like:
 
 ```TypeScript
 function calculateCollectionTotal(itemCollection: Invoice[] | Order[] | PickingSlip[]): number {
-
     return itemCollection.reduce(function(prev: number, current: Invoice | Order | PickingSlip) {
       return prev + current.Total;
     }, 0);
-
 }
 
 console.log("Invoice lines total:", calculateCollectionTotal(invoices));
@@ -499,25 +480,34 @@ console.log("Pick lines total:", calculateCollectionTotal(PickingSlips));
 
 This bit of TypeScript does the same thing as its plain JS cousin. However, it adds in some type safety that your IDE's intellisense feature can use. It's also nicely self-documenting. With one look at the signature, it's plain to anyone that this function was designed to calculate totals on a specific set of objects and no other objects.
 
-You'll read about a better way to accomplish this using generics (chapter 10)but they would force you to make a bigger change to your code base.
+You'll read about a better way to accomplish this using generics but they would force you to make a bigger change to your code base.
 
-## Summary and Further Reading
+# Further Reading
+
+The following articles provide alternative and/or a deeper dive into the topics discussed in this chapter:
+
+- This article plus video covers pretty much the same ground as I do with interfaces above, with but with a lot fewer words :). http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
+- A lengthy article that talks about using interfaces and unions to model data:  https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
+- TypeScript 2.4 (which came out just as I was finished version 1.0 of this book) introduces string enums! You can read about them straight from Microsoft's blog: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/. That blog is a very good source and you should keep an eye on it regularly.
+
+
+
+
+# Summary and Recap
 
 
 ---
 
 [^1]: If you aren't familiar with this SOLID acronym, it's probably worth your time checking it out. [This scotch.io write-up is a good start](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) (https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design). 
 
-[^1]: [[[ Chapter 8? ]]] covers generics, a very powerful data typing tool.
+[^2]: Empty interfaces aren't typically all that useful, but this article on binary searches in TypeScript provides one: https://blog.hellojs.org/implement-binary-search-in-typescript-using-generics-with-useful-refactorings-a4bcda932d7. This one may be a little on the complex side given where we are in the book, but it's worth coming back to once you finished.
 
-[^2]: This is the footnote for empty valid interfaces.
+[^3]: There are a ridiculous number of ways to clone JavaScript objects. The approach I used in these examples comes from this celver blog post: http://heyjavascript.com/4-creative-ways-to-clone-objects/
 
-[^3]: Cloning footnote goes here. Specific example came from here: http://heyjavascript.com/4-creative-ways-to-clone-objects/
+[^4]: It's pretty obvious that a property named "TotalPages" would be numeric. However, as this chapter progresses, you'll see how interface show developer intent when describing a less obvious properties.
 
-[^5]: intent footnote. "If you don't agree, then I don't know what else to tell you."
+[^5]: If you don't agree, then I don't know what else I can tell you :).
 
-[^8]: If you happen to know anything about SharePoint - I'm not retrieving an SPUser here, I'm retrieving an item from a custom list.
+[^6]: If you happen to know anything about SharePoint - I'm not retrieving an SPUser here, I'm retrieving an item from a custom list.
 
-[^obvious]: It's pretty obious that a property named "TotalPages" would be numeric. However, as this chapter progresses, you'll see how interface show developer intent when describing a less obvious properties.
-
-[^abstractClassesCoveredInChapter09]: Abstract classes, along with interfaces, provide a solid basis for your SOLID programming efforts. The book covers abstract classes in chapter 9. 
+[^7]: Abstract classes, along with interfaces, provide a solid basis for your SOLID programming efforts. The book covers abstract classes in chapter 9. 

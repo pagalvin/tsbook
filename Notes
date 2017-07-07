@@ -5,18 +5,14 @@ Wrap-up checklist:
     1: Plain JS debugging
     2: Video: transpiled debugging, no map file
     3: Video: transpiled debugging, with a map file
+- Chapter 4, introducing types:
+    done!
+- Chapter 5, advanced types
+    - consider adding a video showing enumerations
+
 
 
 ========================================
-
-
-
-Still to cover:
-- lambda functions --> go after chapter 6.
-- const -> integrate with chapter 4
-- string interpolation -> After chapter 6. Doing it before lambdas
-- async programming
-
 
 
 Videos:
@@ -24,7 +20,6 @@ Videos:
 
 ---
 Additional information links:
-in interface section(s), especially the external viz library discussion: declare / using external plain JS libraries: https://www.techiediaries.com/use-external-javascript-libraries-typescript-projects/
 
 x intro: Flow: this one doens't like flow. There is a countervailing one i need to find: http://jan.varwig.org/2017/02/15/flow-vs-typescript.html
 x intro: Flow: this is the other article I think: http://thejameskyle.com/adopting-flow-and-typescript.html
@@ -52,9 +47,9 @@ x practical considerations: some info on typescript compiler: http://david-barre
 
 x another big book: https://basarat.gitbooks.io/typescript/
 
-interfaces: simple blog post and video: http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
+x interfaces: simple blog post and video: http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
 
-data modeling, union types an interfaces chapter: https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
+x data modeling, union types an interfaces chapter: https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
 
 final chapter, general good links: https://www.bennadel.com/blog/recent-blog-entries.htm
 
@@ -66,7 +61,7 @@ x intro chapter: "TS at Slack" https://slack.engineering/typescript-at-slack-a81
 
 continue learning: Eve programming language: https://github.com/witheve
 
-Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
+x Enums discussion and broad point about following the TS blogs: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/
 
 example code, generic forward thinking stuff : https://github.com/phosphorjs/
 
@@ -88,4 +83,4 @@ x "what is typescript" - intro? -  http://www.ongraph.com/blog/what-is-typescrip
 
 arrow functions and functions: http://executeautomation.com/blog/working-with-functions-anonymous-and-arrow-functions-in-typescript/
 
-nice overview of let, const, var: http://www.brainbell.com/typescript/data-types-let-var-cons.html
+x nice overview of let, const, var: http://www.brainbell.com/typescript/data-types-let-var-cons.html
