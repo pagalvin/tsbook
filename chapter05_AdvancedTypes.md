@@ -7,7 +7,7 @@ TypeScript provides other more advanced typing support that you may have come ac
 
 <div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:30%; font-size: 10px">
 <b><i>A Note About Generics</i></b><br/>
-Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the Don't Repeat Yourself (DRY) principle. If you aren't familiar with DRY, here's one place you could start: http://deviq.com/don-t-repeat-yourself/
+Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the Don't Repeat Yourself (DRY) principle. If you aren't familiar with DRY, here's one place you could start: <a href="http://deviq.com/don-t-repeat-yourself/">http://deviq.com/don-t-repeat-yourself/</a>
 <br/>
 Although generics are part of the type system, the tend to go hand in hand with classes, so we'll hold off on describing them until chapter 10 after you've had a chance to read about and digest TypeScript classes.
 </div>
@@ -126,7 +126,7 @@ It's a very simple change to make, but it's quite difficult to find all the plac
 
 Contrast this with TypeScript:
 
-<iframe width="728" height="408" src="https://www.youtube.com/embed/fNtcCTeMAhQ" frameborder="0" allowfullscreen></iframe>
+<iframe align="middle" width="728" height="408" src="https://www.youtube.com/embed/fNtcCTeMAhQ" frameborder="0" allowfullscreen></iframe>
 
 (Depending on how you're reading the book, you may not be able to see the video. In that case, [try clicking here](https://youtu.be/fNtcCTeMAhQ) or use the following URL in your favorite web browser: https://youtu.be/fNtcCTeMAhQ)
 
@@ -253,7 +253,7 @@ Notice the `extends` keyword. I'm defining a new interface, `userProfileResponse
 
 Here's another 40 second video that shows this visually.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oK3MpqhrVOo" frameborder="0" allowfullscreen></iframe>
+<iframe align="middle" width="560" height="315" src="https://www.youtube.com/embed/oK3MpqhrVOo" frameborder="0" allowfullscreen></iframe>
 
 (Depending on how you're reading the book, you may not see the video. In that case, try [clicking here](https://www.youtube.com/watch?v=oK3MpqhrVOo&feature=youtu.be) or go to YouTube directly in your web browser: https://youtu.be/oK3MpqhrVOo.)
 
@@ -436,7 +436,7 @@ function move(inDirection: "left" | "up" | "down" | "up") {
 
 This bit of code defines a function, "move" that takes a single parameter, "inDirection." Intellisense ensures that you don't try to pass in an invalid direction, like "sideways." Here's a short video demonstrating that.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lfAa1-b-sng" frameborder="0" allowfullscreen></iframe>
+<iframe align="middle" width="560" height="315" src="https://www.youtube.com/embed/lfAa1-b-sng" frameborder="0" allowfullscreen></iframe>
 
 (If you can't see the video, try [clicking here](https://youtu.be/lfAa1-b-sng). Or, open your preferred web browser and go to it directly: https://youtu.be/lfAa1-b-sng)).
 
