@@ -1,15 +1,30 @@
 Wrap-up checklist:
-- Would like a picture of a nothingburger. I can do that.
-    Add to chapter 3.
-- Chapter 3 videos:
-    1: Plain JS debugging
-    2: Video: transpiled debugging, no map file
-    3: Video: transpiled debugging, with a map file
+- Chapter 1, roadmap
+    done!
+- Chapter 2, gloss overs
+    done!
+- Chapter 3
+    Videos:
+        1: Plain JS debugging
+        2: Video: transpiled debugging, no map file
+        3: Video: transpiled debugging, with a map file
+    - Would like a picture of a nothingburger. I can do that.
 - Chapter 4, introducing types:
     done!
 - Chapter 5, advanced types
-    - consider adding a video showing enumerations
-
+    done!
+- chapter 6, template strings
+    write it!
+- chapter 7, functions:
+    final review
+- chapter 8, intro to classes
+    final review
+- chapter 9, classes in depth   
+    final review
+- chapter 10, generics
+    final review
+- chapter 98, continue learning 
+    write it!
 
 
 ========================================
