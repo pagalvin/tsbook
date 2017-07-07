@@ -77,35 +77,6 @@ Use the question mark (?) to denote an optional parameter.
 
 At run-time, client code invokes the function as normal. If that code does not supply a value for the optional parameter, its value is `undefined`.
 
-<hr/>
-<div style="margin:auto; border:1px solid; padding: 5px; width:80%; font-size: 12px">
-    <div><i style="margin:auto; font-size: 14px;">Regarding Optional Parameters</i></div>
-    <div>
-        <p>
-        Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
-        </p>
-<pre style="font-family:courier">
-...
-InitializeSeedData();
-...
-</pre>
-        <p>
-            And then later on:
-        </p>
-<pre style="font-family:courier">
-...
-InitializeSeedData({someSeedDataObject});
-...
-</pre>
-        <p>
-            Most developers will find this confusing to follow.<br/>
-            <br/>
-            Optional parameters are best used when writing interfaces to describe data structures and/or 3rd party libraries over which you have no control.
-        </p>
-    </div>
-</div>
-<hr/>
-
 ### Default Parameter Values
 
 You can specify a default value for your function's parameters. Here's the previous example re-written to show this syntax and discuss the implication of using it:
