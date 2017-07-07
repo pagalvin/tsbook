@@ -64,7 +64,6 @@ class Bus3 {
 
     constructor(routeNumber: number) {
         this.myRouteNumber = routeNumber;
-        
         this.myRunCost = this.calculateRunCost(30, 1.95); // Allowed - objects may invoke their own private functions
     }
 
@@ -75,9 +74,7 @@ class Bus3 {
     private calculateRunCost(forDistance: number, fuelCostPerMile: number): number {
         // Logic goes here to calculate cost for this bus to run this route.
         // This function is invisible to client objects.
-
         return 0; // Method signature requires us to return some numeric value to avoid syntax error.
-
     }
 
 }
@@ -119,9 +116,8 @@ As you can see, TypeScript creates an Immediately Invoked Function Expression (I
 
 In addition, it also shows that TypeScript can't always enforce privacy the same way that C# and Java can.  At the end of the day, you're working with JavaScript and you do anything that JavaScript lets you do. This means access object properties using bracket notation.
 
-## Accessor (Getters and Setters)
-
-TypeScript provides syntax to create Accessors, often called "getters" and "setters"[astleastido]. These are functions that look and feel a lot like properties but are, in fact, functions. Client code uses them just like it uses any other property, Here's a very simple example:
+## Accessors (Getters and Setters)
+TypeScript provides syntax to create Accessors, often called "getters" and "setters". These are functions that look and feel a lot like properties but are, in fact, functions. Client code uses them just like it uses any other property, Here's a very simple example:
 
 ```TypeScript
 class Bus4 {
@@ -132,7 +128,6 @@ class Bus4 {
     public get SeatingCapacity() { return this._mySeatingCapacity;}
 
     constructor() {
-
     }
 }
 
@@ -163,7 +158,7 @@ theBus.SeatingCapacity = 80;
 console.log("Seating capacity:", theBus.SeatingCapacity);
 ```
 
-If all you want to do is wrap a public getter and setter around a private property, it's hardly worth the trouble[dontwrap] - and indeed can be misleading. Here's a more comprehensive example showing how a getter can perform a more meaningful calculation.
+If all you want to do is wrap a public getter and setter around a private property, it's hardly worth the trouble[^1] - and indeed can be misleading. Here's a more comprehensive example showing how a getter can perform a more meaningful calculation.
 
 ```TypeScript
 class Bus5 {
@@ -190,21 +185,25 @@ class Bus5 {
         this._myTotalPassengers =  totalPassengers;
         this._myTotalRouteDistance = routeDistance;
     }
-
 }
 
 const myBus5: Bus5 = new Bus5(148, 12.50, 72, 80);
 myBus5.SeatingCapacity = 80;
 
 console.log("My total cost per rider:", myBus5.CostPerRider)
-
 console.log("Cost per rider with 80 riders: ", new Bus5(148, 12.50, 80, 50).CostPerRider)
 
 ```
 
 This examples shows a getter, `CostPerRider`. When client code refers to the CostPerRider, it calculates a value at run-time by taking into account distance, cost per mile and total riders. It then returns that value. 
-
-[[ sidebar here: want to be careful about doing something here that takes a long time to run. client code should not have to worry about simply accessing a property causing a performance hit. Angular 1.x is particularly prone to calling many, many times so could be a huge bottleneck.]]
+<div style="margin:auto; width:50%">
+    <hr/>
+    <div><i style="margin:auto;">A Note Regarding Accessors and Performance</i></div>
+    <div>
+        Be wary of long-running accessors. Some frameworks, such as Angular 1.x, use two-way binding to keep the UI in sync with the back end data. If you bind a field in your Angular template to a long-running accessor, your users won't be wishing you a happy birthday.
+    </div>
+    <hr/>
+<div>
 
 ## Use Interfaces to Define Constructor Arguments
 
@@ -226,10 +225,9 @@ There are at least two problems with this approach:
 1. It requires public properties. This means that they can be changed after they've been initialized and that can lead to pernicious side effects.
 2. If you add a new public property, IDEs can't easily tell you everywhere you need to change the code to initialize it.
 
-Consider the second point. Let's say you have a non-trivial Bus management solution and you're instantiating Bus objects in multiple modules in the solution. One day, you realize you need to model a new property, `StandardRouteTime` (to record how long a particular bus route should take from start to finish). It's easy to update the class definition and and likewise easy enough to update any given bit of code that creates a new instance of the bus object. However, it can be hard to find every place that you need to change. Interfaces help solve this, as shown in the following bit of code:
+Consider the second point. Let's say you have a non-trivial Bus management solution and you're instantiating Bus objects in multiple modules in the solution. One day, you realize you need to model a new property, `StandardRouteTime` to record how long a particular bus route should take from start to finish. It's easy to update the class definition and and likewise easy enough to update any given bit of code that creates a new instance of the bus object. However, it can be hard to find every place that you need to change. Interfaces help solve this, as shown in the following bit of code:
 
-```
-
+```TypeScript
 interface Bus6Args {
     routeNumber: number;
     routeDistance: number;
@@ -238,7 +236,6 @@ interface Bus6Args {
 }
 
 class Bus6 {
-
     private _myTotalPassengers: number;
     private _myCostPerMile: number;
     private _myTotalRouteDistance: number;
@@ -261,14 +258,12 @@ class Bus6 {
         this._myTotalPassengers =  args.totalPassengers;
         this._myTotalRouteDistance = args.routeDistance;
     }
-
 }
 
 const myBus4: Bus6 = new Bus6({routeDistance: 44, costPerMile: 12.50, routeNumber: 148, totalPassengers: 72});
 myBus4.SeatingCapacity = 80;
 
 console.log("My total cost per rider:", myBus4.CostPerRider)
-
 console.log("Cost per rider with 80 riders: ", new Bus6({routeDistance: 44, routeNumber: 148, costPerMile: 12.50, totalPassengers: 80}).CostPerRider)
 ```
 
@@ -276,8 +271,6 @@ This code is better for at least three important reasons:
 1. Clarity
 2. Long-term maintenance
 3. Better information hiding
-
-**video: chapter 10 class in depth, showing the clarity/long-term maintenance/info hiding feature.
 
 ### Clarity
 
@@ -301,7 +294,7 @@ Recall the scenario from above - complex Bus management system with many modules
 2. Update the constructor and class business logic to make use of the property
 3. Compile all the code.
 
-The first time you do this, the TypeScript compiler will report  an error everywhere you've instantiated a new Bus object since all of your constructor arguments will be missing the new property. This gives you a comprehensive checklist of every place you need to account for this new property[longsincepast].
+The first time you do this, the TypeScript compiler will report  an error everywhere you've instantiated a new Bus object since all of your constructor arguments will be missing the new property. This gives you a comprehensive checklist of every place you need to account for this new property[^2].
 
 ## Classes and Interfaces
 
@@ -311,7 +304,7 @@ Many common software design patterns find their best implementation rooted in in
 
 So far, we've used interfaces to define the "shape" of data. We can also use interfaces to define the shape - the required properties - of a class. Let's step away from Buses for the moment and think instead about a product recommendation engine. Imagine that you have a database of clothing products such as pants, shirts, jackets, shoes, sneakers, etc. You've created a nice search screen that allows users to state a preferred color and price range. You want to iterate over all of your products and show anything that meets the user's preferences.
 
-We can easily model these products as classes and if we're careful about it, we can make sure that each class includes a `color` and `price` property. This would then allow us to iterate over a collection of these objects and recommend them based on the user's preferences. Taking this approach, we might come up with a model like this:
+We can easily model these products as classes and if we're careful about it, we can make sure that each class includes a `color` and `price` property. This would then allow us to iterate over a collection of these objects and recommend them based on the user's preferences. Taking this approach, we might come up with a models like these:
 
 ```TypeScript
 class Shirt {
@@ -344,7 +337,6 @@ Each of the three classes has `color` and `price` and this lets us write some co
 const allProducts: any[] = [].concat(new Shirt(), new Shirt(), new Pants(), new Shoe(), new Pants(), new Shirt());
 
 const Recommend = function(minPrice, maxPrice, requestedColor) {
-
     return allProducts.reduce(function(prev, curr) {
         if ((curr["color"] === requestedColor) ||
             (curr["price"] >= minPrice && curr["price"] <= maxPrice)) {
@@ -447,13 +439,15 @@ const RecommendedItems = GetRecommended(10, 20, "blue");
 console.log("Recommended for min/max price of 10/20 and color = blue:", Recommend(10, 20, "blue"));
 ```
 
-[[ add a video here showing how this builds up ]]
-**video: classes in depth: show the build-up of a class that implements an interface.
-
 This code has many advantages over the earlier, non-interface style approach:
 - `allRecommendableProducts` contains a collection of objects (`IRecommendable[]`) each of which is guaranteed to hold a `price` and `color` property.
 - If we try to add another object, such as `ProductDisplay` to that collection, the IDE will warn us that it does not meet the interface requirements of the collection's objects. This means that our code can safely assume the object properties are present.
 - We can reference the color and price properties using dot notation inside the reduce function. In fact, the IDE even gives helpful intellisense hints.
+
+Here's a video showing the whole thing:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/97u6yaGJ1T4" frameborder="0" allowfullscreen></iframe>
+
+(If you can't see the video, [try clicking here](https://youtu.be/97u6yaGJ1T4) or type this URL into your web browser: https://youtu.be/97u6yaGJ1T4.)
 
 ### Classes, Interfaces and Methods
 
@@ -488,13 +482,10 @@ class Fidget implements StandardProduct, SecuredFieldsItem {
     constructor() {};
 
     public GetAllowedFieldNames(requestedByRole: string) : string[] {
-
         const minFields = ["name", "weight", "recommendedAge", "description", "inventory"];
-
         if (requestedByRole === "Price Admin") {
             return minFields.concat("cost");
         }
-
         return minFields;
     }
 }
@@ -509,19 +500,14 @@ class HotItem implements StandardProduct, SecuredFieldsItem {
     constructor() {};
 
     public GetAllowedFieldNames(requestedByRole: string) : string[] {
-
         const minFields = ["name", "description", "features"];
-
         let allFields = minFields;
-
         if (requestedByRole === "Price Admin") {
              allFields = allFields.concat("cost");
         }
-
         if (requestedByRole === "Inventory Admin") {
              allFields = allFields.concat("inventory");
         }
-
         return allFields;
     }
 }
@@ -579,8 +565,6 @@ Finally, the helper function `getFormattedCsvRow` generates a properly formatted
 ## Inheritance
 
 Like Java and C#, TypeScript supports hierarchical class structures. This allows you to incrementally build complex classes by starting with a minimal "base" class and then extending it to a new class. This new extended class is said to *inherit* the functionality of its base class. "Extend" means to add new class members (properties and/or methods). 
-
-[sidebar: be careful about extending, favor composition over inheritance, etc.]
 
 Let's demonstrate inheritance by means of US residency models. In this case, "resident" means a person living permanently or temporarily in the US.  
 
@@ -648,8 +632,6 @@ This model introduces new syntax, the `extends` keyword:
 ```TypeScript
 class TemporaryResident extends Resident {
 ```
-[sidebar: note that the actual Resident class has to be defined. The editor may well work jus fine and give you happy intellisense. However, if you don't bundle everything up correctly, you'll end up with a hard to find runtime error.]
-
 This means that `TemporaryResident` shares the same members as `Resident`. In this case, it's both the `_name` property, as well as the Resident's constructor.
 
 Any class that extends another must always invoke the extended class' constructor via a call to `super`:
@@ -663,8 +645,6 @@ Any class that extends another must always invoke the extended class' constructo
 ```
 
 As you can see, it doesn't need to have the same signature as the extended class. `TemporaryResident` takes three parameters. It passes one of those, `name`, to its extended class' constructor via the `super(name)` call.
-
-[[sidebar: super comes from the super/sub-class lingo. java is super() I think and c# is base(). Something like that.]]
 
 Lets round out the example with one more model, a U.S. Citizen:
 
@@ -684,7 +664,11 @@ class USCitizen extends Resident {
 
 Just like a `TemporaryResident`, the `USCitizen` class shares the same class members as `Resident`. It uses the `extend` keyword to define its parent class. `USCitizen`'s constructor invokes its parent class' constructor, passing in the name: `super(birthCity)`.
 
-**video, chapter 10 class in depth, showing the cool inheritance stuff
+Here's a full featured video that demonstrates this in great detail:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-P1uYVlYEc4" frameborder="0" allowfullscreen></iframe>
+
+If you can't see the video, [try clicking this link](https://youtu.be/-P1uYVlYEc4) or type this URL into your web browser: https://youtu.be/-P1uYVlYEc4).
 
 ## Hiding and Exposing Class Members
 
@@ -698,13 +682,9 @@ This bit of code should help clarify matters:
 
 ```TypeScript
 class BaseClass {
-
     private _myPrivateProperty: string = "No one can see me except BaseClass.";
-
     protected _myProtectedProperty: string = "Extended classes can see me.";
-
     public MyPublicProperty: string = "Anyone can see and manipulate me.";
-
 }
 
 class ExtendedBaseClass extends BaseClass {
@@ -720,13 +700,10 @@ class ExtendedBaseClass extends BaseClass {
 
         // Public property values can always be accessed within and outside of the class.
         this.MyPublicProperty = "I can also change this value.";
-
     }
-
 }
 
 const myExtendedClass = new ExtendedBaseClass();
-
 myExtendedClass.MyPublicProperty = "Set directly on the class via client code.";
 
 // Error:
@@ -758,17 +735,14 @@ interface Activatable {
 }
 
 class NaiveBase {
-
     private _myName: string;
     public get Name() { return this._myName; }
-
     constructor (name: string) {
         this._myName = name;
     }
 }
 
 class NaiveArmyBase extends NaiveBase implements Activatable{
-
     private _totalSolders: number;
     public get TotalSolders() { return this._totalSolders; }
 
@@ -783,7 +757,6 @@ class NaiveArmyBase extends NaiveBase implements Activatable{
 }
 
 class NaiveNavyBase extends NaiveBase implements Activatable {
-
     private _totalShips: number;
     public get TotalShips() { return this._totalShips; }
 
@@ -808,7 +781,7 @@ By now, this is pretty straight-forward. A `NaiveBase` class holds a private pro
 
 Both the army an navy base classes implement the `Activatable` interface, albeit in this example, each class' `ActiveSelf()` method simply throws an exception.
 
-There is a problem with this modelling approach: there's no such thing as plain vanilla NaiveBase. Players never create vanilla base, they always create a specific kind of base.
+There is a problem with this modelling approach: there's no such thing as plain vanilla NaiveBase. Players never create vanilla bases, they always create a specific kind of base. However, there's nothing stopping the code from doing that.
 
 There's another problem here as well. This approach forces us to implement the `Activatable` interface on every class. We could implement it on the base class, but that just compounds the first problem - now we've implemented an interface on a class we should never instantiate.
 
@@ -820,7 +793,6 @@ interface Activatable {
 }
 
 abstract class AbstractBase implements Activatable{
-
     private _myName: string;
     public get Name() { return this._myName; }
 
@@ -829,11 +801,9 @@ abstract class AbstractBase implements Activatable{
     }
 
     abstract ActivateSelf(): void;
-
 }
 
 class ArmyBase extends AbstractBase {
-
     private _totalSolders: number;
     public get TotalSolders() { return this._totalSolders; }
 
@@ -848,7 +818,6 @@ class ArmyBase extends AbstractBase {
 }
 
 class NavyBase extends AbstractBase {
-
     private _totalShips: number;
     public get TotalShips() { return this._totalShips; }
 
@@ -864,7 +833,6 @@ class NavyBase extends AbstractBase {
 
 const armyBase = new ArmyBase("First army base", 100);
 const navyBase = new NavyBase("First navy base", 3);
-
 const anotherArmyBase: Activatable = new ArmyBase("Second army base", 250);
 
 // Compiler throws an error - abstract classes can not be instantiated:
@@ -901,11 +869,13 @@ const activatableNavyBase = <Activatable> navyBase;
 
 Let's put it all together in a video:
 
-**video, chapter 10 class in depth,  showing abstract classes
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ska4WEeG3pM" frameborder="0" allowfullscreen></iframe>
 
-# Summarizing Classes
+(If you can't view that video, [try clicking tis link](https://youtu.be/ska4WEeG3pM) or typing this url into your web browser: https://youtu.be/ska4WEeG3pM.)
 
-The previous chapter gave you a sip and this chapter turned on the firehose.
+# Summary
+
+The previous chapter gave you a sip and this chapter turned on the fire hose.
 
 Use interfaces to define both the shape of data and the shape of classes. In this case, "shape" means required class members (both methods and properties). 
 
@@ -913,12 +883,12 @@ Classes _implement_ interfaces. Classes may implement multiple interfaces.
 
 TypeScript allows you to create hierarchies. A class can _extend_ another class and it, in turn, may be extended. A given class can only extend one other class. 
 
-A special kind of class, the _Abstract Class_, can never be instantiated but otherwise look and feel the same as non-abstract classes. Abstract classes can (and often do) implement interfaces and they can even define concrete members (properties and methods). 
+A special kind of class, the _Abstract Class_, can never be instantiated but otherwise looks and feel the same as non-abstract classes. Abstract classes can (and often do) implement interfaces and they can even define concrete members (properties and methods). 
 
 We're nearly done with classes. The next chapter provides te final word on classes, as well as introducing the final bit of typing TypeScript offers - Generics.  
 
-[^astleastido]: At least, I tend to call them that :).
+<hr/>
 
-[^dontwrap]: Get accessors well-used when you want to make a property available to client code but you don't want to let that client code edit the value. In this case, you'd define a private variable paired with its own Get accessor but no Set accessor.    
+[^1]: Get accessors are well-used when you want to make a property available to client code but you don't want to let that client code edit the value. In this case, you'd define a private variable paired with its own Get accessor but no Set accessor. Don't create a private variable and then pair it with a public getter *and* setter. In that case, you may as well just keep it public.
 
-[^longsincepast]: Since you're still reading at this point, it's probably safe to say that you're satisfied that TypeScript is pretty useful. If you're still on the fence, consider how you'd address this same issue with plain JavaScript. If you needed to make a change of this nature, it would be much more difficult to achieve given that you can't get the same kind of great tooling support. You can't force a syntax error the same way. You have to rely on global search and/or find/replace. Not very fun.
+[^2]: Since you're still reading at this point, it's probably safe to say that you're satisfied that TypeScript is pretty useful. If you're still on the fence, consider how you'd address this same issue with plain JavaScript. If you needed to make a change of this nature, it would be much more difficult to achieve given that you can't get the same kind of great tooling support. You can't force a syntax error the same way. You have to rely on global search and/or find/replace. Not very fun.
