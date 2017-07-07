@@ -173,8 +173,15 @@ const gamePlayerHelper = new DBHelper<GamePlayer>();
 
 When working with generics, we supply type parameters via angle brackets: `DBHelper<GameState>` and `DBHelper<GamePlayer>`. TypeScript replaces the `T` parameter in the `DBHelper` class with `GameState` and `GamePlayer` respectively. 
 
-**video: demonstrate that generic stuff above
- 
+# Further Reading
+- I wrote a lengthy blog post describing how to use generics to implement a binary search. You can read that here: nerics-with-useful-refactorings-a4bcda932d7.
+
+- Of particular interest to React developers, this article describes how to use default values with generics: https://blog.mariusschulz.com/2017/06/02/typescript-2-3-generic-parameter-defaults. Note that it's written in the context of a React application but the feature is not tied to React.
+
+# Summary
+Generics provide
+
+This chapter on generics brings the main body of of _Yet Another TypeScript Book_ to a close. The next chapter suggests some additional reading and videos that you may find of interest 
 
 
 
