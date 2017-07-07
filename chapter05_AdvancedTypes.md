@@ -5,7 +5,7 @@ We're going to start off this chapter by introducing TypeScript _interfaces_. Th
 
 TypeScript provides other more advanced typing support that you may have come across in C# and Java. This chapter covers some of them, including:
 
-<div style="float:right; margin-left: 15px; border: 1px solid; width:25%; font-size: 10px">
+<div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:30%; font-size: 10px">
 <b><i>A Note About Generics</i></b><br/>
 Generics offer a very powerful data typing capability. They look and act a lot like generics in C# and are a very effective tool helping you adhere to the Don't Repeat Yourself (DRY) principle. If you aren't familiar with DRY, here's one place you could start: http://deviq.com/don-t-repeat-yourself/
 <br/>
@@ -296,7 +296,6 @@ function parseResult(resultDetails: SomeInterface, resultCode: HttpStatusCodes) 
     else if (resultCode === HttpStatusCodes.FORBIDDEN) {
         login();
     }
-
     else {
         processOtherError(resultCode, resultDetails);
     }
@@ -307,19 +306,15 @@ Many languages provide a similar enum syntax and if you've worked with one (like
 
 As with everywhere else in TypeScript, a good IDE supports enumerations with intellisense.
 
-**video: chapter 8, misc types: quick video showing enumerations.
-
-The above example shows that you can match a text label with an arbitrary integer value. Sometimes, you don't care about the value. You just want the convenience of a human-readable label to use in your code. In that case, you can define an initial value and the compiler will increment it for you behind the scenes:
+The snippet above example shows that you can match a text label with an arbitrary integer value. Sometimes, you don't care about the value. You just want the convenience of a human-readable label to use in your code. In that case, you can define an initial value and the compiler will increment it for you behind the scenes:
 
 ```TypeScript
-
 enum Direction {
     Up = 1,
     Down,
     Left,
     Right
 }
-
 ```
 
 In this case, Down, Left and Right are assigned the values 2, 3 and 4 respectively.
@@ -350,7 +345,6 @@ function parseResult(resultCode: HttpStatus) {
     else {
         console.log("Some other response");
     }
-
 }
 ```
 
@@ -380,8 +374,8 @@ function parseResult(resultCode) {
 
 As you can see, TypeScript wraps the enum inside its own Immediately Invoked Function Expression (IIFE) and lives on as a code artifact. Most of the time, this isn't useful. You can skip the code generation and instead declare the enum as `const`:
 
-<div style="float:right; width: 33%">
-<h4>Prefer Const Enums</h4>
+<div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:30%; font-size: 10px">
+<h5>Prefer Const Enums</h5>
 <p>
     You should normally prefer to use const enums. There are probably some good use cases for non-const enums but you almost certainly won't encounter them in your first weeks and months with the language, if at all. Const enums generate less code and that generated code is as easy to understand as the non-const generated code.
 </p>
@@ -430,10 +424,6 @@ function parseResult(resultCode) {
 
 It even puts in some helpful comments describing the the meaning of "403" or "200" if you find yourself digging into the generated JS.
 
-### Even More Depth to Enumerations
-
-TypeScript provides more sophisticated support for enums. You are not limited to assigning integers and in fact, you can assign values that are computed at runtime. This is best explained by the TypeScript language handbook web site here: [https://www.typescriptlang.org/docs/handbook/enums.html](https://www.typescriptlang.org/docs/handbook/enums.html)
-
 ## Union Types
 
 Union Types allow you to create a define a new entity that is comprised of multiple types or even values. Here's a simple example:
@@ -450,7 +440,7 @@ This bit of code defines a function, "move" that takes a single parameter, "inDi
 
 (If you can't see the video, try [clicking here](https://youtu.be/lfAa1-b-sng). Or, open your preferred web browser and go to it directly: https://youtu.be/lfAa1-b-sng)).
 
-This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lower level "move" function). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, calculateCollectionTotal. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
+This isn't a particularly great example since in cases like this, you would probably use an enumeration instead or split it out into five functions (moveLeft, moveRight, moveUp, moveDown and lower level "move" function). For a better use case, let's consider legacy code. Let's say you have built a library of JavaScript utility functions and you want to start using that library with a TypeScript project. Your library has a function, `calculateCollectionTotal`. This function takes in an array of objects and as long as they share a common field in common, "Total", it will add them all up and return the result. Here's what that might look like:
 
 ```JavaScript
 function calculateCollectionTotal(itemCollection) {
@@ -489,20 +479,23 @@ The following articles provide alternative and/or a deeper dive into the topics 
 - This article plus video covers pretty much the same ground as I do with interfaces above, with but with a lot fewer words :). http://tech.queryhome.com/153271/what-is-interface-in-typescript?utm_source=dlvr.it&utm_medium=twitter
 - A lengthy article that talks about using interfaces and unions to model data:  https://www.triplet.fi/blog/different-approaches-to-modeling-data-with-typescript/
 - TypeScript 2.4 (which came out just as I was finished version 1.0 of this book) introduces string enums! You can read about them straight from Microsoft's blog: https://blogs.msdn.microsoft.com/typescript/2017/06/12/announcing-typescript-2-4-rc/. That blog is a very good source and you should keep an eye on it regularly.
-
-
-
+- TypeScript provides more sophisticated support for enums. You are not limited to assigning integers and in fact, you can assign values that are computed at runtime. This is best explained by the TypeScript language handbook web site here: [https://www.typescriptlang.org/docs/handbook/enums.html](https://www.typescriptlang.org/docs/handbook/enums.html)
 
 # Summary and Recap
 
+This chapter introduced interfaces for the first time in their capacity as data describers. Interfaces may be empty, they can describe a collection of primitive values (number, string, etc.). You can create one interface and extend it to another. They can represent nested objects, including deeply nested objects such as overly complex SharePoint JSON payloads.
+
+You also read about enumerations and union types. Both of these help make programmer intent clear and help you avoid making mistakes in your code by ensuring that only certain types of values or objects can be passed into functions.
+
+We're going to pause from heady subjects and diverge into template strings next. It's a nice and simple subject before we get into classes.
 
 ---
 
 [^1]: If you aren't familiar with this SOLID acronym, it's probably worth your time checking it out. [This scotch.io write-up is a good start](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) (https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design). 
 
-[^2]: Empty interfaces aren't typically all that useful, but this article on binary searches in TypeScript provides one: https://blog.hellojs.org/implement-binary-search-in-typescript-using-generics-with-useful-refactorings-a4bcda932d7. This one may be a little on the complex side given where we are in the book, but it's worth coming back to once you finished.
+[^2]: Empty interfaces aren't typically all that useful, but this article on binary searches in TypeScript provides one: https://blog.hellojs.org/implement-binary-search-in-typescript-using-generics-with-useful-refactorings-a4bcda932d7. This one may be a little on the complex side given where we are in the book, but it's worth coming back to once you finish.
 
-[^3]: There are a ridiculous number of ways to clone JavaScript objects. The approach I used in these examples comes from this celver blog post: http://heyjavascript.com/4-creative-ways-to-clone-objects/
+[^3]: There are a ridiculous number of ways to clone JavaScript objects. The approach I used in these examples comes from this clever blog post: http://heyjavascript.com/4-creative-ways-to-clone-objects/
 
 [^4]: It's pretty obvious that a property named "TotalPages" would be numeric. However, as this chapter progresses, you'll see how interface show developer intent when describing a less obvious properties.
 
