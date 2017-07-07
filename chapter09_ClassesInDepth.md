@@ -883,6 +883,11 @@ Let's put it all together in a video:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ska4WEeG3pM" frameborder="0" allowfullscreen></iframe>
 
 (If you can't view that video, [try clicking tis link](https://youtu.be/ska4WEeG3pM) or typing this url into your web browser: https://youtu.be/ska4WEeG3pM.)
+
+#Further Reading
+
+- I wrote a blog post that combines unions, Rest parameters and interfaces (wrapped inside class) that implements a general purpose logger function: https://blog.hellojs.org/simple-javascript-logger-in-typescript-demonstrating-interfaces-union-types-and-rest-parameters-6efc5aee2c97
+
 # Summary
 The previous chapter gave you a sip and this chapter turned on the fire hose.
 
