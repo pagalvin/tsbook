@@ -112,6 +112,10 @@ Here they are:
 - An old "anti-TypeScript" article from 2014. It's actually a bit hard to find "TS is Bad" articles, but I wanted to include at least one thoughtful example and this is it: http://walkercoderanger.com/blog/2014/02/typescript-isnt-the-answer/
 - Another software dev team explaining their decision to use TypeScript:  https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0
 
+# Copyright
+
+© 2017 Paul Galvin.
+
 # Moving On
 
 That's it's for the fluffies. The next chapter discusses some out of scope topics so that you don't get your hopes up for things not covered here in the book.
