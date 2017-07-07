@@ -1,5 +1,4 @@
 # Classes In Depth
-
 This chapter covers TypeScript classes in more depth, including:
 - More on public and private methods and properties
 - Accessors (Getters and Setters)
@@ -10,9 +9,7 @@ This chapter covers TypeScript classes in more depth, including:
 - Abstract classes: Define templates with minimum standards of functionality
 
 As you'll see, TypeScript supports classes in mach the same way as C#, Java and other class oriented languages.
-
 ## Public, Private and Generated JavaScript
-
 The bus example from the previous chapter shows both public and private class members (`SayRoute` and `myRouteNumber` respectively). You can declare both methods and properties as public or private. Here's a slightly more complex example showing a private method and public property:
 
 ```TypeScript
@@ -26,7 +23,8 @@ class Bus {
     constructor(routeNumber: number) {
         this.myRouteNumber = routeNumber;
         
-        this.myRunCost = this.calculateRunCost(30, 1.95); // Allowed - objects may invoke their own private functions
+        // Next line is allowed - objects may invoke their own private functions
+        this.myRunCost = this.calculateRunCost(30, 1.95); 
     }
 
     public SayRoute() {
@@ -43,13 +41,12 @@ class Bus {
 const myBus = new Bus(999);
 myBus.SeatingCapacity = 80;
 
-console.log(myBus.calculateRunCost(30, 1.95)); // Edit-time error since "calculateRunCost" is private
+// Edit-time error since "calculateRunCost" is private
+console.log(myBus.calculateRunCost(30, 1.95)); 
 ```
 
 The code defines a new public property, `SeatingCapacity`. Since it's public, client functions may both read (get) it and write (set) it. Client functions may not invoke the private method, `calculateRunCost`. However, the constructor is allowed to invoke calculateRunCost since they both belong to the same object.
-
 ### Transpiled Objects and Implications Thereof
-
 It's important to remember that TypeScript eventually compiles down to JavaScript. Let's correct the TypeScript syntax error and show the resulting JavaScript.
 
 TypeScript Bus Object:
@@ -115,7 +112,6 @@ As you can see, TypeScript creates an Immediately Invoked Function Expression (I
 - Two prototype methods, "SayRoute" and "calculateRunCost".
 
 In addition, it also shows that TypeScript can't always enforce privacy the same way that C# and Java can.  At the end of the day, you're working with JavaScript and you do anything that JavaScript lets you do. This means access object properties using bracket notation.
-
 ## Accessors (Getters and Setters)
 TypeScript provides syntax to create Accessors, often called "getters" and "setters". These are functions that look and feel a lot like properties but are, in fact, functions. Client code uses them just like it uses any other property, Here's a very simple example:
 
@@ -204,9 +200,7 @@ This examples shows a getter, `CostPerRider`. When client code refers to the Cos
     </div>
     <hr/>
 <div>
-
 ## Use Interfaces to Define Constructor Arguments
-
 In the previous example, the Bus5 object's constructor takes four numeric arguments as input:
 ```
 const myBus5: Bus5 = new Bus5(148, 12.50, 72, 80);
@@ -220,7 +214,7 @@ myBus5.RouteNumber = 148;
 myBus5.CostPerMile = 12.50;
 myBus5.TotalPassengers = 72;
 myBus5.RouteDistance = 55;
-
+```
 There are at least two problems with this approach:
 1. It requires public properties. This means that they can be changed after they've been initialized and that can lead to pernicious side effects.
 2. If you add a new public property, IDEs can't easily tell you everywhere you need to change the code to initialize it.
@@ -260,24 +254,33 @@ class Bus6 {
     }
 }
 
-const myBus4: Bus6 = new Bus6({routeDistance: 44, costPerMile: 12.50, routeNumber: 148, totalPassengers: 72});
-myBus4.SeatingCapacity = 80;
+const myBus6: Bus6 = new Bus6(
+        {routeDistance: 44,
+         costPerMile: 12.50,
+         routeNumber: 148, 
+         totalPassengers: 72});
 
-console.log("My total cost per rider:", myBus4.CostPerRider)
-console.log("Cost per rider with 80 riders: ", new Bus6({routeDistance: 44, routeNumber: 148, costPerMile: 12.50, totalPassengers: 80}).CostPerRider)
+myBus6.SeatingCapacity = 80;
+
+console.log("My total cost per rider:", myBus6.CostPerRider)
+console.log("Cost per rider with 80 riders: ", 
+    new Bus6({routeDistance: 44, routeNumber: 148, costPerMile: 12.50, totalPassengers: 80})
+    .CostPerRider)
 ```
 
 This code is better for at least three important reasons:
 1. Clarity
 2. Long-term maintenance
 3. Better information hiding
-
 ### Clarity
-
 The code defines an interface, `Bus6Args`. The class constructor then takes an argument of type Bus6Args. This allows us to write a line of code like this:
 
 ```TypeScript
-const myBus6: Bus6 = new Bus6({routeDistance: 44, costPerMile: 12.50, routeNumber: 148, totalPassengers: 72});
+const myBus6: Bus6 = new Bus6(
+    {routeDistance: 44,
+     costPerMile: 12.50, 
+     routeNumber: 148, 
+     totalPassengers: 72});
 ```
 
 This is a lot easier to understand than:
@@ -287,7 +290,6 @@ var myBus6 = new Bus6(44, 12.5, 148, 72);
 ```
 
 It's immediately obvious what each of these four parameters do.
-
 ### Long-term Maintenance
 Recall the scenario from above - complex Bus management system with many modules, thousands or more lines of code and many, many times when the code instantiates a new Bus6 object. To model a new property, follow these simple steps:
 1. Update the class definition to include the new property
@@ -295,13 +297,9 @@ Recall the scenario from above - complex Bus management system with many modules
 3. Compile all the code.
 
 The first time you do this, the TypeScript compiler will report  an error everywhere you've instantiated a new Bus object since all of your constructor arguments will be missing the new property. This gives you a comprehensive checklist of every place you need to account for this new property[^2].
-
 ## Classes and Interfaces
-
 Many common software design patterns find their best implementation rooted in interfaces. In object oriented languages like TypeScript, C# and Java, developers use interfaces to abstract implementation details and to create generic functionality that works against a collection of seemingly disparate classes instead of individual named classes. 
-
 ### Classes, Interfaces and Data
-
 So far, we've used interfaces to define the "shape" of data. We can also use interfaces to define the shape - the required properties - of a class. Let's step away from Buses for the moment and think instead about a product recommendation engine. Imagine that you have a database of clothing products such as pants, shirts, jackets, shoes, sneakers, etc. You've created a nice search screen that allows users to state a preferred color and price range. You want to iterate over all of your products and show anything that meets the user's preferences.
 
 We can easily model these products as classes and if we're careful about it, we can make sure that each class includes a `color` and `price` property. This would then allow us to iterate over a collection of these objects and recommend them based on the user's preferences. Taking this approach, we might come up with a models like these:
@@ -345,7 +343,8 @@ const Recommend = function(minPrice, maxPrice, requestedColor) {
     }, []);
 }
 
-console.log("Recommended for min/max price of 10/20 and color = blue:", Recommend(10, 20, "blue"));
+console.log("Recommended for min/max price of 10/20 and color = blue:", 
+    Recommend(10, 20, "blue"));
 ```
 
 In this code, we build up a random array of products. The code doesn't show it, but you can easily pretend that each object is initialized with appropriate data.
@@ -421,7 +420,13 @@ class Sneaker implements IRecommendable {
 }
 
 const allRecommendableProducts: IRecommendable[] = 
-    [].concat(new Sneaker(), new Sneaker(), new Scarf(), new Sneaker(), new Sneaker(), new Scarf());
+    [].concat(
+        new Sneaker(), 
+        new Sneaker(), 
+        new Scarf(), 
+        new Sneaker(), 
+        new Sneaker(), 
+        new Scarf());
 
 const GetRecommended = function(minPrice, maxPrice, requestedColor) {
 
@@ -448,9 +453,7 @@ Here's a video showing the whole thing:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/97u6yaGJ1T4" frameborder="0" allowfullscreen></iframe>
 
 (If you can't see the video, [try clicking here](https://youtu.be/97u6yaGJ1T4) or type this URL into your web browser: https://youtu.be/97u6yaGJ1T4.)
-
 ### Classes, Interfaces and Methods
-
 In addition to defining data requirements, you can define required methods. Let's explore this in the context of a data export.  You've modeled a collection of products as objects and you want to allow an end user to export those products out to an Excel spreadsheet. Excel works great with comma separated lists, so if your objects can create a comma-separated version of themselves, then it's a piece of cake to export that out and let Excel do its magic.
 
 This wouldn't be very hard to do in a generic way using plain JavaScript, so let's complicate matters a little bit by introducing a bit of security. Some objects contain sensitive information, such as `cost` and you want to restrict access to that property based on the user's role (e.g. "operator", "supervisor", "administrator"). Lastly, we're not only worried about the `cost` property. Some products, but not all, are subject to inventory control measures. In these cases, rather than providing the product's actual inventory-on-hand, we need to show a message, "contact sales."
@@ -531,7 +534,11 @@ function getFormattedCsvRow(sourceItem: SecuredFieldsItem, fieldsToRetrieve: str
 }
 
 // Pretend that these products are initialized with real data.
-const allSecurableProducts = [].concat(new HotItem(), new Fidget(), new Fidget(), new HotItem());
+const allSecurableProducts = [].concat(
+    new HotItem(), 
+    new Fidget(), 
+    new Fidget(), 
+    new HotItem());
 
 const csvOutput = getGeneratedCsv(allProducts, "Inventory Admin");
 ```
@@ -561,9 +568,7 @@ As you can see, GetAllowedFieldsNames has its own independent implementation in 
 It can iterate over disparate products with significantly different properties because they each implement the SecuredFieldsItem interface. Therefore, they will always have the GetAllowedFieldNames method to invoke.
 
 Finally, the helper function `getFormattedCsvRow` generates a properly formatted row of comma separated data based on the current item and the allowed fields.
-
 ## Inheritance
-
 Like Java and C#, TypeScript supports hierarchical class structures. This allows you to incrementally build complex classes by starting with a minimal "base" class and then extending it to a new class. This new extended class is said to *inherit* the functionality of its base class. "Extend" means to add new class members (properties and/or methods). 
 
 Let's demonstrate inheritance by means of US residency models. In this case, "resident" means a person living permanently or temporarily in the US.  
@@ -669,9 +674,7 @@ Here's a full featured video that demonstrates this in great detail:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-P1uYVlYEc4" frameborder="0" allowfullscreen></iframe>
 
 If you can't see the video, [try clicking this link](https://youtu.be/-P1uYVlYEc4) or type this URL into your web browser: https://youtu.be/-P1uYVlYEc4).
-
 ## Hiding and Exposing Class Members
-
 We've already see how the `public` keyword and `private` keyword protect or grant access to your class members, both properties and methods. Inheritance adds a small bit of complexity and enables you to control access to class members via public/private as well as a new data control keyword, `protected`:
 
 - `public` members may always be accessed up and down the hierarchy and from outside the client (i.e. client code). 
@@ -707,10 +710,12 @@ const myExtendedClass = new ExtendedBaseClass();
 myExtendedClass.MyPublicProperty = "Set directly on the class via client code.";
 
 // Error:
-// myExtendedClass._myPrivateProperty = "This is not allowed since private properties cannot be read or written.";
+// myExtendedClass._myPrivateProperty = 
+//      "This is not allowed since private properties cannot be read or written.";
 
 // Error:
-// myExtendedClass._myProtectedProperty = "This is also not allowed since it's protected.";
+// myExtendedClass._myProtectedProperty = 
+//      "This is also not allowed since it's protected.";
 
 ```
 
@@ -722,9 +727,7 @@ The code sample shows:
 - ExtendedBaseClass *may not* access _myPrivateProperty.
 - Some client code defines a new const variable, `myExtendedBaseClass`. It holds a reference to an instance of ExtendedBaseClass.
 - The client code is able to access the instance's `MyPublicProperty` but is prevented from accessing either the private or the protected properties.
-
 ## Abstract Classes
-
 Abstract classes round out TypeScript's support for hierarchies of this nature. An abstract class looks and feels like a standard class with a key exception: abstract classes may never be instantiated. If JavaScript is your first and primary programming language, this may seem strange. However, abstract classes, along with interfaces, enable developers to express many common software design patterns naturally and gracefully.  Let's consider an example.
 
 Imagine that you are a writing a game. Players place different types of military bases (e.g. "Army", "Navy") on a two dimensional map. Bases share some common features, like "name" but diverge from each other in important details. Army bases consist of soldiers while navy bases consist of ships. Lastly, at run-time, players can "activate" a base. This triggers the base to do something meaningful in the game.  Here's a naive way to model it:
@@ -872,9 +875,7 @@ Let's put it all together in a video:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ska4WEeG3pM" frameborder="0" allowfullscreen></iframe>
 
 (If you can't view that video, [try clicking tis link](https://youtu.be/ska4WEeG3pM) or typing this url into your web browser: https://youtu.be/ska4WEeG3pM.)
-
 # Summary
-
 The previous chapter gave you a sip and this chapter turned on the fire hose.
 
 Use interfaces to define both the shape of data and the shape of classes. In this case, "shape" means required class members (both methods and properties). 
