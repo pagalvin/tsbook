@@ -272,6 +272,7 @@ This code is better for at least three important reasons:
 1. Clarity
 2. Long-term maintenance
 3. Better information hiding
+
 ### Clarity
 The code defines an interface, `Bus6Args`. The class constructor then takes an argument of type Bus6Args. This allows us to write a line of code like this:
 
@@ -332,7 +333,13 @@ class Pants {
 Each of the three classes has `color` and `price` and this lets us write some comparison logic:
 
 ```TypeScript
-const allProducts: any[] = [].concat(new Shirt(), new Shirt(), new Pants(), new Shoe(), new Pants(), new Shirt());
+const allProducts: any[] = [].concat(
+    new Shirt(), 
+    new Shirt(), 
+    new Pants(), 
+    new Shoe(), 
+    new Pants(), 
+    new Shirt());
 
 const Recommend = function(minPrice, maxPrice, requestedColor) {
     return allProducts.reduce(function(prev, curr) {
@@ -727,6 +734,7 @@ The code sample shows:
 - ExtendedBaseClass *may not* access _myPrivateProperty.
 - Some client code defines a new const variable, `myExtendedBaseClass`. It holds a reference to an instance of ExtendedBaseClass.
 - The client code is able to access the instance's `MyPublicProperty` but is prevented from accessing either the private or the protected properties.
+
 ## Abstract Classes
 Abstract classes round out TypeScript's support for hierarchies of this nature. An abstract class looks and feels like a standard class with a key exception: abstract classes may never be instantiated. If JavaScript is your first and primary programming language, this may seem strange. However, abstract classes, along with interfaces, enable developers to express many common software design patterns naturally and gracefully.  Let's consider an example.
 
