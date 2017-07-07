@@ -73,39 +73,44 @@ function InitializeDataSet(seedData?: any) {
     }
 }
 ```
-
 Use the question mark (?) to denote an optional parameter.
 
 At run-time, client code invokes the function as normal. If that code does not supply a value for the optional parameter, its value is `undefined`.
 
-### Default Parameter Values
-
-<div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:40%; font-size: 10px">
+<hr/>
+<div style="margin:auto:right; border:1px solid; padding: 5px; margin: 15px; width:40%; font-size: 12px">
     <div><i>Regarding Optional Parameters</i></div>
     <div>
         <p>
         Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
         </p>
         <p style="font-family:courier">
-            ...
-            InitializeSeedData();
-            ...
+            <pre>
+...
+InitializeSeedData();
+...
+</pre>
         </p>
         <p>
             And then later on:
         </p>
         <p style="font-family:courier">
-            ...
-            InitializeSeedData({someSeedDataObject});
-            ...
+<pre>            
+...
+InitializeSeedData({someSeedDataObject});
+...
+</pre>
         </p>
         <p>
-            Most developers will find this confusing to follow.
-            
+            Most developers will find this confusing to follow.<br/>
+            <br/>
             Optional parameters are best used when writing interfaces to describe data structures and/or 3rd party libraries over which you have no control.
         </p>
     </div>
 </div>
+<hr/>
+
+### Default Parameter Values
 
 You can specify a default value for your function's parameters. Here's the previous example re-written to show this syntax and discuss the implication of using it:
 
@@ -204,13 +209,13 @@ console.log(myGoodbyeFunction());
 ```
 
 Here's the line-by-line transformation:
-<table>
+<table style="font-size: 11px; font-family:courier">
 <tr>
 <td>
-TypeScript
+<b>TypeScript</b>
 </td>
 <td>
-Transpiled JavaScript
+<b>Transpiled JavaScript</b>
 </tr>
 
 <tr>
@@ -375,4 +380,4 @@ That concludes functions. The next chapter gently introduces basic TypeScript cl
 
 [^4]: In this context, "care about" means that the library might provide other useful functions but we don't plan to use them for one reason or another. We don't need to map each of them to our interface definition, just the ones we plan to use.
 
-[^5]: `Reduce`, along with `filter` and `map` tend to find themselves in code that adheres to a functional programming style. I've written a small series of blog posts on this subject up on my blog, http://www.medium.com/@pagalvin.
+[^5]: `Reduce`, along with `filter` and `map` tend to find themselves in code that adheres to a functional programming style. I've written a small series of blog posts on this subject up on my blog, https://hackernoon.com/functional-programming-the-examples-series-851421e7ae5b.
