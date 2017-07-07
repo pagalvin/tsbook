@@ -43,27 +43,29 @@ When I first started wondering about TypeScript, one of my very first thoughts w
 
 Web browsers such as Chrome, Internet Explorer and Firefox provide great debugging tools. These tools work with plain JavaScript. Here's a video showing some code that iterates over a collection of objects and the Chrome debugger experience: 
 
-/**video: show plain javascript editing
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MFwfodjYFoo" frameborder="0" allowfullscreen></iframe>
+
+(If you can't see this video, [try clicking here](https://youtu.be/MFwfodjYFoo) or type this URL into your web browser: https://youtu.be/MFwfodjYFoo.)
 
 That looks all well and fine but how does it work with TypeScript?
 
 First, the TypeScript compiler aims to generate human-readable JavaScript. As a result that transpiled code is often easy to reason about if it's all you have in the debugger. Let's do a quick video demo. 
 
-First, here's that same JavaScript example re-written in TypeScript:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xb6zREHBGV8" frameborder="0" allowfullscreen></iframe>
 
-...
+(If you can't see this video, [try clicking here](https://youtu.be/Xb6zREHBGV8) or type this URL into your web browser: https://youtu.be/Xb6zREHBGV8).
 
-It looks pretty similar to its plain JavaScript counterpart but it's obviously different. Here's one of the debugging experiences when you transpile and run in your web browser:
+As you can see, the generated JavaScript is similar to first plain JS adder from above. However, it is quite different from the actual TypeScript code. It's not so different that it's impossible to reason about, but it definitely creates some unnecessary friction. Thankfully, the TypeScript compiler will generate map files for us. These provide a connection between the actual JavaScript the browser is running and its associated TypeScript source code. 
 
-//** video: show transpiled JS debugging
-
-As you can see, it's useful but it's also kind of awkward. It's not showing your TypeScript. This is awkward at best. In some cases, the generated JS wanders pretty far from its TypeScript roots. Thankfully, the TypeScript compiler will generate map files for us. These provide a connection between the actual JavaScript the browser is running and its associated TypeScript source code. 
+Map files are pretty interesting things in and of themselves. They don't just work for TypeScript, they work more generally with any JavaScript related source. For instance, in development situations, you'll often minimize your JavaScript but provide a map file that maps the minimized source back to its unminified state. Other languages, like ClosureScript, also use map files. The point here is that map files weren't invented for TypeScript, TypeScript simply leverages this existing capability. [Here's an ancient article](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) that describes source maps when they were first introduced back in 2012. For you historians [this article has also aged well](http://blog.teamtreehouse.com/introduction-source-maps).  
 
 Here's the same experience, but this time using a map file:
 
-/** video show using a map file
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RQEUdV84WJg" frameborder="0" allowfullscreen></iframe>
 
-Map files are pretty interesting things in and of themselves. They don't just work for TypeScript, they work more generally with any JavaScript related source. For instance, in development situations, you'll often minimize your JavaScript but provide a map file that maps the minimized source back to its unminified state. Other languages, like ClosureScript, also use map files. The point here is that map files weren't invented for TypeScript, TypeScript simply leverages this existing capability. [Here's an ancient article](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) that describes source maps when they were first introduced back in 2012. For you historians [this article has also aged well](http://blog.teamtreehouse.com/introduction-source-maps).  
+(If you can't see this video, [try clicking here] or type this URL into your web browser: https://youtu.be/RQEUdV84WJg.)
+
+See, debugging TypeScript really is a nothingburger :).
 
 # Further Reading
 
