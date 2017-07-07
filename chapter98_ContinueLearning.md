@@ -1,6 +1,6 @@
 # Continue Learning
 
-I hope that you had a pleasant and product experience reading this book and watching the videos. It was certainly fun for me!
+I hope that you had a pleasant and enriching experience reading this book and watching the videos. It sure was for me!
 
 I think I've covered close to 80 percent of the language. In this chapter, I'm going to point out a few additional resources that will bridge that 20 percent gap (at least partially). In addition, as I wrote way back in the intro, I think that it's important to differentiate instruction. Some of the links I reference here (and did in the various "Further Reading" sections) duplicate some of this book's content, albeit in a different voice. That's a good thing :). Here they are:
 
