@@ -78,14 +78,14 @@ Use the question mark (?) to denote an optional parameter.
 At run-time, client code invokes the function as normal. If that code does not supply a value for the optional parameter, its value is `undefined`.
 
 <hr/>
-<div style="margin:auto; border:1px solid; padding: 5px; margin: 15px; width:80%; font-size: 12px">
+<div style="margin:auto; border:1px solid; padding: 5px; width:80%; font-size: 12px">
     <div><i>Regarding Optional Parameters</i></div>
     <div>
         <p>
         Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
         </p>
         <p style="font-family:courier">
-            <pre>
+<pre>
 ...
 InitializeSeedData();
 ...
