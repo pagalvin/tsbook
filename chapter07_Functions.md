@@ -79,28 +79,24 @@ At run-time, client code invokes the function as normal. If that code does not s
 
 <hr/>
 <div style="margin:auto; border:1px solid; padding: 5px; width:80%; font-size: 12px">
-    <div><i>Regarding Optional Parameters</i></div>
+    <div><i style="margin:auto; font-size: 14px;">Regarding Optional Parameters</i></div>
     <div>
         <p>
         Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
         </p>
-        <p style="font-family:courier">
-<pre>
+<pre style="font-family:courier">
 ...
 InitializeSeedData();
 ...
 </pre>
-        </p>
         <p>
             And then later on:
         </p>
-        <p style="font-family:courier">
-<pre>            
+<pre style="font-family:courier">
 ...
 InitializeSeedData({someSeedDataObject});
 ...
 </pre>
-        </p>
         <p>
             Most developers will find this confusing to follow.<br/>
             <br/>
