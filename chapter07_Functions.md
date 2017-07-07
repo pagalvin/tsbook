@@ -17,7 +17,7 @@ let sillyAdderFunction: Function;
 sillyAdderFunction = function(a, b) { return a + b};
 
 console.log(sillyAdderFunction(10, 10);
-```TypeScript
+```
 
 This isn't a terribly useful thing to do but it shows that there is a `Function` data type. You'll see down below that Arrow Functions are far more useful.
 
@@ -78,13 +78,15 @@ Use the question mark (?) to denote an optional parameter.
 
 At run-time, client code invokes the function as normal. If that code does not supply a value for the optional parameter, its value is `undefined`.
 
+### Default Parameter Values
+
 <div style="float:right; border:1px solid; padding: 5px; margin: 15px; width:40%; font-size: 10px">
     <div><i>Regarding Optional Parameters</i></div>
     <div>
         <p>
         Be very careful when working with optional parameters. This can give rise to a situation where you have a line like this in one place: 
         </p>
-        <p style="font-face:courrier">
+        <p style="font-family:courier">
             ...
             InitializeSeedData();
             ...
@@ -92,7 +94,7 @@ At run-time, client code invokes the function as normal. If that code does not s
         <p>
             And then later on:
         </p>
-        <p style="font-face:courrier">
+        <p style="font-family:courier">
             ...
             InitializeSeedData({someSeedDataObject});
             ...
@@ -104,8 +106,6 @@ At run-time, client code invokes the function as normal. If that code does not s
         </p>
     </div>
 </div>
-
-### Default Parameter Values
 
 You can specify a default value for your function's parameters. Here's the previous example re-written to show this syntax and discuss the implication of using it:
 
@@ -141,7 +141,6 @@ Let's consider a logging example. We can always use `console.log()` to log out m
 
 ```TypeScript
 function myLogger(msgType: "INFO" | "ERROR", ...messages: any[]) {
-
     if (msgType === "INFO") {
         console.log(messages);
     }
@@ -237,9 +236,9 @@ We specify parameters by inserting them info the `()` portion of the function de
 
 ```TypeScript
 let myAdderArrowFunction: (arg1: number, arg2: number) => number;
-
-myAdderArrowFunction = (firstNumber: number, secondNumber: number) => {return firstNumber + secondNumber;}
-
+myAdderArrowFunction = (firstNumber: number, secondNumber: number) => {
+        return firstNumber + secondNumber;
+    }
 console.log(myAdderArrowFunction(2, 2));
 ```
 
@@ -285,7 +284,7 @@ else {
 
 This is complex example. Let's unpack it a bit:
 - The code defines an interface, `IVisualizationEngine`.
-- The interface defines three different functions, one for each of the API calls we care about[^3].
+- The interface defines three different functions, one for each of the API calls we care about[^4].
 - We get a handle to the engine via the global window object. In order for this to work, we had to reference the engine via a script tag in our HTML and the engine would have to save itself in the global window. 
 
 At this point, we've done something really nice for ourselves.  We now have strongly typed access to this third party's API! This allows the IDE to give us the great time-saving and error-reducing intellisense we've all grown to love so much.
@@ -324,9 +323,7 @@ The previous example doesn't show it well, but arrow functions can help you do m
 
 ```TypeScript
 const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 const evenNumbers = numbers.filter( (item) => item % 2);
-
 const sumOfNumbers = numbers.reduce((prev: number, curr: number) => {
     return prev + curr;
 }, 0);
@@ -344,7 +341,7 @@ We could have written this fully out to:
 
 It's a bit of shorthand that we're allowed do when you can return a value with a single statement.
 
-The second example adds up all the numbers using the standard `reduce` function. Reduce runs against an array and takes a function and initial value as an argument. That function is passed the previous value and the current value, defined in the example as `(prev: number, curr: number)`[^fpblogposts]. Note that `reduce` *also* passes a 3rd argument, the index of the item in the array. We don't care about that so we don't bother catching it, so to speak.
+The second example adds up all the numbers using the standard `reduce` function. Reduce runs against an array and takes a function and initial value as an argument. That function is passed the previous value and the current value, defined in the example as `(prev: number, curr: number)`[^5]. Note that `reduce` *also* passes a 3rd argument, the index of the item in the array. We don't care about that so we don't bother catching it, so to speak.
 
 Most TypeScript developers come to find Arrow functions to be very helpful and generally cleaner looking than spelling out the word "function" all the time.
 
@@ -368,12 +365,14 @@ TypeScript introduces a different kind of function, the Arrow Function. We haven
 
 That concludes functions. The next chapter gently introduces basic TypeScript classes and lays down the foundation for more advanced topics like abstract classes and how interfaces work with them.
 
+<hr/>
+
 [^1]: Not to be confused with Representational State Transfer. Rest parameters are an entirely different thing, as you'll see.
 
 [^2]: If your function doesn't return any value, there's a good chance it's affecting some data outside of its scope. This is usually a Bad Thing because it introduces the risk of side effects. If you want more convincing, you could [start here](https://softwareengineering.stackexchange.com/questions/15269/why-are-side-effects-considered-evil-in-functional-programming).
 
 [^3]: This happens so much in the real world that TypeScript provides a significant feature set to handle the challenge through the use of "typings files". The first cut of this book doesn't address typings in detail but the "Continue Learning" chapter will point you in the right direction.
 
-[^3]: In this context, "care about" means that the library might provide other useful functions but we don't plan to use them for one reason or another. We don't need to map each of them to our interface definition, just the ones we plan to use.
+[^4]: In this context, "care about" means that the library might provide other useful functions but we don't plan to use them for one reason or another. We don't need to map each of them to our interface definition, just the ones we plan to use.
 
-[^fpblogposts]: `Reduce`, along with `filter` and `map` tend to find themselves in code that adheres to a functional programming style. I've written a small series of blog posts on this subject up on my blog, http://www.medium.com/@pagalvin.
+[^5]: `Reduce`, along with `filter` and `map` tend to find themselves in code that adheres to a functional programming style. I've written a small series of blog posts on this subject up on my blog, http://www.medium.com/@pagalvin.
