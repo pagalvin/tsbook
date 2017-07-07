@@ -14,18 +14,17 @@ Wrap-up checklist:
 - Chapter 5, advanced types
     done!
 - chapter 6, template strings
-    write it!
+    done!
 - chapter 7, functions:
-    final review
+    done!
 - chapter 8, intro to classes
-    final review
+    done!
 - chapter 9, classes in depth   
-    final review
+    done!
 - chapter 10, generics
     final review
 - chapter 98, continue learning 
     write it!
-
 
 ========================================
 
@@ -50,7 +49,7 @@ at end, converting plain js react component to typescript: https://devsandbox.io
 
 at end, object relational manager, TypeORM: https://github.com/typeorm/typeorm
 
-In generics chapter, generic defaults: https://blog.mariusschulz.com/2017/06/02/typescript-2-3-generic-parameter-defaults
+x In generics chapter, generic defaults: https://blog.mariusschulz.com/2017/06/02/typescript-2-3-generic-parameter-defaults
 
 just a general twitter search: https://twitter.com/search?q=%23typescript&src=typd&lang=en
 
