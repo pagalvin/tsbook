@@ -233,6 +233,8 @@ Consider reading the following articles that compliment this chapter's content:
 
 - A good overview of var/let/const as well as describing a few primitive data types: http://www.brainbell.com/typescript/data-types-let-var-cons.html
 
+- Another good overview article by Ayo Alfonso contrasting JavaScript with TypeScript: https://hackernoon.com/typescript-vs-javascript-b568bc4a4e58
+
 # Summary
 
 In this chapter, you learned that TypeScript is a statically typed langauge that introduces a couple of new ways to manage variable scope and immutability. You saw some of the practical effects that derive from these features and have been armed with a bit of advice on how to use them.

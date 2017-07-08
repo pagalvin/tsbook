@@ -9,7 +9,7 @@ This book aims to provide a casual introduction to the main features of the Type
 - A more personal note on how I wrote the book for those of you interested in the mechanics and other metrics of such things.
 
 ## Version
-The current version of this book is: 1.0.
+The current version of this book is: 1.0.1.
 
 See the end of this chapter for a more detailed version history.
 
@@ -115,6 +115,10 @@ Here they are:
 # Copyright
 
 © 2017 Paul Galvin.
+
+# Version History
+- 1.0: Initial "go-live" of the book. I started to "market" via Reddit and Facebook on 7/7/2017.
+- 1.0.1: Added a link by Ayo Alfonso to chapter 4, Introducing Types.
 
 # Moving On
 
