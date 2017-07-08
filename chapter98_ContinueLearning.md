@@ -24,6 +24,7 @@ There are many open source projects written in TypeScript. Here's a small select
 - TypeORM, a TypeScript object relational mapper: https://github.com/typeorm/typeorm
 - The EVE programming language: https://github.com/witheve
 - Widgets and gadgets: https://github.com/phosphorjs/
+- Navalia, an end to end testing framework: https://github.com/joelgriffith/navalia
 
 ##TypeScript and Node
 

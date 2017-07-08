@@ -9,7 +9,8 @@ This book aims to provide a casual introduction to the main features of the Type
 - A more personal note on how I wrote the book for those of you interested in the mechanics and other metrics of such things.
 
 ## Version
-The current version of this book is: 1.0.1.
+The current version of this book is: 1.0.2.
+Last pushed on 07/08/2017.
 
 See the end of this chapter for a more detailed version history.
 
@@ -119,7 +120,7 @@ Here they are:
 # Version History
 - 1.0: Initial "go-live" of the book. I started to "market" via Reddit and Facebook on 7/7/2017.
 - 1.0.1: Added a link by Ayo Alfonso to chapter 4, Introducing Types.
-
+- 1.0.2: Added Navalia github project to Further Learning chapter.
 # Moving On
 
 That's it's for the fluffies. The next chapter discusses some out of scope topics so that you don't get your hopes up for things not covered here in the book.
