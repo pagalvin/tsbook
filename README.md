@@ -118,9 +118,14 @@ Here they are:
 © 2017 Paul Galvin.
 
 # Version History
-- 1.0: Initial "go-live" of the book. I started to "market" via Reddit and Facebook on 7/7/2017.
-- 1.0.1: Added a link by Ayo Alfonso to chapter 4, Introducing Types.
-- 1.0.2: Added Navalia github project to Further Learning chapter.
+
+| Date | Version | Change |
+| -: | -: | - |
+| 07/07/2017 | 1.0 | Initial go-live of the book, begin "marketing" it on social media.|
+| 07/08/2017 | 1.01 | Added a link by Ayo Alfonso to chapter 4, Introducing Types|
+|            |  |  Added Navalia github project to Continue Learning chapter. |
+|            | | Updated TOC with chapter numbers. |
+
 # Moving On
 
 That's it's for the fluffies. The next chapter discusses some out of scope topics so that you don't get your hopes up for things not covered here in the book.
