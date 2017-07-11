@@ -429,7 +429,7 @@ It even puts in some helpful comments describing the the meaning of "403" or "20
 Union Types allow you to create a define a new entity that is comprised of multiple types or even values. Here's a simple example:
 
 ```TypeScript
-function move(inDirection: "left" | "up" | "down" | "up") {
+function move(inDirection: "left" | "up" | "down" | "right") {
     console.log(`Moving ${inDirection}.`);
 }
 ```
