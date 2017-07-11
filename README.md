@@ -9,8 +9,8 @@ This book aims to provide a casual introduction to the main features of the Type
 - A more personal note on how I wrote the book for those of you interested in the mechanics and other metrics of such things.
 
 ## Version
-The current version of this book is: 1.0.2.
-Last pushed on 07/08/2017.
+The current version of this book is: 1.0..
+Last pushed on 07/11/2017.
 
 See the end of this chapter for a more detailed version history.
 
@@ -125,6 +125,7 @@ Here they are:
 | 07/08/2017 | 1.01 | Added a link by Ayo Alfonso to chapter 4, Introducing Types|
 |            |  |  Added Navalia github project to Continue Learning chapter. |
 |            | | Updated TOC with chapter numbers. |
+| 07/11/2017 | 1.02 | Merged a pull request from Frank Ali fixing a mistake in an example union type ("up" instead of "right").  Still need to correct the associated video. |
 
 # Moving On
 
