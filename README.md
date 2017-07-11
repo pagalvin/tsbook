@@ -9,7 +9,7 @@ This book aims to provide a casual introduction to the main features of the Type
 - A more personal note on how I wrote the book for those of you interested in the mechanics and other metrics of such things.
 
 ## Version
-The current version of this book is: 1.0..
+The current version of this book is: 1.0.2.
 Last pushed on 07/11/2017.
 
 See the end of this chapter for a more detailed version history.
