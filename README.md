@@ -49,7 +49,7 @@ Some poeple might characterize "learn it because you *need* it for future dev wo
 
 [Check it out today](https://github.com/DefinitelyTyped/DefinitelyTyped) and see how much it's grown since March 2017.
 
-At a high level, typings help bridge the gap between TypeScript and pure JavaScript libraries. I bring up the DefinitelyTyped github project because it shows a that a good-sized group of library developers and/or devotees think it's worth their time to create these typings. As you can see in the screen capture above, with over 3,000 contributors, almost 27k commits and pushing 10k stars - the project offers some evidence that it's worth your while learning about this.
+At a high level, typings help bridge the gap between TypeScript and pure JavaScript libraries. I bring up the DefinitelyTyped github project because it shows that a good-sized group of library developers and/or devotees think it's worth their time to create these typings. As you can see in the screen capture above, with over 3,000 contributors, almost 27k commits and pushing 10k stars - the project offers some evidence that it's worth your while learning about this.
 
 All of this is to say that TypeScript has and continues to gain traction in the JavaScript community. The jury is still out as to whether it will "win" and become a truly main stream scripting language for web dev. It probably won't become _the_ language of the web[^4]. But its appeal cannot be denied. A growing swath of current and future front end developers are choosing TypeScript over pure JavaScript. Some folks are even wondering if they should learn TypeScript alone and skip JavaScript altogether.
 
