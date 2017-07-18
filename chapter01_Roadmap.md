@@ -21,7 +21,7 @@ TypeScript offers static types. You don't need to use them, but they are pretty 
 
 ## Types in Depth
 
-The real world is complicated with complex data structures. TypeScript offers up the notion of `interfaces` to help us describe and manage them. This chapter introduce interfaces as a way to describe them starting with a flat object and moving on to a more complex JSON formatted response from a REST service.
+The real world is complicated with complex data structures. TypeScript offers up the notion of `interfaces` to help us describe and manage them. This chapter introduces interfaces as a way to describe them starting with a flat object and moving on to a more complex JSON formatted response from a REST service.
 
 TypeScript interfaces look and feel quite similar to interfaces in C# and Java. Generally speaking, interfaces are one of the backbones for many common and important design patterns and principles (think [SOLID](http://williamdurand.fr/2013/07/30/from-stupid-to-solid-code/)). TypeScript interfaces enable us to more directly implement these design patterns[^3]. 
 
