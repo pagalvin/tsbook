@@ -43,7 +43,7 @@ You can use as many placeholders as you like:
 const name: string = "Paul";
 const graduatedYear: number = 1987;
 
-console.log(`${name} graduated in `${graduatedYear}.`);
+console.log(`${name} graduated in ${graduatedYear}.`);
 ```
 
 I have trained myself to use the backtick character whenever I need to define strings. You never know when you might want to introduce some data into a string at run-time.
