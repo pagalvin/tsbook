@@ -295,7 +295,7 @@ The previous example doesn't show it well, but arrow functions can help you do m
 
 ```TypeScript
 const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const evenNumbers = numbers.filter( (item) => item % 2);
+const evenNumbers = numbers.filter( (item) => !(item % 2));
 const sumOfNumbers = numbers.reduce((prev: number, curr: number) => {
     return prev + curr;
 }, 0);
@@ -305,11 +305,11 @@ In this example, we define an array of numbers, one through ten.
 
 We then define a variable, `evenNumbers`. evenNumbers is the result of filtering on the numbers array, passing back only those items where mod two equals zero. This is a new form for us:
 
-`(item) => item % 2`
+`(item) => !(item % 2)`
 
 We could have written this fully out to:
 
-`(item) => { return item % 2; }`
+`(item) => { return !(item % 2); }`
 
 It's a bit of shorthand that we're allowed do when you can return a value with a single statement.
 
