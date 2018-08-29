@@ -14,7 +14,7 @@ Although generics are part of the type system, the tend to go hand in hand with 
  
 - Enumerations: Attach a human-friendly label to a number.
 - Unions: A variable can be a "number" or "string" or "MyBrandShinyNewObject" but not anything else.
-- Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn a it about them in chapter 9).
+- Custom types: Think classes but without a constructor. (If you don't know about classes, don't worry, you'll learn about them in chapter 9).
 
 ## Interfaces as Data Describers
 
