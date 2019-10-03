@@ -140,7 +140,7 @@ That's it's for the fluffies. The next chapter discusses some out of scope topic
 
 [^4]: Given that JavaScript is already the "machine language of the web," we riches-embarrassed developers will be able to pick almost any language we want to use in the future and work seamlessly with everyone else. See more of my thoughts on this subject here: ["The Wonderful Consequences of JavaScript as the Virtual Machine Language of the Web"](https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs "https://hackernoon.com/the-wonderful-consequences-of-javascript-as-the-virtual-machine-language-of-the-web-3a65cbf887fa#.b9rxgbbrs") 
 
-[^5]: At least I think the market can bear another free, online book :\).
+[^5]: At least I think the market can bear another free online book :\).
 
 [^6]: It started with "hey, let's pull up the carpet and refinish the hardwood!" And then it progressed, by inches, to re-doing the hardwood in the whole first floor, pull out the old trim and replacing it, fixing cracks in the ceiling, painting the basement stairs and putting in new treads, new chandelier and kitchen stuff... It's still not done. Fun stuff, but ... maybe I shouldn't have started.
 
