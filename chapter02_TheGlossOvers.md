@@ -11,13 +11,13 @@ History of TypeScript, [consult the great people at Wikipedia to start](https://
 
 Beyond those non-language features, the book also ignores what I consider to be more advanced and/or situational topics. These are:
 
-- Decorators. Decorators allow you to enhance the functionality a TypeScript artifact, such as a class or property. This assignment is done in a declarative manner and can enhance the targeted artifact without the knowledge or consent of the artifact. It's fairly meta, I know :). They are very powerful and may become a common thing for people to do over time. However, I think they are too advanced for my target audience. In the chapter, *Continue Learning*, I point out a few great blog posts and github projects that showcase them. 
+- Decorators. Decorators allow you to enhance the functionality of a TypeScript artifact, such as a class or property. This assignment is done in a declarative manner and can enhance the targeted artifact without the knowledge or consent of the artifact. It's fairly meta, I know :). They are very powerful and may become a common thing for people to do over time. However, I think they are too advanced for my target audience. In the chapter, *Continue Learning*, I point out a few great blog posts and github projects that showcase them. 
 
 - Modules: Modules are not particularly complicated, but they mostly support bundling and other tooling (such as webpack). I'm on the fence as to whether I include a chapter on modules even as I write this. For now, I won't and I will refer you to good overviews of modules in the *Continue Learning* chapter.
 
 - Mixins, intersection types and the like: I cover what I consider to be the "core" language features. As with decorators, some topics are fairly advanced while also being of use in a fairly narrow band of business applications. I didn't want to throw too many concepts out there. As a result, I leave these out of the book and invite you to learn about them from other sources.
 
-That's enough on what's not covered. Let's move on to first big topic, how the heck does TypeScript work in the first place?
+That's enough on what's not covered. Let's move on to the first big topic, how the heck does TypeScript work in the first place?
 
 [^1]: Of course, we don't necessarily share the same sense of what's common. If you don't like mine, write your own book :). Or, suggest I add more content via a github issue or email me directly. The intro chapter provides links to both of these options.
 
