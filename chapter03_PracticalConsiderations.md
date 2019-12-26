@@ -80,7 +80,7 @@ We write our TypeScript source using our favorite text editor which itself is us
 
 That generated source is, for the most part, human readable. That gives us a tolerable debugging experience. However, we get a first class debugging experience by using map files. 
 
-That's enough big picture background information. It's now finally time introduce static types, starting with the next chapter. 
+That's enough big picture background information. It's now finally time to introduce static types, starting with the next chapter. 
 
 ---
 
