@@ -4,7 +4,7 @@ This book focuses on what consider to be the "main" bits of the TypeScript langu
 
 <div style="float:right">
     <a href="https://www.flickr.com/photos/35237092540@N01/8167731771/"><img width="200px" src="/assets/BarackObama.jpg"></a>
-</div>- History of TypeScript: It's an interesting topic[^2], but doesn't help achieve this book's practical aims. If you want to learn mor
+</div>- History of TypeScript: It's an interesting topic[^2], but doesn't help achieve this book's practical aims. If you want to learn more
 History of TypeScript, [consult the great people at Wikipedia to start](https://en.wikipedia.org/wiki/TypeScript#History).
 
 - IDEs, deployment processes, webpack and task runners: This stuff is changing almost all the time, almost on a weekly basis. If I were to go all in, recommending some particular "TypeScript starter", it would be overtaken by newer, more streamlined solutions by the time you read my recommendation. In addition, the various starters you find on the interwebs tend to be framework-dependent. One family of starter projects supports Angular, another React, etc. This book isn't about those frameworks. 
